@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MOSHCORBLOX - Komunitas Hardcore Roblox Indonesia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Metal+Mania&family=Nosifer&family=Butcherman&family=Montserrat:wght@400;600;700;800;900&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet" />
+    <style>
+      /* VARIABLES & RESET */
+      :root {
+        --primary: #ffffff;
+        --primary-dark: #cccccc;
+        --secondary: #999999;
+        --dark: #0a0a0a;
+        --darker: #000000;
+        --gray: #222222;
+        --light: #f1f1f1;
+        --accent: #333333;
+        --metal-font: "Metal Mania", "Creepster", "Nosifer", cursive;
+        --main-font: "Roboto", sans-serif;
+        --header-font: "Montserrat", sans-serif;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: var(--main-font);
+        background: var(--darker);
+        color: var(--light);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      /* TYPOGRAPHY */
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: var(--metal-font);
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-weight: 400;
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+      }
+
+      h1 {
+        font-size: clamp(2.5rem, 8vw, 4rem);
+        text-shadow: 0 0 20px rgba(255, 255, 255, 0.4), 3px 3px 8px rgba(0, 0, 0, 0.9);
+        font-weight: 400;
+      }
+
+      h2 {
+        font-size: clamp(1.8rem, 6vw, 3rem);
+        margin-bottom: 1.5rem;
+        font-weight: 400;
+      }
+
+      p {
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+        font-weight: 300;
+      }
+
+      a {
+        color: var(--primary);
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      a:hover {
+        color: var(--secondary);
+      }
+
+      /* BUTTONS */
+      .btn {
+        display: inline-block;
+        background: transparent;
+        color: var(--primary);
+        padding: 12px 28px;
+        border: 2px solid var(--primary);
+        border-radius: 0;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        font-size: 1rem;
+        font-family: var(--header-font);
+      }
+
+      .btn:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        transition: 0.5s;
+      }
+
+      .btn:hover:before {
+        left: 100%;
+      }
+
+      .btn:hover {
+        background: rgba(255, 255, 255, 0.05);
+        transform: translateY(-3px);
+        border-color: var(--secondary);
+        color: var(--secondary);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        border: 2px solid var(--secondary);
+        color: var(--secondary);
+      }
+
+      .btn-secondary:hover {
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--primary);
+        border-color: var(--primary);
+      }
+
+      /* LAYOUT */
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      section {
+        padding: 80px 0;
+        position: relative;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 60px;
+        position: relative;
+      }
+
+      .section-title:after {
+        content: "";
+        display: block;
+        width: 80px;
+        height: 2px;
+        background: var(--primary);
+        margin: 15px auto;
+      }
+
+      /* HEADER & NAVIGATION */
+      header {
+        background: rgba(0, 0, 0, 0.95);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+      }
+
+      .logo img {
+        height: 50px;
+        width: auto;
+        margin-right: 0;
+      }
+
+      .banner-text {
+        font-family: var(--metal-font);
+        font-size: 1.8rem;
+        font-weight: 400;
+        letter-spacing: 3px;
+        color: var(--primary);
+        text-transform: uppercase;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+      }
+
+      .nav-links li {
+        margin-left: 30px;
+      }
+
+      .nav-links a {
+        font-weight: 500;
+        font-size: 1rem;
+        position: relative;
+        color: var(--secondary);
+        font-family: var(--header-font);
+      }
+
+      .nav-links a:after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 1px;
+        bottom: -5px;
+        left: 0;
+        background: var(--primary);
+        transition: width 0.3s ease;
+      }
+
+      .nav-links a:hover:after {
+        width: 100%;
+      }
+
+      .nav-links a:hover {
+        color: var(--primary);
+      }
+
+      .menu-toggle {
+        display: none;
+        cursor: pointer;
+        font-size: 1.5rem;
+        color: var(--primary);
+      }
+
+      /* HERO SECTION */
+      #hero {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url("assets/MOSHCORBLOX project/image-14.png") center/cover no-repeat;
+      }
+
+      .hero-content {
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+      }
+
+      .hero-content h1 {
+        margin-bottom: 20px;
+      }
+
+      .hero-content p {
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        color: var(--secondary);
+      }
+
+      .hero-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 30px;
+      }
+
+      /* CAROUSEL SECTION */
+      #carousel {
+        background: var(--dark);
+        padding: 60px 0;
+        position: relative;
+      }
+
+      .custom-carousel {
+        position: relative;
+        width: 100%;
+        height: 500px;
+        border-radius: 0;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .carousel-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+      }
+
+      .carousel-item {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+
+      .carousel-item.active {
+        opacity: 1;
+        z-index: 1;
+      }
+
+      .carousel-item img,
+      .carousel-item video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.9;
+      }
+
+      .carousel-control {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 10;
+        background: rgba(0, 0, 0, 0.5);
+        color: var(--primary);
+        border: none;
+        cursor: pointer;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        transition: all 0.3s ease;
+      }
+
+      .carousel-control:hover {
+        background: rgba(0, 0, 0, 0.8);
+        transform: translateY(-50%) scale(1.1);
+      }
+
+      .carousel-prev {
+        left: 20px;
+      }
+
+      .carousel-next {
+        right: 20px;
+      }
+
+      .carousel-indicators {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 10px;
+        z-index: 10;
+      }
+
+      .carousel-indicator {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.5);
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .carousel-indicator.active {
+        background: var(--primary);
+        transform: scale(1.2);
+      }
+
+      /* ABOUT SECTION */
+      #about {
+        background: var(--darker);
+        position: relative;
+      }
+
+      .about-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+        align-items: center;
+      }
+
+      .about-text {
+        padding-right: 20px;
+      }
+
+      .about-image {
+        position: relative;
+        overflow: hidden;
+        height: 400px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .about-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+        filter: grayscale(100%);
+      }
+
+      .about-image:hover img {
+        transform: scale(1.05);
+      }
+
+      /* EVENTS SECTION */
+      #events {
+        background: var(--dark);
+        padding: 80px 0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .events-container {
+        position: relative;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 40px;
+      }
+
+      .events-scroller {
+        display: flex;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        gap: 25px;
+        padding: 20px 0;
+      }
+
+      .events-scroller::-webkit-scrollbar {
+        display: none;
+      }
+
+      .events-grid {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 25px;
+        padding-bottom: 20px;
+      }
+
+      .event-card {
+        background: rgba(20, 20, 20, 0.7);
+        border-radius: 0;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        min-width: 300px;
+        flex: 0 0 auto;
+        scroll-snap-align: start;
+      }
+
+      .event-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(255, 255, 255, 0.05);
+        border-color: var(--primary);
+      }
+
+      .event-image {
+        height: 200px;
+        overflow: hidden;
+      }
+
+      .event-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+        filter: grayscale(100%);
+      }
+
+      .event-card:hover .event-image img {
+        transform: scale(1.1);
+        filter: grayscale(50%);
+      }
+
+      .event-content {
+        padding: 20px;
+      }
+
+      .event-content h3 {
+        color: var(--primary);
+        margin-bottom: 10px;
+        font-size: 1.3rem;
+      }
+
+      .event-date {
+        color: var(--secondary);
+        font-weight: bold;
+        margin-bottom: 10px;
+        display: block;
+        font-size: 0.9rem;
+        font-family: var(--header-font);
+      }
+
+      /* Navigation buttons for events */
+      .events-nav-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 20;
+        background: rgba(0, 0, 0, 0.7);
+        color: var(--primary);
+        border: none;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+      }
+
+      .events-nav-btn:hover {
+        background: rgba(0, 0, 0, 0.9);
+        transform: translateY(-50%) scale(1.1);
+      }
+
+      .events-nav-btn.prev {
+        left: 0;
+      }
+
+      .events-nav-btn.next {
+        right: 0;
+      }
+
+      /* COMMUNITY SECTION */
+      #community {
+        background: var(--darker);
+        position: relative;
+      }
+
+      .community-stats {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        margin-bottom: 50px;
+      }
+
+      .stat-box {
+        text-align: center;
+        padding: 30px;
+        background: rgba(20, 20, 20, 0.7);
+        border-radius: 0;
+        min-width: 200px;
+        margin: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .stat-number {
+        font-size: 2.5rem;
+        font-weight: 400;
+        color: var(--primary);
+        margin-bottom: 10px;
+        font-family: var(--metal-font);
+      }
+
+      .stat-text {
+        font-size: 1rem;
+        text-transform: uppercase;
+        color: var(--secondary);
+        font-family: var(--header-font);
+      }
+
+      .join-box {
+        background: rgba(15, 15, 15, 0.9);
+        border: 1px solid var(--primary);
+        border-radius: 0;
+        padding: 40px;
+        text-align: center;
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      .join-box h3 {
+        font-family: var(--metal-font);
+      }
+
+      .join-box p {
+        color: var(--secondary);
+      }
+
+      /* FOOTER */
+      footer {
+        background: var(--darker);
+        padding: 60px 0 30px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+        margin-bottom: 40px;
+      }
+
+      .footer-column h3 {
+        color: var(--primary);
+        margin-bottom: 20px;
+        font-size: 1.3rem;
+        font-family: var(--metal-font);
+      }
+
+      .footer-links {
+        list-style: none;
+      }
+
+      .footer-links li {
+        margin-bottom: 10px;
+      }
+
+      .footer-links a {
+        color: var(--secondary);
+        transition: all 0.3s ease;
+      }
+
+      .footer-links a:hover {
+        color: var(--primary);
+      }
+
+      .social-links {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+      }
+
+      .social-links a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background: var(--gray);
+        border-radius: 0;
+        font-size: 1.2rem;
+        transition: all 0.3s ease;
+        color: var(--primary);
+      }
+
+      .social-links a:hover {
+        background: var(--primary);
+        color: var(--dark);
+        transform: translateY(-5px);
+      }
+
+      .copyright {
+        text-align: center;
+        padding-top: 30px;
+        border-top: 1px solid var(--gray);
+        color: var(--secondary);
+      }
+
+      /* FALLBACK FONTS */
+      @supports not (font-family: "Metal Mania") {
+        :root {
+          --metal-font: "Impact", "Arial Black", sans-serif;
+        }
+      }
+
+      /* ANIMATIONS */
+      @keyframes metalShine {
+        0%,
+        100% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+        100% {
+          transform: translateY(0px);
+        }
+      }
+
+      .floating {
+        animation: float 4s ease-in-out infinite;
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      .pulse:hover {
+        animation: pulse 0.5s ease;
+      }
+
+      /* RESPONSIVE DESIGN */
+      @media (max-width: 992px) {
+        .about-content {
+          grid-template-columns: 1fr;
+        }
+
+        .about-text {
+          padding-right: 0;
+        }
+
+        .custom-carousel {
+          height: 400px;
+        }
+
+        .events-grid {
+          gap: 20px;
+        }
+
+        .event-card {
+          min-width: 280px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .menu-toggle {
+          display: block;
+        }
+
+        .nav-links {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          background: var(--darker);
+          width: 100%;
+          flex-direction: column;
+          align-items: center;
+          padding: 20px 0;
+          clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+          transition: clip-path 0.4s ease;
+          border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-links.active {
+          clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        }
+
+        .nav-links li {
+          margin: 15px 0;
+        }
+
+        .hero-buttons {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .custom-carousel {
+          height: 300px;
+        }
+
+        .banner-text {
+          font-size: 1.4rem;
+        }
+
+        .events-container {
+          padding: 0 20px;
+        }
+
+        .events-nav-btn {
+          width: 40px;
+          height: 40px;
+          font-size: 1.2rem;
+        }
+      }
+
+      @media (max-width: 576px) {
+        section {
+          padding: 60px 0;
+        }
+
+        .stat-box {
+          min-width: 140px;
+          padding: 20px;
+        }
+
+        .stat-number {
+          font-size: 1.8rem;
+        }
+
+        .join-box {
+          padding: 20px;
+        }
+
+        .carousel-control {
+          width: 40px;
+          height: 40px;
+          font-size: 1.2rem;
+        }
+
+        .event-card {
+          min-width: 260px;
+        }
+
+        .events-nav-btn {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header & Navigation -->
+    <header>
+      <div class="container">
+        <nav>
+          <div class="logo">
+            <img
+              src="assets/MOSHCORBLOX project/moshcorbloxLogo.png"
+              alt="Moshcorblox Banner"
+              onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 300 80\'><rect width=\'300\' height=\'80\' fill=\'black\'/><text x=\'150\' y=\'40\' text-anchor=\'middle\' dominant-baseline=\'middle\' fill=\'white\' font-size=\'24\' font-family=\'serif\'>MOSHCORBLOX</text></svg>'"
+            />
+          </div>
+          <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+          </div>
+          <ul class="nav-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#carousel">Preview</a></li>
+            <li><a href="#events">More</a></li>
+            <li><a href="#community">Community</a></li>
+            <li><a href="https://discord.gg/U3KKJnVv" class="btn">Join Now</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1>Komunitas Hardcore Roblox Indonesia</h1>
+          <p>Ngebawa gamer dan pecinta musik hardcore ketemu di satu panggung virtual dengan vibes yang nggak bakal dilupain. Yuk gabung bareng komunitas kita yang rame, seru, dan penuh energi!</p>
+          <div class="hero-buttons">
+            <a href="#community" class="btn">Bergabung Sekarang</a>
+            <a href="#events" class="btn btn-secondary">Lihat Acara</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Carousel Section -->
+    <section id="carousel">
+      <div class="container">
+        <div class="section-title">
+          <h2>Preview</h2>
+          <p>Lihat aksi moshpit dan konser terbaik dari komunitas kami</p>
+        </div>
+
+        <!-- Custom Carousel -->
+        <div class="custom-carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <video id="mainVideo" muted controls>
+                <source src="assets/MOSHCORBLOX project/111_ .mp4" type="video/mp4" />
+              </video>
+            </div>
+            <div class="carousel-item">
+              <img src="assets/MOSHCORBLOX project/M1.jpg" alt="Roblox Concert" />
+            </div>
+            <div class="carousel-item">
+              <img src="assets/MOSHCORBLOX project/M2.jpg" alt="Virtual Moshpit" />
+            </div>
+            <div class="carousel-item">
+              <img src="assets/MOSHCORBLOX project/M3.jpg" alt="Gaming Community" />
+            </div>
+            <div class="carousel-item">
+              <img src="assets/MOSHCORBLOX project/M4.jpg" alt="Gaming Community" />
+            </div>
+          </div>
+
+          <button class="carousel-control carousel-prev">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="carousel-control carousel-next">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+
+          <div class="carousel-indicators"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+      <div class="container">
+        <div class="section-title">
+          <h2>Tentang Kami</h2>
+          <p>Komunitas Hardcore Roblox Indonesia</p>
+        </div>
+
+        <div class="about-content">
+          <div class="about-text">
+            <p>Kita di Moshcorblox bikin virtual gigs di Roblox — awalnya cuma mainin hardcore, punk, sama rock, tapi sekarang udah merambah ke genre lain kayak midwest emo, pop punk, ska, dream pop, dan banyak lagi.</p>
+            <p>Konsepnya simpel: band pilih lagunya (atau dibantu admin), terus kita putar audio rekamannya pas event jalan. Jadi meskipun virtual, feel-nya tetep kayak lagi nonton gigs beneran.</p>
+            <p>Tujuan kita? Biar semua orang, termasuk yang nggak bisa datang ke gigs di dunia nyata, tetep bisa ngerasain vibes-nya. Sekalian jadi ajang buat ngenalin band lokal dan karya keren dari member sendiri.</p>
+            <div style="margin-top: 30px">
+              <a href="https://discord.gg/U3KKJnVv" class="btn">Discord Kami</a>
+            </div>
+          </div>
+          <div class="about-image floating">
+            <img src="assets/MOSHCORBLOX project/image-17.png" alt="Moshcorblox Community" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="events">
+      <div class="container">
+        <div class="section-title">
+          <h2>Info Lainnya</h2>
+          <p>Lihat informasi lainnya disini</p>
+        </div>
+
+        <div class="events-container">
+          <button class="events-nav-btn prev pulse">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="events-nav-btn next pulse">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+
+          <div class="events-scroller">
+            <div class="events-grid">
+              <!-- Card 1 - Registrasi -->
+              <div class="event-card">
+                <div class="event-image">
+                  <img src="https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?auto=format&fit=crop&w=600&h=400" alt="Registrasi" />
+                </div>
+                <div class="event-content">
+                  <span class="event-date">SEGARA DAFTAR</span>
+                  <h3>Registrasi Event</h3>
+                  <p>Daftarkan band kamu untuk berpartisipasi dalam event Moshcorblox, naiklah ke panggung dan hancurkan semua!</p>
+                  <a
+                    href="https://docs.google.com/forms/d/e/1FAIpQLSfC4HZKH8S8B68pjTp1zLiqLrFrpUhH-uKt2eyDI9cu28yYJA/viewform?pli=1&fbclid=PAQ0xDSwMGeNZleHRuA2FlbQIxMAABp1nOjjKwTQPExXYcuocnGrVKfwIV3gcqFRj0iN0k6DozLXVc06skTOTf5I-N_aem_8TXuyvQyTXB7BtupIG3wBg"
+                    class="btn"
+                    >Daftar Sekarang</a
+                  >
+                </div>
+              </div>
+
+              <!-- Card 2 - Merch -->
+              <div class="event-card">
+                <div class="event-image">
+                  <img src="https://images.unsplash.com/photo-1607082350899-7e105aa886ae?auto=format&fit=crop&w=600&h=400" alt="Merchandise" />
+                </div>
+                <div class="event-content">
+                  <span class="event-date">TERBATAS</span>
+                  <h3>Official Merch</h3>
+                  <p>Dapatkan merchandise eksklusif Moshcorblox yang keren hanya untuk member!</p>
+                  <a href="https://shopee.co.id/connection584" class="btn">Lihat Koleksi</a>
+                </div>
+              </div>
+
+              <!-- Card 3 - Map -->
+              <div class="event-card">
+                <div class="event-image">
+                  <img src="https://images.unsplash.com/photo-1552422535-c45813c61732?auto=format&fit=crop&w=600&h=400" alt="Map" />
+                </div>
+                <div class="event-content">
+                  <span class="event-date">UPDATE TERBARU</span>
+                  <h3>Venue Maps</h3>
+                  <p>Jelajahi venue konser virtual kami. Temukan tempat favorit dan rahasia dalam game Roblox!</p>
+                  <a href="https://www.roblox.com/share?code=f06dccf92b17964ca0b320d644f68a20&type=ExperienceDetails&stamp=1754895125356" class="btn">Lihat Map</a>
+                </div>
+              </div>
+
+              <!-- Card 4 - Founder -->
+              <div class="event-card">
+                <div class="event-image">
+                  <img src="https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=600&h=400" alt="Founder" />
+                </div>
+                <div class="event-content">
+                  <span class="event-date">PENDIRI</span>
+                  <h3>Founder & Developer</h3>
+                  <p>Ini dia orang-orang yang telah membuat dan membangun komunitas Moshcorblox</p>
+                  <a href="founder.html" class="btn">Lihat Profil</a>
+                </div>
+              </div>
+
+              <!-- Card 5 - Band -->
+              <div class="event-card">
+                <div class="event-image">
+                  <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=600&h=400" alt="Band" />
+                </div>
+                <div class="event-content">
+                  <span class="event-date">TALENTA</span>
+                  <h3>Band Showcase</h3>
+                  <p>Ini dia Band-band yang sudah berpartisipasi dalam event Moshcorblox!</p>
+                  <a href="#" class="btn">Lihat Band</a>
+                </div>
+              </div>
+
+              <!-- Card 6 - Partners -->
+              <div class="event-card">
+                <div class="event-image">
+                  <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=600&h=400" alt="Partners" />
+                </div>
+                <div class="event-content">
+                  <span class="event-date">KOLABORASI</span>
+                  <h3>Partners</h3>
+                  <p>Ini dia Partners yang berkerja sama dengan Moshcorblox!</p>
+                  <a href="#" class="btn">Lihat Partners</a>
+                </div>
+              </div>
+
+              <!-- Card 7 - Tutorial -->
+              <div class="event-card">
+                <div class="event-image">
+                  <img src="https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&w=600&h=400" alt="Tutorial" />
+                </div>
+                <div class="event-content">
+                  <span class="event-date">PANDUAN</span>
+                  <h3>FAQ Or Helps</h3>
+                  <p>Pelajari cara bergabung, bermain, dan menikmati event di Moshcorblox</p>
+                  <a href="faq.html" class="btn">Pelajari Sekarang</a>
+                </div>
+              </div>
+
+              <!-- Card 8 - Galeri -->
+              <div class="event-card">
+                <div class="event-image">
+                  <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=600&h=400" alt="Galeri" />
+                </div>
+                <div class="event-content">
+                  <span class="event-date">KENANGAN</span>
+                  <h3>Galeri Foto</h3>
+                  <p>Lihat momen terbaik dari event-event sebelumnya di komunitas kami</p>
+                  <a href="#" class="btn">Lihat Galeri</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Community Section -->
+    <section id="community">
+      <div class="container">
+        <div class="section-title">
+          <h2>Komunitas Kami</h2>
+          <p>Bergabunglah dengan ribuan pemain lainnya</p>
+        </div>
+
+        <div class="community-stats">
+          <div class="stat-box">
+            <div class="stat-number">19K+</div>
+            <div class="stat-text">Members</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number">50+</div>
+            <div class="stat-text">Events</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number">20+</div>
+            <div class="stat-text">Bands</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number">24/7</div>
+            <div class="stat-text">Active</div>
+          </div>
+        </div>
+
+        <div class="join-box">
+          <h3>Siap Bergabung?</h3>
+          <p>Jadilah bagian dari komunitas hardcore Roblox terbesar di Indonesia. Dapatkan akses ke event eksklusif, venue khusus, dan teman-teman sejati penggemar musik keras!</p>
+          <div style="margin-top: 30px">
+            <a href="https://discord.gg/U3KKJnVv" class="btn">Join Discord</a>
+            <a href="#" class="btn btn-secondary">Roblox Group</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-column">
+            <h3>Moshcorblox</h3>
+            <p>Komunitas Hardcore Roblox Indonesia pertama dan terbesar. Tempat di mana musik keras bertemu game virtual.</p>
+            <div class="social-links">
+              <a href="https://discord.gg/U3KKJnVv"><i class="fab fa-discord"></i></a>
+              <a href="#"><i class="fab fa-youtube"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="https://www.instagram.com/moshcorblox?igsh=MTd2Y3NmZW9tZ2Q5YQ=="><i class="fab fa-instagram"></i></a>
+              <a href="https://www.tiktok.com/@moshcorblox?_t=ZS-8ymWvVOdVj7&_r=1"><i class="fab fa-tiktok"></i></a>
+            </div>
+          </div>
+
+          <div class="footer-column">
+            <h3>Links</h3>
+            <ul class="footer-links">
+              <li><a href="#hero">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#carousel">Preview</a></li>
+              <li><a href="#events">More</a></li>
+              <li><a href="#community">Community</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h3>Resources</h3>
+            <ul class="footer-links">
+              <li><a href="#">Roblox Group</a></li>
+              <li><a href="#">Game Guides</a></li>
+              <li><a href="https://www.roblox.com/share?code=f06dccf92b17964ca0b320d644f68a20&type=ExperienceDetails&stamp=1754895125356">Venue Maps</a></li>
+              <li><a href="#">Merchandise</a></li>
+              <li><a href="#">FAQ</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h3>Contact</h3>
+            <ul class="footer-links">
+              <li><i class="fas fa-envelope"></i> info@moshcorblox.id</li>
+              <li><i class="fab fa-discord"></i> discord.gg/moshcorblox</li>
+              <li><i class="fab fa-roblox"></i> Roblox Group: Moshcorblox</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="copyright">
+          <p>&copy; 2025 Moshcorblox Community. All rights reserved. | Designed for Indonesian Hardcore Gamers</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+      // Font loading check and fallback
+      function checkFontLoaded() {
+        const testElement = document.createElement("span");
+        testElement.style.fontFamily = "Metal Mania";
+        testElement.style.fontSize = "16px";
+        testElement.innerHTML = "Test";
+        testElement.style.position = "absolute";
+        testElement.style.visibility = "hidden";
+        document.body.appendChild(testElement);
+
+        const width = testElement.offsetWidth;
+        document.body.removeChild(testElement);
+
+        // If Metal Mania didn't load, the width will be different
+        if (width === 0) {
+          document.documentElement.style.setProperty("--metal-font", '"Creepster", "Impact", "Arial Black", sans-serif');
+        }
+      }
+
+      // Carousel functionality
+      document.addEventListener("DOMContentLoaded", function () {
+        const items = document.querySelectorAll(".carousel-item");
+        const indicatorsContainer = document.querySelector(".carousel-indicators");
+        let currentIndex = 0;
+
+        // Create indicators
+        items.forEach((item, index) => {
+          const indicator = document.createElement("div");
+          indicator.classList.add("carousel-indicator");
+          if (index === 0) indicator.classList.add("active");
+
+          indicator.addEventListener("click", () => {
+            showSlide(index);
+          });
+
+          indicatorsContainer.appendChild(indicator);
+        });
+
+        const indicators = document.querySelectorAll(".carousel-indicator");
+
+        // Function to show specific slide
+        function showSlide(index) {
+          // Hide all slides
+          items.forEach((item) => {
+            item.classList.remove("active");
+            const video = item.querySelector("video");
+            if (video) {
+              video.pause();
+              video.currentTime = 0;
+            }
+          });
+
+          // Update indicators
+          indicators.forEach((indicator) => indicator.classList.remove("active"));
+
+          // Show selected slide
+          items[index].classList.add("active");
+          indicators[index].classList.add("active");
+
+          // Play video if exists
+          const activeVideo = items[index].querySelector("video");
+          if (activeVideo) {
+            activeVideo.play().catch((e) => console.log("Autoplay prevented:", e));
+          }
+
+          currentIndex = index;
+        }
+
+        // Navigation controls
+        document.querySelector(".carousel-prev").addEventListener("click", () => {
+          let newIndex = currentIndex - 1;
+          if (newIndex < 0) newIndex = items.length - 1;
+          showSlide(newIndex);
+        });
+
+        document.querySelector(".carousel-next").addEventListener("click", () => {
+          let newIndex = currentIndex + 1;
+          if (newIndex >= items.length) newIndex = 0;
+          showSlide(newIndex);
+        });
+
+        // Initialize the carousel
+        showSlide(0);
+      });
+
+      // Mobile Menu Toggle
+      const menuToggle = document.querySelector(".menu-toggle");
+      const navLinks = document.querySelector(".nav-links");
+
+      menuToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+      });
+
+      // Close menu when clicking a link
+      document.querySelectorAll(".nav-links a").forEach((link) => {
+        link.addEventListener("click", () => {
+          navLinks.classList.remove("active");
+        });
+      });
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            window.scrollTo({
+              top: target.offsetTop - 80,
+              behavior: "smooth",
+            });
+          }
+        });
+      });
+
+      // Header scroll effect
+      window.addEventListener("scroll", () => {
+        const header = document.querySelector("header");
+        if (window.scrollY > 100) {
+          header.style.backgroundColor = "rgba(0, 0, 0, 0.98)";
+          header.style.boxShadow = "0 5px 20px rgba(0,0,0,0.5)";
+        } else {
+          header.style.backgroundColor = "rgba(0, 0, 0, 0.95)";
+          header.style.boxShadow = "none";
+        }
+      });
+
+      // Events section scrolling
+      const eventsScroller = document.querySelector(".events-scroller");
+      const prevBtn = document.querySelector(".events-nav-btn.prev");
+      const nextBtn = document.querySelector(".events-nav-btn.next");
+
+      if (eventsScroller && prevBtn && nextBtn) {
+        // Calculate scroll amount
+        const scrollAmount = 300;
+
+        prevBtn.addEventListener("click", () => {
+          eventsScroller.scrollBy({
+            left: -scrollAmount,
+            behavior: "smooth",
+          });
+        });
+
+        nextBtn.addEventListener("click", () => {
+          eventsScroller.scrollBy({
+            left: scrollAmount,
+            behavior: "smooth",
+          });
+        });
+
+        // Hide buttons on mobile
+        window.addEventListener("resize", () => {
+          if (window.innerWidth <= 576) {
+            prevBtn.style.display = "none";
+            nextBtn.style.display = "none";
+          } else {
+            prevBtn.style.display = "flex";
+            nextBtn.style.display = "flex";
+          }
+        });
+      }
+
+      // Check font loading when page loads
+      window.addEventListener("load", checkFontLoaded);
+    </script>
+  </body>
+</html>

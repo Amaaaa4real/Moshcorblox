@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Founder & Developer - MOSHCORBLOX</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Metal+Mania&family=Nosifer&family=Butcherman&family=Montserrat:wght@400;600;700;800;900&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet" />
+    <style>
+      /* VARIABLES & RESET */
+      :root {
+        --primary: #ffffff;
+        --primary-dark: #cccccc;
+        --secondary: #999999;
+        --dark: #0a0a0a;
+        --darker: #000000;
+        --gray: #222222;
+        --light: #f1f1f1;
+        --accent: #333333;
+        --metal-font: "Metal Mania", "Creepster", "Nosifer", cursive;
+        --main-font: "Roboto", sans-serif;
+        --header-font: "Montserrat", sans-serif;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: var(--main-font);
+        background: var(--darker);
+        color: var(--light);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      /* TYPOGRAPHY */
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: var(--metal-font);
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-weight: 400;
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+      }
+
+      h1 {
+        font-size: clamp(2.5rem, 8vw, 4rem);
+        text-shadow: 0 0 20px rgba(255, 255, 255, 0.4), 3px 3px 8px rgba(0, 0, 0, 0.9);
+        font-weight: 400;
+      }
+
+      h2 {
+        font-size: clamp(1.8rem, 6vw, 3rem);
+        margin-bottom: 1.5rem;
+        font-weight: 400;
+      }
+
+      p {
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+        font-weight: 300;
+      }
+
+      a {
+        color: var(--primary);
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      a:hover {
+        color: var(--secondary);
+      }
+
+      /* BUTTONS */
+      .btn {
+        display: inline-block;
+        background: transparent;
+        color: var(--primary);
+        padding: 12px 28px;
+        border: 2px solid var(--primary);
+        border-radius: 0;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        font-size: 1rem;
+        font-family: var(--header-font);
+      }
+
+      .btn:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        transition: 0.5s;
+      }
+
+      .btn:hover:before {
+        left: 100%;
+      }
+
+      .btn:hover {
+        background: rgba(255, 255, 255, 0.05);
+        transform: translateY(-3px);
+        border-color: var(--secondary);
+        color: var(--secondary);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        border: 2px solid var(--secondary);
+        color: var(--secondary);
+      }
+
+      .btn-secondary:hover {
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--primary);
+        border-color: var(--primary);
+      }
+
+      /* LAYOUT */
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      section {
+        padding: 80px 0;
+        position: relative;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 60px;
+        position: relative;
+      }
+
+      .section-title:after {
+        content: "";
+        display: block;
+        width: 80px;
+        height: 2px;
+        background: var(--primary);
+        margin: 15px auto;
+      }
+
+      /* HEADER & NAVIGATION */
+      header {
+        background: rgba(0, 0, 0, 0.95);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+      }
+
+      .logo img {
+        height: 50px;
+        width: auto;
+        margin-right: 0;
+      }
+
+      .banner-text {
+        font-family: var(--metal-font);
+        font-size: 1.8rem;
+        font-weight: 400;
+        letter-spacing: 3px;
+        color: var(--primary);
+        text-transform: uppercase;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+      }
+
+      .nav-links li {
+        margin-left: 30px;
+      }
+
+      .nav-links a {
+        font-weight: 500;
+        font-size: 1rem;
+        position: relative;
+        color: var(--secondary);
+        font-family: var(--header-font);
+      }
+
+      .nav-links a:after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 1px;
+        bottom: -5px;
+        left: 0;
+        background: var(--primary);
+        transition: width 0.3s ease;
+      }
+
+      .nav-links a:hover:after {
+        width: 100%;
+      }
+
+      .nav-links a:hover {
+        color: var(--primary);
+      }
+
+      .menu-toggle {
+        display: none;
+        cursor: pointer;
+        font-size: 1.5rem;
+        color: var(--primary);
+      }
+
+      /* HERO SECTION */
+      #hero {
+        height: 75vh;
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url("assets/MOSHCORBLOX project/image-2.png") center/cover no-repeat;
+      }
+
+      .hero-content {
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+      }
+
+      .hero-content h1 {
+        margin-bottom: 20px;
+      }
+
+      .hero-content p {
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        color: var(--secondary);
+      }
+
+      .hero-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 30px;
+      }
+
+      /* FOUNDER SECTION */
+      #founders {
+        background: var(--darker);
+        position: relative;
+      }
+
+      .founder-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+      }
+
+      .founder-card {
+        background: rgba(20, 20, 20, 0.7);
+        border-radius: 0;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        position: relative;
+      }
+
+      .founder-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(255, 255, 255, 0.05);
+        border-color: var(--primary);
+      }
+
+      .founder-image {
+        height: 300px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .founder-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+        filter: grayscale(100%);
+      }
+
+      .founder-card:hover .founder-image img {
+        transform: scale(1.1);
+        filter: grayscale(50%);
+      }
+
+      .founder-content {
+        padding: 20px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .founder-content h3 {
+        color: var(--primary);
+        margin-bottom: 10px;
+        font-size: 1.5rem;
+      }
+
+      .founder-role {
+        color: var(--secondary);
+        font-weight: bold;
+        margin-bottom: 10px;
+        display: block;
+        font-size: 1rem;
+        font-family: var(--header-font);
+      }
+
+      .social-links {
+        display: flex;
+        gap: 10px;
+        margin-top: 15px;
+      }
+
+      .social-links a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        background: var(--gray);
+        border-radius: 50%;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        color: var(--primary);
+      }
+
+      .social-links a:hover {
+        background: var(--primary);
+        color: var(--dark);
+        transform: translateY(-3px);
+      }
+
+      /* TIMELINE SECTION */
+      #timeline {
+        background: var(--dark);
+        position: relative;
+      }
+
+      .timeline-container {
+        position: relative;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .timeline-container::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: var(--primary);
+        left: 50%;
+        margin-left: -1px;
+      }
+
+      .timeline-item {
+        position: relative;
+        margin-bottom: 50px;
+      }
+
+      .timeline-item:nth-child(even) .timeline-content {
+        left: 55%;
+      }
+
+      .timeline-item:nth-child(odd) .timeline-content {
+        left: 5%;
+      }
+
+      .timeline-content {
+        position: relative;
+        background: rgba(20, 20, 20, 0.7);
+        padding: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .timeline-content h3 {
+        color: var(--primary);
+        margin-bottom: 10px;
+        font-size: 1.3rem;
+      }
+
+      .timeline-date {
+        color: var(--secondary);
+        font-weight: bold;
+        margin-bottom: 10px;
+        display: block;
+        font-size: 0.9rem;
+        font-family: var(--header-font);
+      }
+
+      .timeline-item::after {
+        content: "";
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: var(--primary);
+        border-radius: 50%;
+        top: 0;
+        left: 50%;
+        margin-left: -10px;
+        z-index: 1;
+      }
+
+      /* FOOTER */
+      footer {
+        background: var(--darker);
+        padding: 60px 0 30px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+        margin-bottom: 40px;
+      }
+
+      .footer-column h3 {
+        color: var(--primary);
+        margin-bottom: 20px;
+        font-size: 1.3rem;
+        font-family: var(--metal-font);
+      }
+
+      .footer-links {
+        list-style: none;
+      }
+
+      .footer-links li {
+        margin-bottom: 10px;
+      }
+
+      .footer-links a {
+        color: var(--secondary);
+        transition: all 0.3s ease;
+      }
+
+      .footer-links a:hover {
+        color: var(--primary);
+      }
+
+      .footer-social-links {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+      }
+
+      .footer-social-links a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background: var(--gray);
+        border-radius: 0;
+        font-size: 1.2rem;
+        transition: all 0.3s ease;
+        color: var(--primary);
+      }
+
+      .footer-social-links a:hover {
+        background: var(--primary);
+        color: var(--dark);
+        transform: translateY(-5px);
+      }
+
+      .copyright {
+        text-align: center;
+        padding-top: 30px;
+        border-top: 1px solid var(--gray);
+        color: var(--secondary);
+      }
+
+      /* FALLBACK FONTS */
+      @supports not (font-family: "Metal Mania") {
+        :root {
+          --metal-font: "Impact", "Arial Black", sans-serif;
+        }
+      }
+
+      /* ANIMATIONS */
+      @keyframes float {
+        0% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+        100% {
+          transform: translateY(0px);
+        }
+      }
+
+      .floating {
+        animation: float 4s ease-in-out infinite;
+      }
+
+      /* RESPONSIVE DESIGN */
+      @media (max-width: 992px) {
+        .timeline-container::before {
+          left: 30px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content,
+        .timeline-item:nth-child(odd) .timeline-content {
+          left: 70px;
+          margin-right: 30px;
+        }
+
+        .timeline-item::after {
+          left: 20px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .menu-toggle {
+          display: block;
+        }
+
+        .nav-links {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          background: var(--darker);
+          width: 100%;
+          flex-direction: column;
+          align-items: center;
+          padding: 20px 0;
+          clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+          transition: clip-path 0.4s ease;
+          border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-links.active {
+          clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        }
+
+        .nav-links li {
+          margin: 15px 0;
+        }
+
+        .hero-buttons {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .timeline-container::before {
+          left: 20px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content,
+        .timeline-item:nth-child(odd) .timeline-content {
+          left: 60px;
+          margin-right: 20px;
+        }
+
+        .timeline-item::after {
+          left: 10px;
+        }
+      }
+
+      @media (max-width: 576px) {
+        section {
+          padding: 60px 0;
+        }
+
+        #hero {
+          height: 60vh;
+        }
+
+        .timeline-container::before {
+          left: 10px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content,
+        .timeline-item:nth-child(odd) .timeline-content {
+          left: 40px;
+          margin-right: 10px;
+        }
+
+        .timeline-item::after {
+          left: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header & Navigation -->
+    <header>
+      <div class="container">
+        <nav>
+          <div class="logo">
+            <img
+              src="assets/MOSHCORBLOX project/moshcorbloxLogo.png"
+              alt="Moshcorblox Banner"
+              onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 300 80\'><rect width=\'300\' height=\'80\' fill=\'black\'/><text x=\'150\' y=\'40\' text-anchor=\'middle\' dominant-baseline=\'middle\' fill=\'white\' font-size=\'24\' font-family=\'serif\'>MOSHCORBLOX</text></svg>'"
+            />
+          </div>
+          <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+          </div>
+          <ul class="nav-links">
+            <li><a href="index.html#hero">Home</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#carousel">Preview</a></li>
+            <li><a href="index.html#events">More</a></li>
+            <li><a href="index.html#community">Community</a></li>
+            <li><a href="https://discord.gg/U3KKJnVv" class="btn">Join Now</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1>Founder & Developer</h1>
+          <p>Mereka yang telah membangun dan mengembangkan komunitas hardcore Roblox terbesar di Indonesia</p>
+          <div class="hero-buttons">
+            <a href="#founders" class="btn">Lihat Profil</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Founders Section -->
+    <section id="founders">
+      <div class="container">
+        <div class="section-title">
+          <h2>Founder & Core Team</h2>
+          <p>Orang-orang di balik kesuksesan Moshcorblox</p>
+        </div>
+
+        <div class="founder-grid">
+          <!-- Founder 1 -->
+          <div class="founder-card">
+            <div class="founder-image">
+              <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&h=600" alt="Founder 1" />
+            </div>
+            <div class="founder-content">
+              <h3> Meiza a.k.a Rexx</h3>
+              <span class="founder-role">Founder</span>
+              <p>Seorang Roblox developer berpengalaman yang memulai komunitas ini sejak 2020. Alex memiliki visi untuk menciptakan ruang bagi penggemar musik keras di dunia virtual.</p>
+              <div class="social-links">
+                <a href="#"><i class="fab fa-discord"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Founder 2 -->
+          <div class="founder-card">
+            <div class="founder-image">
+              <img src="https://images.unsplash.com/photo-1534030347209-467a5b0ad3e6?auto=format&fit=crop&w=600&h=600" alt="Founder 2" />
+            </div>
+            <div class="founder-content">
+              <h3> Rifky a.k.a War Criminal</h3>
+              <span class="founder-role">Co-Founder</span>
+              <p>Penggila musik metal dengan pengalaman mengorganisir konser nyata. Budi bertanggung jawab atas semua event virtual di Moshcorblox.</p>
+              <div class="social-links">
+                <a href="#"><i class="fab fa-discord"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+              </div>
+            </div>
+          </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Developer Team Section -->
+    <section id="developers">
+      <div class="container">
+        <div class="section-title">
+          <h2>Developer Team</h2>
+          <p>Tim di balik semua venue dan pengalaman virtual kami</p>
+        </div>
+
+        <div class="founder-grid">
+          <!-- Developer 1 -->
+          <div class="founder-card">
+            <div class="founder-image">
+              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&h=600" alt="Developer 1" />
+            </div>
+            <div class="founder-content">
+              <h3> Saka a.k.a Mouray</h3>
+              <span class="founder-role">Lead Script Developer</span>
+              <p>Spesialis dalam scripting Roblox Lua dengan pengalaman 5 tahun. Dewi menciptakan semua mekanika interaktif untuk venue kami.</p>
+              <div class="social-links">
+                <a href="#"><i class="fab fa-discord"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Developer 2 -->
+          <div class="founder-card">
+            <div class="founder-image">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&h=600" alt="Developer 2" />
+            </div>
+            <div class="founder-content">
+              <h3>Wildan a.k.a Meldan</h3>
+              <span class="founder-role">3D Environment Artist</span>
+              <p>Ahli dalam menciptakan lingkungan virtual yang imersif. Rudi telah membangun lebih dari 15 venue konser unik untuk komunitas kami.</p>
+              <div class="social-links">
+                <a href="#"><i class="fab fa-discord"></i></a>
+                <a href="#"><i class="fab fa-artstation"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Developer 3 -->
+          <div class="founder-card">
+            <div class="founder-image">
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&h=600" alt="Developer 3" />
+            </div>
+            <div class="founder-content">
+              <h3>Jak a.k.a Samba</h3>
+              <span class="founder-role">UI/UX Designer</span>
+              <p>Merancang semua antarmuka pengguna untuk sistem event dan venue kami. Lina memastikan pengalaman pengguna yang mulus dan menyenangkan.</p>
+              <div class="social-links">
+                <a href="#"><i class="fab fa-discord"></i></a>
+                <a href="#"><i class="fab fa-dribbble"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Social Media Handler Section -->
+    <section id="developers">
+      <div class="container">
+        <div class="section-title">
+          <h2>Social Media Handler</h2>
+          <p>Orang yang menangani semua Social Media Moshcorblox</p>
+        </div>
+
+        <div class="founder-grid">
+          <!-- Handler 1 -->
+          <div class="founder-card">
+            <div class="founder-image">
+              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&h=600" alt="Developer 1" />
+            </div>
+            <div class="founder-content">
+              <h3> Melani </h3>
+              <span class="founder-role">Social Media Handler</span>
+              <p>Spesialis dalam handle Sosial media seperti Instagram dan Tiktok.</p>
+              <div class="social-links">
+                <a href="#"><i class="fab fa-discord"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+              </div>
+            </div>
+          </div>
+    </section>
+
+    <!-- Admin & Head Admin -->
+    <section id="developers">
+      <div class="container">
+        <div class="section-title">
+          <h2>Admin & Head Admin</h2>
+          <p>Orang yang menjaga kenyamanan dan keamanan di komunitas Moshcorblox</p>
+        </div>
+
+        <div class="founder-grid">
+          <!-- Head Admin -->
+          <div class="founder-card">
+            <div class="founder-image">
+              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&h=600" alt="Developer 1" />
+            </div>
+            <div class="founder-content">
+              <h3> Farid a.k.a Skein </h3>
+              <span class="founder-role">Head Admin</span>
+              <p>Spesialis dalam handle Sosial media seperti Instagram dan Tiktok.</p>
+              <div class="social-links">
+                <a href="#"><i class="fab fa-discord"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+              </div>
+            </div>
+          </div>
+          <!-- Admin 1-->
+          <div class="founder-card">
+            <div class="founder-image">
+              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&h=600" alt="Developer 1" />
+            </div>
+            <div class="founder-content">
+              <h3> Juho </h3>
+              <span class="founder-role">Admin</span>
+              <p>Spesialis dalam handle Sosial media seperti Instagram dan Tiktok.</p>
+              <div class="social-links">
+                <a href="#"><i class="fab fa-discord"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+              </div>
+            </div>
+          </div>
+          <!-- Admin 2-->
+          <div class="founder-card">
+            <div class="founder-image">
+              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&h=600" alt="Developer 1" />
+            </div>
+            <div class="founder-content">
+              <h3>  Aurel a.k.a Yase </h3>
+              <span class="founder-role">Admin</span>
+              <p>Spesialis dalam handle Sosial media seperti Instagram dan Tiktok.</p>
+              <div class="social-links">
+                <a href="#"><i class="fab fa-discord"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+              </div>
+            </div>
+          </div>
+    </section>
+
+    <!-- Clipper -->
+    <section id="developers">
+      <div class="container">
+        <div class="section-title">
+          <h2>Clippers</h2>
+          <p>Tim dibalik video klip Moshcorblox yang kece abis.</p>
+        </div>
+
+        <div class="founder-grid">
+          <!-- Clipper 1 -->
+          <div class="founder-card">
+            <div class="founder-image">
+              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&h=600" alt="Developer 1" />
+            </div>
+            <div class="founder-content">
+              <h3> Nami </h3>
+              <span class="founder-role">Clipper</span>
+              <p>Spesialis dalam handle Sosial media seperti Instagram dan Tiktok.</p>
+              <div class="social-links">
+                <a href="#"><i class="fab fa-discord"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+              </div>
+            </div>
+          </div>
+          <!-- Clipper 2 -->
+          <div class="founder-card">
+            <div class="founder-image">
+              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&h=600" alt="Developer 1" />
+            </div>
+            <div class="founder-content">
+              <h3> Bimo </h3>
+              <span class="founder-role">Clipper</span>
+              <p>Spesialis dalam handle Sosial media seperti Instagram dan Tiktok.</p>
+              <div class="social-links">
+                <a href="#"><i class="fab fa-discord"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+              </div>
+            </div>
+          </div>
+          <!-- Clipper 3 -->
+          <div class="founder-card">
+            <div class="founder-image">
+              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&h=600" alt="Developer 1" />
+            </div>
+            <div class="founder-content">
+              <h3> Tejay </h3>
+              <span class="founder-role">Clipper</span>
+              <p>Spesialis dalam handle Sosial media seperti Instagram dan Tiktok.</p>
+              <div class="social-links">
+                <a href="#"><i class="fab fa-discord"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+              </div>
+            </div>
+          </div>
+    </section>
+
+    <!-- Poster Designer -->
+    <section id="developers">
+      <div class="container">
+        <div class="section-title">
+          <h2>Poster Designer</h2>
+          <p>Orang yang membuat design poster yang kece abis</p>
+        </div>
+
+        <div class="founder-grid">
+          <!-- designer -->
+          <div class="founder-card">
+            <div class="founder-image">
+              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&h=600" alt="Developer 1" />
+            </div>
+            <div class="founder-content">
+              <h3> Deni  </h3>
+              <span class="founder-role">Poster Designer</span>
+              <p>Spesialis dalam handle Sosial media seperti Instagram dan Tiktok.</p>
+              <div class="social-links">
+                <a href="#"><i class="fab fa-discord"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+              </div>
+            </div>
+          </div>
+    </section>
+
+    
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-column">
+            <h3>Moshcorblox</h3>
+            <p>Komunitas Hardcore Roblox Indonesia pertama dan terbesar. Tempat di mana musik keras bertemu game virtual.</p>
+            <div class="footer-social-links">
+              <a href="https://discord.gg/U3KKJnVv"><i class="fab fa-discord"></i></a>
+              <a href="#"><i class="fab fa-youtube"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="https://www.instagram.com/moshcorblox?igsh=MTd2Y3NmZW9tZ2Q5YQ=="><i class="fab fa-instagram"></i></a>
+              <a href="https://www.tiktok.com/@moshcorblox?_t=ZS-8ymWvVOdVj7&_r=1"><i class="fab fa-tiktok"></i></a>
+            </div>
+          </div>
+
+          <div class="footer-column">
+            <h3>Links</h3>
+            <ul class="footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="index.html#about">About</a></li>
+              <li><a href="index.html#carousel">Preview</a></li>
+              <li><a href="index.html#events">More</a></li>
+              <li><a href="index.html#community">Community</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h3>Resources</h3>
+            <ul class="footer-links">
+              <li><a href="#">Roblox Group</a></li>
+              <li><a href="#">Game Guides</a></li>
+              <li><a href="https://www.roblox.com/share?code=f06dccf92b17964ca0b320d644f68a20&type=ExperienceDetails&stamp=1754895125356">Venue Maps</a></li>
+              <li><a href="#">Merchandise</a></li>
+              <li><a href="#">FAQ</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h3>Contact</h3>
+            <ul class="footer-links">
+              <li><i class="fas fa-envelope"></i> info@moshcorblox.id</li>
+              <li><i class="fab fa-discord"></i> discord.gg/moshcorblox</li>
+              <li><i class="fab fa-roblox"></i> Roblox Group: Moshcorblox</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="copyright">
+          <p>&copy; 2025 Moshcorblox Community. All rights reserved. | Designed for Indonesian Hardcore Gamers</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+      // Mobile Menu Toggle
+      const menuToggle = document.querySelector(".menu-toggle");
+      const navLinks = document.querySelector(".nav-links");
+
+      menuToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+      });
+
+      // Close menu when clicking a link
+      document.querySelectorAll(".nav-links a").forEach((link) => {
+        link.addEventListener("click", () => {
+          navLinks.classList.remove("active");
+        });
+      });
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            window.scrollTo({
+              top: target.offsetTop - 80,
+              behavior: "smooth",
+            });
+          }
+        });
+      });
+
+      // Header scroll effect
+      window.addEventListener("scroll", () => {
+        const header = document.querySelector("header");
+        if (window.scrollY > 100) {
+          header.style.backgroundColor = "rgba(0, 0, 0, 0.98)";
+          header.style.boxShadow = "0 5px 20px rgba(0,0,0,0.5)";
+        } else {
+          header.style.backgroundColor = "rgba(0, 0, 0, 0.95)";
+          header.style.boxShadow = "none";
+        }
+      });
+    </script>
+  </body>
+</html>
