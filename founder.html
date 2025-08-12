@@ -284,9 +284,11 @@
         position: relative;
       }
 
+      /* PERUBAHAN UTAMA: Mengubah grid menjadi flex untuk kontrol lebih baik */
       .founder-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
         gap: 30px;
       }
 
@@ -298,6 +300,22 @@
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         border: 1px solid rgba(255, 255, 255, 0.1);
         position: relative;
+        flex: 0 1 calc(33.333% - 30px); /* Default untuk 3 card per baris */
+        max-width: 400px; /* Lebar maksimum card */
+        min-width: 300px; /* Lebar minimum card */
+      }
+
+      /* Aturan khusus untuk 1 atau 2 card */
+      .founder-grid.single-card .founder-card,
+      .founder-grid.double-card .founder-card {
+        flex: 0 1 calc(50% - 30px); /* Lebih besar untuk 1-2 card */
+        max-width: 500px; /* Lebar maksimum lebih besar */
+      }
+
+      /* Penyesuaian khusus untuk card tunggal */
+      .founder-grid.single-card .founder-card {
+        flex: 0 1 500px;
+        max-width: 500px;
       }
 
       .founder-card:hover {
@@ -551,6 +569,10 @@
         .timeline-item::after {
           left: 20px;
         }
+        
+        .founder-card {
+          flex: 0 1 calc(50% - 30px);
+        }
       }
 
       @media (max-width: 768px) {
@@ -598,6 +620,11 @@
         .timeline-item::after {
           left: 10px;
         }
+        
+        .founder-card {
+          flex: 0 1 100%;
+          max-width: 500px;
+        }
       }
 
       @media (max-width: 576px) {
@@ -632,7 +659,7 @@
         <nav>
           <div class="logo">
             <img
-              src="assets/MOSHCORBLOX project/moshcorbloxLogo.png"
+              src="assets/MOSHCORBLOX project/MOSHCORBLOX LOGO.png"
               alt="Moshcorblox Banner"
               onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 300 80\'><rect width=\'300\' height=\'80\' fill=\'black\'/><text x=\'150\' y=\'40\' text-anchor=\'middle\' dominant-baseline=\'middle\' fill=\'white\' font-size=\'24\' font-family=\'serif\'>MOSHCORBLOX</text></svg>'"
             />
@@ -677,7 +704,7 @@
           <!-- Founder 1 -->
           <div class="founder-card">
             <div class="founder-image">
-              <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&h=600" alt="Founder 1" />
+              <img src="assets/MOSHCORBLOX project/iconUser.png" alt="Founder 1" />
             </div>
             <div class="founder-content">
               <h3> Meiza a.k.a Rexx</h3>
@@ -694,7 +721,7 @@
           <!-- Founder 2 -->
           <div class="founder-card">
             <div class="founder-image">
-              <img src="https://images.unsplash.com/photo-1534030347209-467a5b0ad3e6?auto=format&fit=crop&w=600&h=600" alt="Founder 2" />
+              <img src="assets/MOSHCORBLOX project/iconUser.png" alt="Founder 2" />
             </div>
             <div class="founder-content">
               <h3> Rifky a.k.a War Criminal</h3>
@@ -705,8 +732,6 @@
                 <a href="#"><i class="fab fa-twitter"></i></a>
                 <a href="#"><i class="fab fa-instagram"></i></a>
               </div>
-            </div>
-          </div>
             </div>
           </div>
         </div>
@@ -725,7 +750,7 @@
           <!-- Developer 1 -->
           <div class="founder-card">
             <div class="founder-image">
-              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&h=600" alt="Developer 1" />
+              <img src="assets/MOSHCORBLOX project/iconUser.png" alt="Developer 1" />
             </div>
             <div class="founder-content">
               <h3> Saka a.k.a Mouray</h3>
@@ -741,7 +766,7 @@
           <!-- Developer 2 -->
           <div class="founder-card">
             <div class="founder-image">
-              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&h=600" alt="Developer 2" />
+              <img src="assets/MOSHCORBLOX project/iconUser.png" alt="Developer 2" />
             </div>
             <div class="founder-content">
               <h3>Wildan a.k.a Meldan</h3>
@@ -757,7 +782,7 @@
           <!-- Developer 3 -->
           <div class="founder-card">
             <div class="founder-image">
-              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&h=600" alt="Developer 3" />
+              <img src="assets/MOSHCORBLOX project/iconUser.png" alt="Developer 3" />
             </div>
             <div class="founder-content">
               <h3>Jak a.k.a Samba</h3>
@@ -781,11 +806,11 @@
           <p>Orang yang menangani semua Social Media Moshcorblox</p>
         </div>
 
-        <div class="founder-grid">
+        <div class="founder-grid single-card">
           <!-- Handler 1 -->
           <div class="founder-card">
             <div class="founder-image">
-              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&h=600" alt="Developer 1" />
+              <img src="assets/MOSHCORBLOX project/iconUser.png" alt="Developer 1" />
             </div>
             <div class="founder-content">
               <h3> Melani </h3>
@@ -797,6 +822,7 @@
               </div>
             </div>
           </div>
+        </div>
     </section>
 
     <!-- Admin & Head Admin -->
@@ -807,16 +833,16 @@
           <p>Orang yang menjaga kenyamanan dan keamanan di komunitas Moshcorblox</p>
         </div>
 
-        <div class="founder-grid">
+        <div class="founder-grid double-card">
           <!-- Head Admin -->
           <div class="founder-card">
             <div class="founder-image">
-              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&h=600" alt="Developer 1" />
+              <img src="assets/MOSHCORBLOX project/iconUser.png" alt="Developer 1" />
             </div>
             <div class="founder-content">
               <h3> Farid a.k.a Skein </h3>
               <span class="founder-role">Head Admin</span>
-              <p>Spesialis dalam handle Sosial media seperti Instagram dan Tiktok.</p>
+              <p>Bertanggung jawab atas seluruh tim admin dan memastikan komunitas berjalan dengan baik.</p>
               <div class="social-links">
                 <a href="#"><i class="fab fa-discord"></i></a>
                 <a href="#"><i class="fab fa-github"></i></a>
@@ -826,12 +852,12 @@
           <!-- Admin 1-->
           <div class="founder-card">
             <div class="founder-image">
-              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&h=600" alt="Developer 1" />
+              <img src="assets/MOSHCORBLOX project/iconUser.png" alt="Developer 1" />
             </div>
             <div class="founder-content">
               <h3> Juho </h3>
               <span class="founder-role">Admin</span>
-              <p>Spesialis dalam handle Sosial media seperti Instagram dan Tiktok.</p>
+              <p>Menangani moderasi harian dan membantu anggota komunitas.</p>
               <div class="social-links">
                 <a href="#"><i class="fab fa-discord"></i></a>
                 <a href="#"><i class="fab fa-github"></i></a>
@@ -841,12 +867,12 @@
           <!-- Admin 2-->
           <div class="founder-card">
             <div class="founder-image">
-              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&h=600" alt="Developer 1" />
+              <img src="assets/MOSHCORBLOX project/iconUser.png" alt="Developer 1" />
             </div>
             <div class="founder-content">
               <h3>  Aurel a.k.a Yase </h3>
               <span class="founder-role">Admin</span>
-              <p>Spesialis dalam handle Sosial media seperti Instagram dan Tiktok.</p>
+              <p>Bertanggung jawab atas event-event khusus dan aktivitas komunitas.</p>
               <div class="social-links">
                 <a href="#"><i class="fab fa-discord"></i></a>
                 <a href="#"><i class="fab fa-github"></i></a>
@@ -856,18 +882,19 @@
           <!-- Admin 3-->
           <div class="founder-card">
             <div class="founder-image">
-              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&h=600" alt="Developer 1" />
+              <img src="assets/MOSHCORBLOX project/iconUser.png" alt="Developer 1" />
             </div>
             <div class="founder-content">
               <h3> Tazboi a.k.a Akmal </h3>
               <span class="founder-role">Admin</span>
-              <p>Spesialis dalam handle Sosial media seperti Instagram dan Tiktok.</p>
+              <p>Menangani masalah teknis dan membantu pengguna baru.</p>
               <div class="social-links">
                 <a href="#"><i class="fab fa-discord"></i></a>
                 <a href="#"><i class="fab fa-github"></i></a>
               </div>
             </div>
           </div>
+        </div>
     </section>
 
     <!-- Clipper -->
@@ -882,48 +909,49 @@
           <!-- Clipper 1 -->
           <div class="founder-card">
             <div class="founder-image">
-              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&h=600" alt="Developer 1" />
+              <img src="assets/MOSHCORBLOX project/iconUser.png" alt="Developer 1" />
             </div>
             <div class="founder-content">
               <h3> Nami </h3>
               <span class="founder-role">Clipper</span>
-              <p>Spesialis dalam handle Sosial media seperti Instagram dan Tiktok.</p>
+              <p>Spesialis dalam membuat highlight dari event-event terbaik.</p>
               <div class="social-links">
                 <a href="#"><i class="fab fa-discord"></i></a>
-                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
               </div>
             </div>
           </div>
           <!-- Clipper 2 -->
           <div class="founder-card">
             <div class="founder-image">
-              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&h=600" alt="Developer 1" />
+              <img src="assets/MOSHCORBLOX project/iconUser.png" alt="Developer 1" />
             </div>
             <div class="founder-content">
               <h3> Bimo </h3>
               <span class="founder-role">Clipper</span>
-              <p>Spesialis dalam handle Sosial media seperti Instagram dan Tiktok.</p>
+              <p>Ahli dalam mengedit momen-momen epik menjadi video pendek.</p>
               <div class="social-links">
                 <a href="#"><i class="fab fa-discord"></i></a>
-                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
               </div>
             </div>
           </div>
           <!-- Clipper 3 -->
           <div class="founder-card">
             <div class="founder-image">
-              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&h=600" alt="Developer 1" />
+              <img src="assets/MOSHCORBLOX project/iconUser.png" alt="Developer 1" />
             </div>
             <div class="founder-content">
               <h3> Tejay </h3>
               <span class="founder-role">Clipper</span>
-              <p>Spesialis dalam handle Sosial media seperti Instagram dan Tiktok.</p>
+              <p>Menciptakan konten viral untuk platform sosial media.</p>
               <div class="social-links">
                 <a href="#"><i class="fab fa-discord"></i></a>
-                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
               </div>
             </div>
           </div>
+        </div>
     </section>
 
     <!-- Poster Designer -->
@@ -934,22 +962,23 @@
           <p>Orang yang membuat design poster yang kece abis</p>
         </div>
 
-        <div class="founder-grid">
+        <div class="founder-grid single-card">
           <!-- designer -->
           <div class="founder-card">
             <div class="founder-image">
-              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&h=600" alt="Developer 1" />
+              <img src="assets/MOSHCORBLOX project/iconUser.png" alt="Developer 1" />
             </div>
             <div class="founder-content">
               <h3> Deni  </h3>
               <span class="founder-role">Poster Designer</span>
-              <p>Spesialis dalam handle Sosial media seperti Instagram dan Tiktok.</p>
+              <p>Menciptakan desain poster yang epik untuk setiap event Moshcorblox.</p>
               <div class="social-links">
                 <a href="#"><i class="fab fa-discord"></i></a>
-                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-behance"></i></a>
               </div>
             </div>
           </div>
+        </div>
     </section>
 
     <!-- Website Programmer -->
@@ -960,7 +989,7 @@
           <p>Orang yang membuat landing page ini</p>
         </div>
 
-        <div class="founder-grid">
+        <div class="founder-grid single-card">
           <!-- Web Programmer -->
           <div class="founder-card">
             <div class="founder-image">
@@ -969,28 +998,25 @@
             <div class="founder-content">
               <h3> Marlong a.k.a Rama </h3>
               <span class="founder-role">Website Programmer</span>
-              <p>Spesialis dalam Website programming</p>
+              <p>Membangun dan mengembangkan situs web Moshcorblox dengan teknologi modern.</p>
               <div class="social-links">
-                <a href="#"><i class="fab fa-discord"></i></a>
-                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="https://www.instagram.com/a4amaaaa?igsh=ZHlndG43aWE4eXBk"><i class="fab fa-instagram"></i></a>
+                <a href="https://github.com/Amaaaa4real"><i class="fab fa-github"></i></a>
               </div>
             </div>
           </div>
+        </div>
     </section>
 
-    
-
-    <!-- Footer -->
+   <!-- Footer -->
     <footer>
       <div class="container">
         <div class="footer-content">
           <div class="footer-column">
             <h3>Moshcorblox</h3>
             <p>Komunitas Hardcore Roblox Indonesia pertama dan terbesar. Tempat di mana musik keras bertemu game virtual.</p>
-            <div class="footer-social-links">
+            <div class="social-links">
               <a href="https://discord.gg/U3KKJnVv"><i class="fab fa-discord"></i></a>
-              <a href="#"><i class="fab fa-youtube"></i></a>
-              <a href="#"><i class="fab fa-twitter"></i></a>
               <a href="https://www.instagram.com/moshcorblox?igsh=MTd2Y3NmZW9tZ2Q5YQ=="><i class="fab fa-instagram"></i></a>
               <a href="https://www.tiktok.com/@moshcorblox?_t=ZS-8ymWvVOdVj7&_r=1"><i class="fab fa-tiktok"></i></a>
             </div>
@@ -999,11 +1025,11 @@
           <div class="footer-column">
             <h3>Links</h3>
             <ul class="footer-links">
-              <li><a href="index.html">Home</a></li>
-              <li><a href="index.html#about">About</a></li>
-              <li><a href="index.html#carousel">Preview</a></li>
-              <li><a href="index.html#events">More</a></li>
-              <li><a href="index.html#community">Community</a></li>
+              <li><a href="#hero">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#carousel">Preview</a></li>
+              <li><a href="#events">More</a></li>
+              <li><a href="#community">Community</a></li>
             </ul>
           </div>
 
@@ -1013,7 +1039,7 @@
               <li><a href="#">Roblox Group</a></li>
               <li><a href="#">Game Guides</a></li>
               <li><a href="https://www.roblox.com/share?code=f06dccf92b17964ca0b320d644f68a20&type=ExperienceDetails&stamp=1754895125356">Venue Maps</a></li>
-              <li><a href="#">Merchandise</a></li>
+              <li><a href="https://shopee.co.id/connection584">Merchandise</a></li>
               <li><a href="#">FAQ</a></li>
             </ul>
           </div>
@@ -1021,8 +1047,7 @@
           <div class="footer-column">
             <h3>Contact</h3>
             <ul class="footer-links">
-              <li><i class="fas fa-envelope"></i> info@moshcorblox.id</li>
-              <li><i class="fab fa-discord"></i> discord.gg/moshcorblox</li>
+              <li><i class="fab fa-discord"></i> discord.gg/U3KKJnVv</li>
               <li><i class="fab fa-roblox"></i> Roblox Group: Moshcorblox</li>
             </ul>
           </div>

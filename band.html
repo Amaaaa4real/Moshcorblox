@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Band Showcase - MOSHCORBLOX</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Metal+Mania&family=Nosifer&family=Butcherman&family=Montserrat:wght@400;600;700;800;900&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    /* VARIABLES & RESET */
+    :root {
+      --primary: #ffffff;
+      --primary-dark: #cccccc;
+      --secondary: #999999;
+      --dark: #0a0a0a;
+      --darker: #000000;
+      --gray: #222222;
+      --light: #f1f1f1;
+      --accent: #333333;
+      --metal-font: "Metal Mania", "Creepster", "Nosifer", cursive;
+      --main-font: "Roboto", sans-serif;
+      --header-font: "Montserrat", sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--main-font);
+      background: var(--darker);
+      color: var(--light);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* TYPOGRAPHY */
+    h1, h2, h3, h4 {
+      font-family: var(--metal-font);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 400;
+      text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 8vw, 4rem);
+      text-shadow: 0 0 20px rgba(255, 255, 255, 0.4), 3px 3px 8px rgba(0, 0, 0, 0.9);
+      font-weight: 400;
+    }
+
+    h2 {
+      font-size: clamp(1.8rem, 6vw, 3rem);
+      margin-bottom: 1.5rem;
+      font-weight: 400;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+      font-weight: 300;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    a:hover {
+      color: var(--secondary);
+    }
+
+    /* BUTTONS */
+    .btn {
+      display: inline-block;
+      background: transparent;
+      color: var(--primary);
+      padding: 12px 28px;
+      border: 2px solid var(--primary);
+      border-radius: 0;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      font-size: 1rem;
+      font-family: var(--header-font);
+    }
+
+    .btn:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      transition: 0.5s;
+    }
+
+    .btn:hover:before {
+      left: 100%;
+    }
+
+    .btn:hover {
+      background: rgba(255, 255, 255, 0.05);
+      transform: translateY(-3px);
+      border-color: var(--secondary);
+      color: var(--secondary);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 2px solid var(--secondary);
+      color: var(--secondary);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--primary);
+      border-color: var(--primary);
+    }
+
+    /* LAYOUT */
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    section {
+      padding: 80px 0;
+      position: relative;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+      position: relative;
+    }
+
+    .section-title:after {
+      content: "";
+      display: block;
+      width: 80px;
+      height: 2px;
+      background: var(--primary);
+      margin: 15px auto;
+    }
+
+    /* HEADER & NAVIGATION */
+    header {
+      background: rgba(0, 0, 0, 0.95);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 50px;
+      width: auto;
+      margin-right: 0;
+    }
+
+    .banner-text {
+      font-family: var(--metal-font);
+      font-size: 1.8rem;
+      font-weight: 400;
+      letter-spacing: 3px;
+      color: var(--primary);
+      text-transform: uppercase;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+
+    .nav-links li {
+      margin-left: 30px;
+    }
+
+    .nav-links a {
+      font-weight: 500;
+      font-size: 1rem;
+      position: relative;
+      color: var(--secondary);
+      font-family: var(--header-font);
+    }
+
+    .nav-links a:after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 1px;
+      bottom: -5px;
+      left: 0;
+      background: var(--primary);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover:after {
+      width: 100%;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .menu-toggle {
+      display: none;
+      cursor: pointer;
+      font-size: 1.5rem;
+      color: var(--primary);
+    }
+
+    /* BAND HERO SECTION */
+    #band-hero {
+      height: 60vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('assets/MOSHCORBLOX project/image-4.png') center/cover no-repeat;
+      margin-top: 80px;
+    }
+
+    .band-hero-content {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .band-hero-content h1 {
+      margin-bottom: 20px;
+    }
+
+    .band-hero-content p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      color: var(--secondary);
+    }
+
+    /* BAND SHOWCASE SECTION */
+    #band-showcase {
+      background: var(--darker);
+      padding: 80px 0;
+    }
+
+    .band-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .band-card {
+      background: rgba(20, 20, 20, 0.7);
+      border-radius: 0;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .band-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(255, 255, 255, 0.05);
+      border-color: var(--primary);
+    }
+
+    .band-image {
+      height: 250px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .band-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .band-card:hover .band-image img {
+      transform: scale(1.05);
+    }
+
+    .band-content {
+      padding: 25px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .band-content h3 {
+      color: var(--primary);
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .band-genre {
+      color: var(--secondary);
+      font-weight: bold;
+      margin-bottom: 15px;
+      text-align: center;
+      font-family: var(--header-font);
+    }
+
+    .band-description {
+      margin-bottom: 20px;
+      flex-grow: 1;
+      color: var(--secondary);
+      text-align: center;
+    }
+
+    .band-links {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .band-links a {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      background: var(--gray);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .band-links a:hover {
+      background: var(--primary);
+      color: var(--dark);
+      transform: translateY(-3px);
+    }
+
+    .band-cta {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--darker);
+      padding: 60px 0 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-column h3 {
+      color: var(--primary);
+      margin-bottom: 20px;
+      font-size: 1.3rem;
+      font-family: var(--metal-font);
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+
+    .footer-links a {
+      color: var(--secondary);
+      transition: all 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: var(--gray);
+      border-radius: 0;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+      color: var(--primary);
+    }
+
+    .social-links a:hover {
+      background: var(--primary);
+      color: var(--dark);
+      transform: translateY(-5px);
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid var(--gray);
+      color: var(--secondary);
+    }
+
+    /* FALLBACK FONTS */
+    @supports not (font-family: "Metal Mania") {
+      :root {
+        --metal-font: "Impact", "Arial Black", sans-serif;
+      }
+    }
+
+    /* RESPONSIVE DESIGN */
+    @media (max-width: 992px) {
+      .band-container {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 30px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: var(--darker);
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+        transition: clip-path 0.4s ease;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .nav-links.active {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+      }
+
+      .nav-links li {
+        margin: 15px 0;
+      }
+
+      #band-hero {
+        height: 50vh;
+        margin-top: 70px;
+      }
+
+      .band-container {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      section {
+        padding: 60px 0;
+      }
+
+      #band-hero {
+        height: 40vh;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header & Navigation -->
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">
+          <img
+            src="assets/MOSHCORBLOX project/MOSHCORBLOX LOGO.png"
+            alt="Moshcorblox Banner"
+            onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 300 80\'><rect width=\'300\' height=\'80\' fill=\'black\'/><text x=\'150\' y=\'40\' text-anchor=\'middle\' dominant-baseline=\'middle\' fill=\'white\' font-size=\'24\' font-family=\'serif\'>MOSHCORBLOX</text></svg>'"
+          />
+        </div>
+        <div class="menu-toggle">
+          <i class="fas fa-bars"></i>
+        </div>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#carousel">Preview</a></li>
+          <li><a href="index.html#events">More</a></li>
+          <li><a href="index.html#community">Community</a></li>
+          <li><a href="https://discord.gg/U3KKJnVv" class="btn">Join Now</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Band Hero Section -->
+  <section id="band-hero">
+    <div class="container">
+      <div class="band-hero-content">
+        <h1>Band Showcase</h1>
+        <p>Ini dia band-band keren yang sudah menghancurkan panggung virtual Moshcorblox!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Band Showcase Section -->
+  <section id="band-showcase">
+    <div class="container">
+      <div class="section-title">
+        <h2>Talenta Moshcorblox</h2>
+        <p>Band-band yang pernah tampil di event kami</p>
+      </div>
+      
+      <div class="band-container">
+        <!-- Band 1 -->
+        <div class="band-card">
+          <div class="band-image">
+            <img src="assets/MOSHCORBLOX project/grrrlgangIcon.png" alt="Neural Overdrive">
+          </div>
+          <div class="band-content">
+            <h3>Grrrl Gang</h3>
+            <div class="band-genre">Alternatif / Indie</div>
+            <div class="band-description">
+              <p>Grrrl Gang merupakan grup musik asal Indonesia yang dibentuk pada tahun 2016 terdiri Angeeta Sentana, Edo Alventa, dan Akbar Rumandung.</p>
+            </div>
+            <div class="band-links">
+              <a href="https://open.spotify.com/intl-id/artist/4GgA61hzcYno3GYTrjhZ6A"><i class="fab fa-spotify"></i></a>
+              <a href="https://youtube.com/@grrrlgang?si=rmzqEL-E1NK9AKUj"><i class="fab fa-youtube"></i></a>
+              <a href="https://www.instagram.com/grrrlgang?igsh=MWRlMm5neHFsc2FhNg=="><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Band 2 -->
+        <div class="band-card">
+          <div class="band-image">
+            <img src="assets/MOSHCORBLOX project/enolaIcon.png" alt="Pixel Riot">
+          </div>
+          <div class="band-content">
+            <h3>Enola</h3>
+            <div class="band-genre">Shoegaze</div>
+            <div class="band-description">
+              <p>Enola adalah band asal Surabaya yang lahir dari keresahan anak muda kota besar, digawangi Adi (drum & vokal), Ayiz (gitar), dan Dwiki (bass). Mengusung nuansa shoegaze yang dibalut elemen doom, ambient, dan sentuhan eksperimental.</p>
+            </div>
+            <div class="band-links">
+              <a href="https://open.spotify.com/intl-id/artist/0RQlp5k4SaE2zbx7mGlU7r"><i class="fab fa-spotify"></i></a>
+              <a href="https://youtube.com/channel/UCEhpR2P50eDlfrQygp1Ob6A?si=PYEih-OW3JZM0fg5"><i class="fab fa-youtube"></i></a>
+              <a href="https://www.instagram.com/soundsofenola?igsh=MWtqYXUzbWZhbzExdg=="><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Band 3 -->
+        <div class="band-card">
+          <div class="band-image">
+            <img src="assets/MOSHCORBLOX project/beijingconnectionIcon.png" alt="Byte Crushers">
+          </div>
+          <div class="band-content">
+            <h3>Beijing Connection</h3>
+            <div class="band-genre">Miswest Emo</div>
+            <div class="band-description">
+              <p>Beijing Connection adalah band Midwest Emo asal Makassar, Indonesia, yang beranggotakan Rudy Rubiandini mengisi Bass dan Vokal, Adhewans bermain Gitar dan Joy Silitonga mengisi Drum. </p>
+            </div>
+            <div class="band-links">
+              <a href="https://open.spotify.com/intl-id/artist/1T7oAKo10EwQ2XmK7raEi4"><i class="fab fa-spotify"></i></a>
+              <a href="https://youtube.com/@beijing.connection?si=rUSUT8sBGstm6WK3"><i class="fab fa-youtube"></i></a>
+              <a href="https://www.instagram.com/beijing.id?igsh=MTgza2d6dG94bGU4bg=="><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Band 4 -->
+        <div class="band-card">
+          <div class="band-image">
+            <img src="assets/MOSHCORBLOX project/dongkerIcon.png" alt="Virtual Vandals">
+          </div>
+          <div class="band-content">
+            <h3>Dongker</h3>
+            <div class="band-genre">Punk Rock</div>
+            <div class="band-description">
+              <p>Dongker adalah sebuah grup musik yang membawakan lagu dengan genre Punk rock yang berasal dari Bandung, Jawa Barat.</p>
+            </div>
+            <div class="band-links">
+              <a href="https://open.spotify.com/intl-id/artist/6sf1OnuDZM48bgFQvPkbYm"><i class="fab fa-spotify"></i></a>
+              <a href="https://youtube.com/@baladagehel?si=9wa6GQJV2GKd59yR"><i class="fab fa-youtube"></i></a>
+              <a href="https://www.instagram.com/baladagehel?igsh=NWU5bmg1MW5laHA="><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Band 5 -->
+        <div class="band-card">
+          <div class="band-image">
+            <img src="assets/MOSHCORBLOX project/keepitrealIcon.png" alt="Glitch Mob">
+          </div>
+          <div class="band-content">
+            <h3>Keep It Real</h3>
+            <div class="band-genre">Beatdown Hardcore</div>
+            <div class="band-description">
+              <p>Keep It Real adalah band beatdown hardcore asal Malang, Jawa Timur, Indonesia. Dibentuk sekitar 2021 (sebelumnya dikenal sebagai Hold True sejak 2018), mereka kini digawangi Anam (vokal), Gama (bass), Ananda Erik dan Agan (gitar), serta Zidan (drum)</p>
+            </div>
+            <div class="band-links">
+              <a href="https://open.spotify.com/intl-id/artist/31BuRWA47xFnvcgC1ewe7D"><i class="fab fa-spotify"></i></a>
+              <a href="https://youtube.com/channel/UC5iWeyP1t_PyYxP0eWrMxeA?si=XOKtQV05g7BK8dcG"><i class="fab fa-youtube"></i></a>
+              <a href="https://www.instagram.com/keepitreal.hc?igsh=ejB5cDBpM3czMWp4"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Band 6 -->
+        <div class="band-card">
+          <div class="band-image">
+            <img src="assets/MOSHCORBLOX project/dazzleIcon.png" alt="Rogue Wave">
+          </div>
+          <div class="band-content">
+            <h3>Dazzle</h3>
+            <div class="band-genre">Hardcore</div>
+            <div class="band-description">
+              <p>Dazzle adalah unit crossover hardcore/thrash metal asal Malang, Jawa Timur, Indonesia, yang dibentuk sekitar awal tahun 2021.</p>
+            </div>
+            <div class="band-links">
+              <a href="https://open.spotify.com/intl-id/artist/5yYt2gLg9vPcDsswnVOrU6"><i class="fab fa-spotify"></i></a>
+              <a href="https://youtube.com/channel/UCzvr2NwHlOALay0B1SiwZjQ?si=ty4Ehe3xMHR-rOUr"><i class="fab fa-youtube"></i></a>
+              <a href="https://www.instagram.com/dazzleworlddd?igsh=dHlncms5MWVzZzR2"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Band 7 -->
+        <div class="band-card">
+          <div class="band-image">
+            <img src="assets/MOSHCORBLOX project/tabraklariIcon.png" alt="Circuit Breakers">
+          </div>
+          <div class="band-content">
+            <h3>Tabrak Lari</h3>
+            <div class="band-genre">Hardcore Punk</div>
+            <div class="band-description">
+              <p>Tabrak Lari adalah band hardcore punk/fastcore asal Tangerang, Banten, yang terkenal atas perpaduannya antara musik cepat dan lirik-nya yang jenaka serta absurd.</p>
+            </div>
+            <div class="band-links">
+              <a href="https://open.spotify.com/intl-id/artist/6zAEtVmbHSqLazrylJ6Lgn"><i class="fab fa-spotify"></i></a>
+              <a href="https://youtube.com/channel/UCEiccVRYzWkAoKo4mDqapLA?si=5lxvor9cGeio-Z47"><i class="fab fa-youtube"></i></a>
+              <a href="https://www.instagram.com/tabraklari.nih?igsh=aW9qM2I4anRnaDFx"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>Moshcorblox</h3>
+          <p>Komunitas Hardcore Roblox Indonesia pertama dan terbesar. Tempat di mana musik keras bertemu game virtual.</p>
+          <div class="social-links">
+            <a href="https://discord.gg/U3KKJnVv"><i class="fab fa-discord"></i></a>
+            <a href="https://www.instagram.com/moshcorblox?igsh=MTd2Y3NmZW9tZ2Q5YQ=="><i class="fab fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@moshcorblox?_t=ZS-8ymWvVOdVj7&_r=1"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-column">
+          <h3>Links</h3>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#carousel">Preview</a></li>
+            <li><a href="index.html#events">More</a></li>
+            <li><a href="index.html#community">Community</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h3>Resources</h3>
+          <ul class="footer-links">
+            <li><a href="#">Roblox Group</a></li>
+            <li><a href="#">Game Guides</a></li>
+            <li><a href="https://www.roblox.com/share?code=f06dccf92b17964ca0b320d644f68a20&type=ExperienceDetails&stamp=1754895125356">Venue Maps</a></li>
+            <li><a href="merch.html">Merchandise</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h3>Contact</h3>
+          <ul class="footer-links">
+            <li><i class="fab fa-discord"></i> discord.gg/U3KKJnVv</li>
+            <li><i class="fab fa-roblox"></i> Roblox Group: Moshcorblox</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="copyright">
+        <p>&copy; 2025 Moshcorblox Community. All rights reserved. | Designed for Indonesian Hardcore Gamers</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Mobile Menu Toggle
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+
+    // Close menu when clicking a link
+    document.querySelectorAll(".nav-links a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("active");
+      });
+    });
+
+    // Header scroll effect
+    window.addEventListener("scroll", () => {
+      const header = document.querySelector("header");
+      if (window.scrollY > 100) {
+        header.style.backgroundColor = "rgba(0, 0, 0, 0.98)";
+        header.style.boxShadow = "0 5px 20px rgba(0,0,0,0.5)";
+      } else {
+        header.style.backgroundColor = "rgba(0, 0, 0, 0.95)";
+        header.style.boxShadow = "none";
+      }
+    });
+  </script>
+</body>
+</html>

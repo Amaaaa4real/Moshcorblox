@@ -338,9 +338,16 @@
         margin-bottom: 20px;
       }
 
+      /* PERUBAHAN UTAMA: Perbaikan tata letak untuk other partners */
+      .other-partners-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 60px;
+        margin-top: 50px;
+      }
+
       .other-partners {
         text-align: center;
-        margin-top: 50px;
       }
 
       .other-partners h3 {
@@ -350,10 +357,11 @@
       }
 
       .partner-list {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
         gap: 20px;
-        max-width: 800px;
+        max-width: 1000px;
         margin: 0 auto;
       }
 
@@ -366,6 +374,9 @@
         justify-content: center;
         height: 80px;
         transition: all 0.3s ease;
+        min-width: 200px;
+        max-width: 250px;
+        flex: 1;
       }
 
       .partner-item:hover {
@@ -531,17 +542,18 @@
           padding: 60px 0;
         }
 
-        .partner-list {
-          grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        }
-
         .partner-item {
           height: 70px;
           padding: 10px;
+          min-width: 150px;
         }
 
         .partner-item span {
           font-size: 0.9rem;
+        }
+
+        .other-partners-wrapper {
+          gap: 40px;
         }
       }
     </style>
@@ -553,7 +565,7 @@
         <nav>
           <div class="logo">
             <img
-              src="assets/MOSHCORBLOX project/moshcorbloxLogo.png"
+              src="assets/MOSHCORBLOX project/MOSHCORBLOX LOGO.png"
               alt="Moshcorblox Banner"
               onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 300 80\'><rect width=\'300\' height=\'80\' fill=\'black\'/><text x=\'150\' y=\'40\' text-anchor=\'middle\' dominant-baseline=\'middle\' fill=\'white\' font-size=\'24\' font-family=\'serif\'>MOSHCORBLOX</text></svg>'"
             />
@@ -601,7 +613,7 @@
               <img src="assets/MOSHCORBLOX project/Connection.png" alt="Hardcore Nation" class="partner-logo" />
               <h3 class="partner-name">Connection 584</h3>
               <p class="partner-description">Sebagai clothing partner</p>
-              <a href="#" class="btn">Kunjungi Website</a>
+              <a href="https://shopee.co.id/connection584" class="btn">Kunjungi</a>
             </div>
 
             <!-- Partner Card 2 -->
@@ -609,27 +621,28 @@
               <img src="assets/MOSHCORBLOX project/Musik_id.jpg" alt="Roblox Creators" class="partner-logo" />
               <h3 class="partner-name">Musik.id</h3>
               <p class="partner-description">Sebagai Media partner.</p>
-              <a href="#" class="btn">Kunjungi Website</a>
+              <a href="https://www.instagram.com/musik.idbna?igsh=MW84aXBieW54eWtnag==" class="btn">Kunjungi</a>
             </div>
           </div>
 
-          <div class="other-partners">
-            <h3>Partner Lainnya</h3>
-            <div class="partner-list">
-              <div class="partner-item"><span>KomingUp</span></div>
-              <div class="partner-item"><span>Dead end collective</span></div>
-              <div class="partner-item"><span>Da Boat</span></div>
-              <div class="partner-item"><span>Pasundan Collective</span></div>
+          <!-- PERUBAHAN UTAMA: Menggunakan wrapper untuk other partners -->
+          <div class="other-partners-wrapper">
+            <div class="other-partners">
+              <h3>Partner Lainnya</h3>
+              <div class="partner-list">
+                <div class="partner-item"><span>KomingUp</span></div>
+                <div class="partner-item"><span>Dead end collective</span></div>
+                <div class="partner-item"><span>Da Boat</span></div>
+                <div class="partner-item"><span>Pasundan Collective</span></div>
+              </div>
             </div>
-          </div>
-        </div>
-      </div>
 
-          <div class="other-partners">
-            <h3>Pernah Berkerjasama</h3>
-            <div class="partner-list">
-              <div class="partner-item"><span>Greedydust</span></div>
-              <div class="partner-item"><span>Joiway</span></div>
+            <div class="other-partners">
+              <h3>Pernah Berkerjasama</h3>
+              <div class="partner-list">
+                <div class="partner-item"><span>Greedydust</span></div>
+                <div class="partner-item"><span>Joiway</span></div>
+              </div>
             </div>
           </div>
         </div>
@@ -665,10 +678,8 @@
           <div class="footer-column">
             <h3>Moshcorblox</h3>
             <p>Komunitas Hardcore Roblox Indonesia pertama dan terbesar. Tempat di mana musik keras bertemu game virtual.</p>
-            <div class="footer-social-links">
+            <div class="social-links">
               <a href="https://discord.gg/U3KKJnVv"><i class="fab fa-discord"></i></a>
-              <a href="#"><i class="fab fa-youtube"></i></a>
-              <a href="#"><i class="fab fa-twitter"></i></a>
               <a href="https://www.instagram.com/moshcorblox?igsh=MTd2Y3NmZW9tZ2Q5YQ=="><i class="fab fa-instagram"></i></a>
               <a href="https://www.tiktok.com/@moshcorblox?_t=ZS-8ymWvVOdVj7&_r=1"><i class="fab fa-tiktok"></i></a>
             </div>
@@ -677,11 +688,11 @@
           <div class="footer-column">
             <h3>Links</h3>
             <ul class="footer-links">
-              <li><a href="index.html">Home</a></li>
-              <li><a href="index.html#about">About</a></li>
-              <li><a href="index.html#carousel">Preview</a></li>
-              <li><a href="index.html#events">More</a></li>
-              <li><a href="index.html#community">Community</a></li>
+              <li><a href="#hero">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#carousel">Preview</a></li>
+              <li><a href="#events">More</a></li>
+              <li><a href="#community">Community</a></li>
             </ul>
           </div>
 
@@ -691,18 +702,16 @@
               <li><a href="#">Roblox Group</a></li>
               <li><a href="#">Game Guides</a></li>
               <li><a href="https://www.roblox.com/share?code=f06dccf92b17964ca0b320d644f68a20&type=ExperienceDetails&stamp=1754895125356">Venue Maps</a></li>
-              <li><a href="#">Merchandise</a></li>
-              <li><a href="faq.html">FAQ</a></li>
+              <li><a href="https://shopee.co.id/connection584">Merchandise</a></li>
+              <li><a href="#">FAQ</a></li>
             </ul>
           </div>
 
           <div class="footer-column">
             <h3>Contact</h3>
             <ul class="footer-links">
-              <li><i class="fas fa-envelope"></i> info@moshcorblox.id</li>
-              <li><i class="fab fa-discord"></i> discord.gg/moshcorblox</li>
+              <li><i class="fab fa-discord"></i> discord.gg/U3KKJnVv</li>
               <li><i class="fab fa-roblox"></i> Roblox Group: Moshcorblox</li>
-              <li><i class="fas fa-handshake"></i> partnership@moshcorblox.id</li>
             </ul>
           </div>
         </div>

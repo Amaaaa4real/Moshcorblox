@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Official Merch - MOSHCORBLOX</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Metal+Mania&family=Nosifer&family=Butcherman&family=Montserrat:wght@400;600;700;800;900&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet" />
+    <style>
+      /* VARIABLES & RESET */
+      :root {
+        --primary: #ffffff;
+        --primary-dark: #cccccc;
+        --secondary: #999999;
+        --dark: #0a0a0a;
+        --darker: #000000;
+        --gray: #222222;
+        --light: #f1f1f1;
+        --accent: #333333;
+        --metal-font: "Metal Mania", "Creepster", "Nosifer", cursive;
+        --main-font: "Roboto", sans-serif;
+        --header-font: "Montserrat", sans-serif;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: var(--main-font);
+        background: var(--darker);
+        color: var(--light);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      /* TYPOGRAPHY */
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: var(--metal-font);
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-weight: 400;
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+      }
+
+      h1 {
+        font-size: clamp(2.5rem, 8vw, 4rem);
+        text-shadow: 0 0 20px rgba(255, 255, 255, 0.4), 3px 3px 8px rgba(0, 0, 0, 0.9);
+        font-weight: 400;
+      }
+
+      h2 {
+        font-size: clamp(1.8rem, 6vw, 3rem);
+        margin-bottom: 1.5rem;
+        font-weight: 400;
+      }
+
+      p {
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+        font-weight: 300;
+      }
+
+      a {
+        color: var(--primary);
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      a:hover {
+        color: var(--secondary);
+      }
+
+      /* BUTTONS */
+      .btn {
+        display: inline-block;
+        background: transparent;
+        color: var(--primary);
+        padding: 12px 28px;
+        border: 2px solid var(--primary);
+        border-radius: 0;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        font-size: 1rem;
+        font-family: var(--header-font);
+      }
+
+      .btn:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        transition: 0.5s;
+      }
+
+      .btn:hover:before {
+        left: 100%;
+      }
+
+      .btn:hover {
+        background: rgba(255, 255, 255, 0.05);
+        transform: translateY(-3px);
+        border-color: var(--secondary);
+        color: var(--secondary);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        border: 2px solid var(--secondary);
+        color: var(--secondary);
+      }
+
+      .btn-secondary:hover {
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--primary);
+        border-color: var(--primary);
+      }
+
+      /* LAYOUT */
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      section {
+        padding: 80px 0;
+        position: relative;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 60px;
+        position: relative;
+        margin-top: 50px;
+      }
+
+      .section-title:after {
+        content: "";
+        display: block;
+        width: 80px;
+        height: 2px;
+        background: var(--primary);
+        margin: 15px auto;
+      }
+
+      /* HEADER & NAVIGATION */
+      header {
+        background: rgba(0, 0, 0, 0.95);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+      }
+
+      .logo img {
+        height: 50px;
+        width: auto;
+        margin-right: 0;
+      }
+
+      .banner-text {
+        font-family: var(--metal-font);
+        font-size: 1.8rem;
+        font-weight: 400;
+        letter-spacing: 3px;
+        color: var(--primary);
+        text-transform: uppercase;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+      }
+
+      .nav-links li {
+        margin-left: 30px;
+      }
+
+      .nav-links a {
+        font-weight: 500;
+        font-size: 1rem;
+        position: relative;
+        color: var(--secondary);
+        font-family: var(--header-font);
+      }
+
+      .nav-links a:after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 1px;
+        bottom: -5px;
+        left: 0;
+        background: var(--primary);
+        transition: width 0.3s ease;
+      }
+
+      .nav-links a:hover:after {
+        width: 100%;
+      }
+
+      .nav-links a:hover {
+        color: var(--primary);
+      }
+
+      .menu-toggle {
+        display: none;
+        cursor: pointer;
+        font-size: 1.5rem;
+        color: var(--primary);
+      }
+
+      /* MERCH CAROUSEL */
+      #merch-carousel {
+        background: var(--dark);
+        padding: 80px 0;
+      }
+
+      .merch-carousel-container {
+        position: relative;
+        max-width: 1000px;
+        margin: 0 auto;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        height: 70vh;
+        max-height: 600px;
+      }
+
+      .merch-carousel {
+        display: flex;
+        transition: transform 0.5s ease;
+        height: 100%;
+      }
+
+      .merch-slide {
+        min-width: 100%;
+        height: 100%;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+
+      .merch-control {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 10;
+        background: rgba(0, 0, 0, 0.5);
+        color: var(--primary);
+        border: none;
+        cursor: pointer;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        transition: all 0.3s ease;
+      }
+
+      .merch-control:hover {
+        background: rgba(0, 0, 0, 0.8);
+        transform: translateY(-50%) scale(1.1);
+      }
+
+      .merch-prev {
+        left: 20px;
+      }
+
+      .merch-next {
+        right: 20px;
+      }
+
+      .merch-indicators {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 10px;
+        z-index: 10;
+      }
+
+      .merch-indicator {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.5);
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .merch-indicator.active {
+        background: var(--primary);
+        transform: scale(1.2);
+      }
+
+      /* MERCH STORES - Card Style */
+      #merch-stores {
+        background: var(--darker);
+        padding: 60px 0 80px;
+      }
+
+      .stores-container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 40px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .merch-card {
+        background: rgba(20, 20, 20, 0.7);
+        border-radius: 0;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 500px;
+      }
+
+      .merch-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(255, 255, 255, 0.05);
+        border-color: var(--primary);
+      }
+
+      .merch-image {
+        height: 250px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .merch-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .merch-card:hover .merch-image img {
+        transform: scale(1.05);
+      }
+
+      .merch-content {
+        padding: 25px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .merch-content h3 {
+        color: var(--primary);
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+        text-align: center;
+      }
+
+      .merch-description {
+        margin-bottom: 20px;
+        flex-grow: 1;
+        color: var(--secondary);
+        text-align: center;
+      }
+
+      .merch-features {
+        margin-bottom: 25px;
+        padding: 0 15px;
+      }
+
+      .merch-features ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+      }
+
+      .merch-features li {
+        padding: 8px 0;
+        position: relative;
+        color: var(--primary-dark);
+        flex-basis: calc(50% - 15px);
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .merch-features li:before {
+        content: "•";
+        color: var(--primary);
+        margin-right: 8px;
+        font-size: 1.5rem;
+        line-height: 1;
+      }
+
+      .merch-cta {
+        text-align: center;
+        margin-top: auto;
+        padding-top: 15px;
+      }
+
+      /* FOOTER */
+      footer {
+        background: var(--darker);
+        padding: 60px 0 30px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+        margin-bottom: 40px;
+      }
+
+      .footer-column h3 {
+        color: var(--primary);
+        margin-bottom: 20px;
+        font-size: 1.3rem;
+        font-family: var(--metal-font);
+      }
+
+      .footer-links {
+        list-style: none;
+      }
+
+      .footer-links li {
+        margin-bottom: 10px;
+      }
+
+      .footer-links a {
+        color: var(--secondary);
+        transition: all 0.3s ease;
+      }
+
+      .footer-links a:hover {
+        color: var(--primary);
+      }
+
+      .social-links {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+      }
+
+      .social-links a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background: var(--gray);
+        border-radius: 0;
+        font-size: 1.2rem;
+        transition: all 0.3s ease;
+        color: var(--primary);
+      }
+
+      .social-links a:hover {
+        background: var(--primary);
+        color: var(--dark);
+        transform: translateY(-5px);
+      }
+
+      .copyright {
+        text-align: center;
+        padding-top: 30px;
+        border-top: 1px solid var(--gray);
+        color: var(--secondary);
+      }
+
+      /* FALLBACK FONTS */
+      @supports not (font-family: "Metal Mania") {
+        :root {
+          --metal-font: "Impact", "Arial Black", sans-serif;
+        }
+      }
+
+      /* RESPONSIVE DESIGN */
+      @media (max-width: 992px) {
+        .merch-carousel-container {
+          height: 50vh;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .menu-toggle {
+          display: block;
+        }
+
+        .nav-links {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          background: var(--darker);
+          width: 100%;
+          flex-direction: column;
+          align-items: center;
+          padding: 20px 0;
+          clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+          transition: clip-path 0.4s ease;
+          border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-links.active {
+          clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        }
+
+        .nav-links li {
+          margin: 15px 0;
+        }
+
+        .merch-carousel-container {
+          height: 40vh;
+        }
+
+        .merch-features li {
+          flex-basis: 100%;
+        }
+      }
+
+      @media (max-width: 576px) {
+        section {
+          padding: 60px 0;
+        }
+
+        .merch-carousel-container {
+          height: 35vh;
+        }
+
+        .merch-control {
+          width: 40px;
+          height: 40px;
+          font-size: 1.2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header & Navigation -->
+    <header>
+      <div class="container">
+        <nav>
+          <div class="logo">
+            <img
+              src="assets/MOSHCORBLOX project/MOSHCORBLOX LOGO.png"
+              alt="Moshcorblox Banner"
+              onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 300 80\'><rect width=\'300\' height=\'80\' fill=\'black\'/><text x=\'150\' y=\'40\' text-anchor=\'middle\' dominant-baseline=\'middle\' fill=\'white\' font-size=\'24\' font-family=\'serif\'>MOSHCORBLOX</text></svg>'"
+            />
+          </div>
+          <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+          </div>
+          <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#carousel">Preview</a></li>
+            <li><a href="index.html#events">More</a></li>
+            <li><a href="index.html#community">Community</a></li>
+            <li><a href="https://discord.gg/U3KKJnVv" class="btn">Join Now</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Merch Carousel Section -->
+    <section id="merch-carousel">
+      <div class="container">
+        <div class="section-title">
+          <h2>Official Merch</h2>
+          <p>Koleksi eksklusif merchandise Moshcorblox hanya untuk member setia</p>
+        </div>
+
+        <div class="merch-carousel-container">
+          <div class="merch-carousel">
+            <!-- Merch items -->
+            <div class="merch-slide" style="background-image: url('assets/MOSHCORBLOX project/merchRoblox-1.png')"></div>
+            <div class="merch-slide" style="background-image: url('assets/MOSHCORBLOX project/merchRoblox-2.png')"></div>
+            <div class="merch-slide" style="background-image: url('assets/MOSHCORBLOX project/merchRoblox-3.png')"></div>
+            <div class="merch-slide" style="background-image: url('assets/MOSHCORBLOX project/merchRoblox-4.png')"></div>
+            <div class="merch-slide" style="background-image: url('assets/MOSHCORBLOX project/merchRoblox-5.png')"></div>
+            <div class="merch-slide" style="background-image: url('assets/MOSHCORBLOX project/merchRoblox-6.png')"></div>
+          </div>
+
+          <button class="merch-control merch-prev">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="merch-control merch-next">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+
+          <div class="merch-indicators">
+            <div class="merch-indicator active"></div>
+            <div class="merch-indicator"></div>
+            <div class="merch-indicator"></div>
+            <div class="merch-indicator"></div>
+            <div class="merch-indicator"></div>
+            <div class="merch-indicator"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Merch Stores Section -->
+    <section id="merch-stores">
+      <div class="container">
+        <div class="section-title">
+          <h2>Toko Merchandise</h2>
+          <p>Dapatkan merchandise eksklusif dari toko resmi kami</p>
+        </div>
+
+        <div class="stores-container">
+          <!-- Toko Utama -->
+          <div class="merch-card">
+            <div class="merch-image">
+              <img src="assets/MOSHCORBLOX project/moshcorbloxLogo.png" alt="Toko Resmi Merchandise" />
+            </div>
+            <div class="merch-content">
+              <h3>Timofeev's inc.</h3>
+              <div class="merch-description">
+                <p>Community roblox yang menjual berbagai t-shirt dari band favorit kalian! Jadi persiapkan robak mu wkwk.</p>
+              </div>
+              <div class="merch-features">
+                <ul>
+                  <li>T-shirt & Hoodie dari band band terkenal</li>
+                </ul>
+              </div>
+              <div class="merch-cta">
+                <a href="https://www.roblox.com/share/g/33965088" class="btn">Kunjungi Toko</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Toko Khusus Event -->
+          <div class="merch-card">
+            <div class="merch-image">
+              <img src="assets/MOSHCORBLOX project/Connection.png" alt="Edisi Terbatas" />
+            </div>
+            <div class="merch-content">
+              <h3>Edisi Terbatas</h3>
+              <div class="merch-description">
+                <p>Koleksi merchandise edisi terbatas untuk event spesial Moshcorblox. Produk ini hanya tersedia selama event berlangsung.</p>
+              </div>
+              <div class="merch-features">
+                <ul>
+                  <li>T-shirt resmi dari Moshcorblox.</li>
+                </ul>
+              </div>
+              <div class="merch-cta">
+                <a href="https://shopee.co.id/connection584?event=1" class="btn">Lihat Koleksi</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-column">
+            <h3>Moshcorblox</h3>
+            <p>Komunitas Hardcore Roblox Indonesia pertama dan terbesar. Tempat di mana musik keras bertemu game virtual.</p>
+            <div class="social-links">
+              <a href="https://discord.gg/U3KKJnVv"><i class="fab fa-discord"></i></a>
+              <a href="https://www.instagram.com/moshcorblox?igsh=MTd2Y3NmZW9tZ2Q5YQ=="><i class="fab fa-instagram"></i></a>
+              <a href="https://www.tiktok.com/@moshcorblox?_t=ZS-8ymWvVOdVj7&_r=1"><i class="fab fa-tiktok"></i></a>
+            </div>
+          </div>
+
+          <div class="footer-column">
+            <h3>Links</h3>
+            <ul class="footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="index.html#about">About</a></li>
+              <li><a href="index.html#carousel">Preview</a></li>
+              <li><a href="index.html#events">More</a></li>
+              <li><a href="index.html#community">Community</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h3>Resources</h3>
+            <ul class="footer-links">
+              <li><a href="#">Roblox Group</a></li>
+              <li><a href="#">Game Guides</a></li>
+              <li><a href="https://www.roblox.com/share?code=f06dccf92b17964ca0b320d644f68a20&type=ExperienceDetails&stamp=1754895125356">Venue Maps</a></li>
+              <li><a href="https://shopee.co.id/connection584">Merchandise</a></li>
+              <li><a href="faq.html">FAQ</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h3>Contact</h3>
+            <ul class="footer-links">
+              <li><i class="fab fa-discord"></i> discord.gg/U3KKJnVv</li>
+              <li><i class="fab fa-roblox"></i> Roblox Group: Moshcorblox</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="copyright">
+          <p>&copy; 2025 Moshcorblox Community. All rights reserved. | Designed for Indonesian Hardcore Gamers</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+      // Mobile Menu Toggle
+      const menuToggle = document.querySelector(".menu-toggle");
+      const navLinks = document.querySelector(".nav-links");
+
+      menuToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+      });
+
+      // Close menu when clicking a link
+      document.querySelectorAll(".nav-links a").forEach((link) => {
+        link.addEventListener("click", () => {
+          navLinks.classList.remove("active");
+        });
+      });
+
+      // Merch Carousel
+      const merchCarousel = document.querySelector(".merch-carousel");
+      const merchSlides = document.querySelectorAll(".merch-slide");
+      const merchPrevBtn = document.querySelector(".merch-prev");
+      const merchNextBtn = document.querySelector(".merch-next");
+      const merchIndicators = document.querySelectorAll(".merch-indicator");
+
+      let currentSlide = 0;
+      const totalSlides = merchSlides.length;
+
+      function goToSlide(index) {
+        if (index < 0) index = totalSlides - 1;
+        if (index >= totalSlides) index = 0;
+
+        merchCarousel.style.transform = `translateX(-${index * 100}%)`;
+
+        // Update active indicator
+        merchIndicators.forEach((indicator) => indicator.classList.remove("active"));
+        merchIndicators[index].classList.add("active");
+
+        currentSlide = index;
+      }
+
+      // Initialize indicators
+      merchIndicators.forEach((indicator, index) => {
+        indicator.addEventListener("click", () => goToSlide(index));
+      });
+
+      // Navigation buttons
+      merchPrevBtn.addEventListener("click", () => goToSlide(currentSlide - 1));
+      merchNextBtn.addEventListener("click", () => goToSlide(currentSlide + 1));
+
+      // Auto slide
+      setInterval(() => goToSlide(currentSlide + 1), 5000);
+    </script>
+  </body>
+</html>
