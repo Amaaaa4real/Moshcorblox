@@ -204,7 +204,7 @@
       }
 
       .nav-links li {
-        margin: 15px 0;
+        margin-left: 30px;
       }
 
       .nav-links a {
@@ -744,7 +744,6 @@
         }
       }
 
-      /* RESPONSIVE DESIGN */
       @media (max-width: 768px) {
         .menu-toggle {
           display: block;
@@ -761,14 +760,14 @@
           align-items: center;
           justify-content: center;
           padding: 20px 0;
-          clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-          transition: clip-path 0.4s ease;
+          clip-path: circle(0px at top right);
+          transition: clip-path 0.4s ease-in-out;
           border-top: 1px solid rgba(255, 255, 255, 0.1);
           z-index: 100;
         }
 
         .nav-links.active {
-          clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+          clip-path: circle(1500px at top right);
         }
 
         .nav-links li {
@@ -1018,7 +1017,7 @@
         }
 
         .menu-toggle.active {
-          display: none;
+          display: none; /* Hamburger icon disembunyikan saat menu aktif */
         }
       }
 
@@ -1492,15 +1491,20 @@
         document.body.style.overflow = "";
       });
 
-      // Close menu when clicking a link
-      document.querySelectorAll(".nav-links a").forEach((link) => {
-        link.addEventListener("click", () => {
-          navLinks.classList.remove("active");
-          menuClose.style.display = "none";
-          menuToggle.classList.remove("active");
-          document.body.style.overflow = "";
+      // Fungsi navigasi card events
+      const eventsScroller = document.querySelector(".events-scroller");
+      const prevBtn = document.querySelector(".events-nav-btn.prev");
+      const nextBtn = document.querySelector(".events-nav-btn.next");
+
+      if (prevBtn && nextBtn) {
+        prevBtn.addEventListener("click", () => {
+          eventsScroller.scrollBy({ left: -300, behavior: "smooth" });
         });
-      });
+
+        nextBtn.addEventListener("click", () => {
+          eventsScroller.scrollBy({ left: 300, behavior: "smooth" });
+        });
+      }
 
       // Close menu when clicking a link
       document.querySelectorAll(".nav-links a").forEach((link) => {
