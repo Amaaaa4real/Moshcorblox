@@ -830,7 +830,7 @@
           display: none;
         }
       }
-      
+
       /* =================== */
       /* PERBAIKAN RESPONSIF MOBILE */
       /* =================== */
@@ -839,110 +839,110 @@
         .logo img {
           height: 40px;
         }
-        
+
         .banner-text {
           font-size: 1.2rem;
         }
-        
+
         /* Hero Section */
         #hero {
           height: 85vh;
           padding-top: 70px;
         }
-        
+
         .hero-content h1 {
           font-size: clamp(1.8rem, 7vw, 2.5rem);
           margin-bottom: 15px;
         }
-        
+
         .hero-content p {
           font-size: 1rem;
         }
-        
+
         .hero-buttons {
           flex-direction: column;
           gap: 15px;
         }
-        
+
         .btn {
           width: 100%;
           padding: 12px;
           font-size: 0.9rem;
         }
-        
+
         /* Carousel */
         .custom-carousel {
           height: 250px;
         }
-        
+
         .carousel-control {
           width: 35px;
           height: 35px;
           font-size: 1rem;
         }
-        
+
         /* About Section */
         .about-content {
           grid-template-columns: 1fr;
           gap: 30px;
         }
-        
+
         .about-image {
           height: 250px;
           order: -1; /* Gambar di atas teks */
         }
-        
+
         /* Events Section */
         .events-container {
           padding: 0 15px;
         }
-        
+
         .events-nav-btn {
           display: none; /* Sembunyikan tombol navigasi di mobile */
         }
-        
+
         .event-card {
           min-width: 85vw; /* Lebar penuh viewport */
           scroll-snap-align: center;
         }
-        
+
         .event-image {
           height: 160px;
         }
-        
+
         .event-content .btn {
           padding: 10px;
           font-size: 0.9rem;
         }
-        
+
         /* Community Section */
         .community-stats {
           flex-direction: column;
           align-items: center;
         }
-        
+
         .stat-box {
           width: 100%;
           margin: 8px 0;
         }
-        
+
         .join-box .btn {
           display: block;
           width: 100%;
           margin: 10px 0;
         }
-        
+
         /* Footer */
         .footer-content {
           grid-template-columns: 1fr;
           text-align: center;
           gap: 30px;
         }
-        
+
         .social-links {
           justify-content: center;
         }
-        
+
         .copyright p {
           font-size: 0.9rem;
         }
@@ -953,24 +953,24 @@
         .custom-carousel {
           height: 200px;
         }
-        
+
         .section-title h2 {
           font-size: 1.5rem;
         }
-        
+
         .section-title p {
           font-size: 0.9rem;
         }
-        
+
         .event-content .btn {
           padding: 8px 15px;
           font-size: 0.85rem;
         }
-        
+
         .hero-content {
           padding-top: 90px;
         }
-        
+
         .nav-links a {
           font-size: 1.2rem;
         }
@@ -984,29 +984,84 @@
         border: 2px solid var(--primary);
         padding: 10px 20px;
       }
-      
+
       .events-scroller {
         scrollbar-width: none; /* Firefox */
         -ms-overflow-style: none; /* IE/Edge */
       }
-      
+
       .events-scroller::-webkit-scrollbar {
         display: none; /* Chrome/Safari */
       }
-      
+
+      /* PERBAIKAN NAVBAR MOBILE */
       .mobile-menu-close {
+        display: none;
         position: absolute;
         top: 25px;
         right: 25px;
         font-size: 1.8rem;
         color: var(--primary);
-        display: none;
         z-index: 101;
+        transition: all 0.3s ease;
+        cursor: pointer;
       }
-      
+
       @media (max-width: 768px) {
         .mobile-menu-close {
-          display: block;
+          display: none; /* Awalnya disembunyikan */
+        }
+
+        .nav-links.active + .mobile-menu-close {
+          display: block; /* Muncul ketika menu aktif */
+        }
+
+        .menu-toggle.active {
+          display: none; /* Hamburger icon disembunyikan saat menu aktif */
+        }
+      }
+
+      /* TOMBOL NAVIGASI CARD EVENTS */
+      .events-nav-buttons {
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        transform: translateY(-50%);
+        z-index: 20;
+        justify-content: space-between;
+        pointer-events: none; /* Agar tidak menghalangi konten di bawah */
+      }
+
+      .events-nav-btn {
+        background: rgba(0, 0, 0, 0.7);
+        color: var(--primary);
+        border: none;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        pointer-events: auto; /* Aktifkan pointer events untuk tombol */
+        opacity: 0.7;
+      }
+
+      .events-nav-btn:hover {
+        background: rgba(0, 0, 0, 0.9);
+        transform: scale(1.1);
+        opacity: 1;
+      }
+
+      /* Tampilkan tombol hanya di desktop */
+      @media (min-width: 768px) {
+        .events-nav-buttons {
+          display: flex;
         }
       }
     </style>
@@ -1018,11 +1073,12 @@
         <nav>
           <div class="logo">
             <a href="index.html">
-            <img
-              src="assets/MOSHCORBLOX project/MOSHCORBLOX LOGO.png"
-              alt="Moshcorblox Banner"
-              onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 300 80\'><rect width=\'300\' height=\'80\' fill=\'black\'/><text x=\'150\' y=\'40\' text-anchor=\'middle\' dominant-baseline=\'middle\' fill=\'white\' font-size=\'24\' font-family=\'serif\'>MOSHCORBLOX</text></svg>'"/>
-              </a>
+              <img
+                src="assets/MOSHCORBLOX project/MOSHCORBLOX LOGO.png"
+                alt="Moshcorblox Banner"
+                onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 300 80\'><rect width=\'300\' height=\'80\' fill=\'black\'/><text x=\'150\' y=\'40\' text-anchor=\'middle\' dominant-baseline=\'middle\' fill=\'white\' font-size=\'24\' font-family=\'serif\'>MOSHCORBLOX</text></svg>'"
+              />
+            </a>
           </div>
           <div class="menu-toggle">
             <i class="fas fa-bars"></i>
@@ -1047,7 +1103,10 @@
       <div class="container">
         <div class="hero-content">
           <h1>Komunitas Hardcore Roblox Indonesia</h1>
-          <p>Moshcorblox adalah komunitas musik hardcore di platform Roblox yang mewadahi pemain untuk berbagi, menikmati, dan mengekspresikan budaya moshpit virtual melalui event, konser, serta kreasi dunia bertema hardcore yang energik dan interaktif.</p>
+          <p>
+            Moshcorblox adalah komunitas musik hardcore di platform Roblox yang mewadahi pemain untuk berbagi, menikmati, dan mengekspresikan budaya moshpit virtual melalui event, konser, serta kreasi dunia bertema hardcore yang energik dan
+            interaktif.
+          </p>
           <div class="hero-buttons">
             <a href="#community" class="btn">Bergabung Sekarang</a>
             <a href="#events" class="btn btn-secondary">Lihat Acara</a>
@@ -1132,6 +1191,16 @@
         </div>
 
         <div class="events-container">
+          <!-- Tombol navigasi untuk card events (desktop) -->
+          <div class="events-nav-buttons">
+            <button class="events-nav-btn prev">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="events-nav-btn next">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+
           <div class="events-scroller">
             <div class="events-grid">
               <!-- Card 1 - Registrasi -->
@@ -1142,7 +1211,6 @@
                 <div class="event-content">
                   <span class="event-date">SEGARA DAFTAR</span>
                   <h3>Registrasi Event</h3>
-                  <p>Daftarkan band kamu untuk berpartisipasi dalam event Moshcorblox, naiklah ke panggung dan hancurkan semua!</p>
                   <a
                     href="https://docs.google.com/forms/d/e/1FAIpQLSfC4HZKH8S8B68pjTp1zLiqLrFrpUhH-uKt2eyDI9cu28yYJA/viewform?pli=1&fbclid=PAQ0xDSwMGeNZleHRuA2FlbQIxMAABp1nOjjKwTQPExXYcuocnGrVKfwIV3gcqFRj0iN0k6DozLXVc06skTOTf5I-N_aem_8TXuyvQyTXB7BtupIG3wBg"
                     class="btn"
@@ -1159,7 +1227,6 @@
                 <div class="event-content">
                   <span class="event-date">TERBATAS</span>
                   <h3>Official Merch</h3>
-                  <p>Dapatkan merchandise eksklusif Moshcorblox yang keren hanya untuk member!</p>
                   <a href="merch.html" class="btn">Lihat Koleksi</a>
                 </div>
               </div>
@@ -1172,7 +1239,6 @@
                 <div class="event-content">
                   <span class="event-date">UPDATE TERBARU</span>
                   <h3>Venue Maps</h3>
-                  <p>Jelajahi venue konser virtual kami. Temukan tempat favorit dan rahasia dalam game Roblox!</p>
                   <a href="https://www.roblox.com/share?code=f06dccf92b17964ca0b320d644f68a20&type=ExperienceDetails&stamp=1754895125356" class="btn">Lihat Map</a>
                 </div>
               </div>
@@ -1185,7 +1251,6 @@
                 <div class="event-content">
                   <span class="event-date">PENDIRI</span>
                   <h3>Founder & Developer</h3>
-                  <p>Ini dia orang-orang yang telah membuat dan membangun komunitas Moshcorblox</p>
                   <a href="founder.html" class="btn">Lihat Profil</a>
                 </div>
               </div>
@@ -1198,7 +1263,6 @@
                 <div class="event-content">
                   <span class="event-date">TALENTA</span>
                   <h3>Band Showcase</h3>
-                  <p>Ini dia Band-band yang sudah berpartisipasi dalam event Moshcorblox!</p>
                   <a href="band.html" class="btn">Lihat Band</a>
                 </div>
               </div>
@@ -1211,7 +1275,6 @@
                 <div class="event-content">
                   <span class="event-date">KOLABORASI</span>
                   <h3>Partners</h3>
-                  <p>Ini dia Partners yang berkerja sama dengan Moshcorblox!</p>
                   <a href="partners.html" class="btn">Lihat Partners</a>
                 </div>
               </div>
@@ -1224,7 +1287,6 @@
                 <div class="event-content">
                   <span class="event-date">PANDUAN</span>
                   <h3>FAQ</h3>
-                  <p>Pelajari cara bergabung, bermain, dan menikmati event di Moshcorblox</p>
                   <a href="faq.html" class="btn">Pelajari Sekarang</a>
                 </div>
               </div>
@@ -1409,20 +1471,40 @@
         showSlide(0);
       });
 
-      // Mobile Menu Toggle
+      // Mobile Menu Toggle (Perbaikan)
       const menuToggle = document.querySelector(".menu-toggle");
       const menuClose = document.querySelector(".mobile-menu-close");
       const navLinks = document.querySelector(".nav-links");
+      const menuIcon = document.querySelector(".menu-toggle i");
 
       menuToggle.addEventListener("click", () => {
         navLinks.classList.add("active");
+        menuClose.style.display = "block";
+        menuToggle.classList.add("active");
         document.body.style.overflow = "hidden";
       });
 
       menuClose.addEventListener("click", () => {
         navLinks.classList.remove("active");
+        menuClose.style.display = "none";
+        menuToggle.classList.remove("active");
         document.body.style.overflow = "";
       });
+
+      // Fungsi navigasi card events
+      const eventsScroller = document.querySelector(".events-scroller");
+      const prevBtn = document.querySelector(".events-nav-btn.prev");
+      const nextBtn = document.querySelector(".events-nav-btn.next");
+
+      if (prevBtn && nextBtn) {
+        prevBtn.addEventListener("click", () => {
+          eventsScroller.scrollBy({ left: -300, behavior: "smooth" });
+        });
+
+        nextBtn.addEventListener("click", () => {
+          eventsScroller.scrollBy({ left: 300, behavior: "smooth" });
+        });
+      }
 
       // Close menu when clicking a link
       document.querySelectorAll(".nav-links a").forEach((link) => {
@@ -1452,7 +1534,7 @@
       window.addEventListener("scroll", () => {
         const header = document.querySelector("header");
         const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-        
+
         if (window.innerWidth <= 767) {
           // Auto-hide header on scroll for mobile
           if (currentScroll > lastScrollTop && currentScroll > 100) {
@@ -1472,22 +1554,22 @@
             header.style.boxShadow = "none";
           }
         }
-        
+
         lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
       });
 
       // Touch events for events scroller on mobile
       if (window.matchMedia("(max-width: 767px)").matches) {
-        const eventsScroller = document.querySelector('.events-scroller');
+        const eventsScroller = document.querySelector(".events-scroller");
         let startX = 0;
         let scrollLeft = 0;
 
-        eventsScroller.addEventListener('touchstart', (e) => {
+        eventsScroller.addEventListener("touchstart", (e) => {
           startX = e.touches[0].pageX;
           scrollLeft = eventsScroller.scrollLeft;
         });
 
-        eventsScroller.addEventListener('touchmove', (e) => {
+        eventsScroller.addEventListener("touchmove", (e) => {
           e.preventDefault();
           const x = e.touches[0].pageX;
           const walk = (x - startX) * 2; // Scroll multiplier
