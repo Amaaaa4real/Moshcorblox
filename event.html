@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upcoming Events - MOSHCORBLOX</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Metal+Mania&family=Nosifer&family=Butcherman&family=Montserrat:wght@400;600;700;800;900&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ffffff;
+            --primary-dark: #cccccc;
+            --secondary: #999999;
+            --dark: #0a0a0a;
+            --darker: #000000;
+            --gray: #222222;
+            --light: #f1f1f1;
+            --accent: #333333;
+            --metal-font: "Metal Mania", "Creepster", "Nosifer", cursive;
+            --main-font: "Roboto", sans-serif;
+            --header-font: "Montserrat", sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--main-font);
+            background: var(--darker);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* NAVBAR STYLES */
+        header {
+            background: rgba(0, 0, 0, 0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+            margin-right: 0;
+        }
+
+        .banner-text {
+            font-family: var(--metal-font);
+            font-size: 1.8rem;
+            font-weight: 400;
+            letter-spacing: 3px;
+            color: var(--primary);
+            text-transform: uppercase;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            font-size: 1rem;
+            position: relative;
+            color: var(--secondary);
+            font-family: var(--header-font);
+        }
+
+        .nav-links a:after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -5px;
+            left: 0;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--primary);
+            z-index: 1001;
+        }
+
+        .mobile-menu-close {
+            display: none;
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            font-size: 1.8rem;
+            color: var(--primary);
+            z-index: 101;
+            cursor: pointer;
+        }
+
+        /* EVENT MADING STYLES */
+        .events-container {
+            padding: 120px 0 60px;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .page-header h1 {
+            font-family: var(--metal-font);
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.4), 3px 3px 8px rgba(0, 0, 0, 0.9);
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            color: var(--secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        /* PERUBAHAN UTAMA: Card Event dengan Tampilan Poster */
+        .event-card {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+            border: 3px solid var(--primary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
+        }
+
+        .event-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 15px 35px rgba(255, 255, 255, 0.1);
+        }
+
+        .event-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(200, 0, 0, 0.8);
+            color: white;
+            padding: 8px 15px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            font-family: var(--header-font);
+            letter-spacing: 1px;
+            z-index: 2;
+        }
+
+        .event-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 30px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .event-card:hover .event-overlay {
+            opacity: 1;
+        }
+
+        .event-overlay-content {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .event-overlay h3 {
+            font-family: var(--metal-font);
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .event-date {
+            font-family: var(--header-font);
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .event-date i {
+            color: var(--secondary);
+        }
+
+        .event-time {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 5px 15px;
+            border-left: 2px solid var(--primary);
+        }
+
+        .event-venue {
+            font-family: var(--header-font);
+            font-size: 1.2rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .event-lineup {
+            margin-top: 30px;
+        }
+
+        .lineup-title {
+            font-family: var(--metal-font);
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            text-align: center;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 10px;
+        }
+
+        .band-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .band-item {
+            background: rgba(30, 30, 30, 0.8);
+            padding: 10px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .band-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .band-name {
+            font-family: var(--header-font);
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .cta-button {
+            display: block;
+            width: 100%;
+            text-align: center;
+            background: transparent;
+            color: var(--primary);
+            padding: 12px;
+            border: 2px solid var(--primary);
+            margin-top: 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            font-family: var(--header-font);
+            text-decoration: none;
+        }
+
+        .cta-button:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+            border-color: var(--secondary);
+            color: var(--secondary);
+        }
+
+        /* FOOTER STYLES */
+        footer {
+            background: var(--darker);
+            padding: 60px 0 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            font-family: var(--metal-font);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: var(--secondary);
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--gray);
+            border-radius: 0;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            color: var(--primary);
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            color: var(--dark);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--gray);
+            color: var(--secondary);
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 992px) {
+            .events-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                left: 0;
+                background: var(--darker);
+                width: 100%;
+                height: 100vh;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding: 20px 0;
+                clip-path: circle(0px at top right);
+                transition: clip-path 0.4s ease-in-out;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                z-index: 100;
+            }
+
+            .nav-links.active {
+                clip-path: circle(1500px at top right);
+            }
+
+            .nav-links li {
+                margin: 15px 0;
+            }
+
+            .events-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .event-card {
+                height: 450px;
+            }
+
+            .events-container {
+                padding: 100px 0 40px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .page-header p {
+                font-size: 1rem;
+            }
+            
+            .event-overlay h3 {
+                font-size: 2rem;
+            }
+            
+            .event-date {
+                font-size: 1.2rem;
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .band-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <a href="index.html">
+                        <img
+                            src="assets/MOSHCORBLOX project/MOSHCORBLOX LOGO.png"
+                            alt="Moshcorblox Banner"
+                            onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 300 80\'><rect width=\'300\' height=\'80\' fill=\'black\'/><text x=\'150\' y=\'40\' text-anchor=\'middle\' dominant-baseline=\'middle\' fill=\'white\' font-size=\'24\' font-family=\'serif\'>MOSHCORBLOX</text></svg>'"
+                        />
+                    </a>
+                </div>
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <div class="mobile-menu-close">
+                    <i class="fas fa-times"></i>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#carousel">Preview</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="event.html" class="active">Events</a></li>
+                    <li><a href="index.html#community">Community</a></li>
+                    <li><a href="https://discord.gg/U3KKJnVv" class="btn">Join Now</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Events Section -->
+    <div class="container">
+        <section class="events-container">
+            <div class="page-header">
+                <h1>UPCOMING EVENTS</h1>
+                <p>Lihat jadwal event hardcore di dunia virtual Roblox</p>
+            </div>
+
+            <div class="events-grid">
+                <!-- Event 1 -->
+                <div class="event-card" style="background-image: url('assets/events/event-1.jpg');">
+                    <div class="event-badge">Coming Soon</div>
+                    <div class="event-overlay">
+                        <div class="event-overlay-content">
+                            <h3>MOSH NIGHT VOL. 15</h3>
+                            <div class="event-date">
+                                <i class="far fa-calendar"></i>
+                                <span>Kamis, 14 Agustus 2025</span>
+                                <span class="event-time">20:00 WIB</span>
+                            </div>
+                            <div class="event-venue">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Venue: Moshkopi1990</span>
+                            </div>
+                            
+                            <div class="event-lineup">
+                                <div class="lineup-title">LINEUP</div>
+                                <div class="band-list">
+                                    <div class="band-item">
+                                        <div class="band-name">WICIGO SHAWT</div>
+                                    </div>
+                                    <div class="band-item">
+                                        <div class="band-name">OBYRINS</div>
+                                    </div>
+                                    <div class="band-item">
+                                        <div class="band-name">AZURAA</div>
+                                    </div>
+                                    <div class="band-item">
+                                        <div class="band-name">VHANZ</div>
+                                    </div>
+                                    <div class="band-item">
+                                        <div class="band-name">DB MANDALA</div>
+                                    </div>
+                                    <div class="band-item">
+                                        <div class="band-name">TOXICDEV!</div>
+                                    </div>
+                                    <div class="band-item">
+                                        <div class="band-name">BHANZ</div>
+                                    </div>
+                                    <div class="band-item">
+                                        <div class="band-name">GACE</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event 2 -->
+                <div class="event-card" style="background-image: url('assets/events/');">
+                    <div class="event-badge">Coming Soon</div>
+                    <div class="event-overlay">
+                        <div class="event-overlay-content">
+                            <h3>PUNK FEST '25</h3>
+                            <div class="event-date">
+                                <i class="far fa-calendar"></i>
+                                <span>-</span>
+                                <span class="event-time">00:00 WIB</span>
+                            </div>
+                            <div class="event-venue">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Venue: Moshkopi1990/span>
+                            </div>
+                            
+                            <div class="event-lineup">
+                                <div class="lineup-title">LINEUP</div>
+                                <div class="band-list">
+                                    <div class="band-item">
+                                        <div class="band-name">...</div>
+                                    </div>
+                                    <div class="band-item">
+                                        <div class="band-name">...</div>
+                                    </div>
+                                    <div class="band-item">
+                                        <div class="band-name">...</div>
+                                    </div>
+                                    <div class="band-item">
+                                        <div class="band-name">...</div>
+                                    </div>
+                                    <div class="band-item">
+                                        <div class="band-name">...</div>
+                                    </div>
+                                    <div class="band-item">
+                                        <div class="band-name">...</div>
+                                    </div>
+                                    <div class="band-item">
+                                        <div class="band-name">...</div>
+                                    </div>
+                                    <div class="band-item">
+                                        <div class="band-name">...</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Moshcorblox</h3>
+                    <p>Komunitas Hardcore Roblox Indonesia pertama dan terbesar. Tempat di mana musik keras bertemu game virtual.</p>
+                    <div class="social-links">
+                        <a href="https://discord.gg/U3KKJnVv"><i class="fab fa-discord"></i></a>
+                        <a href="https://www.instagram.com/moshcorblox?igsh=MTd2Y3NmZW9tZ2Q5YQ=="><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@moshcorblox?_t=ZS-8ymWvVOdVj7&_r=1"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="event.html">Events</a></li>
+                        <li><a href="index.html#community">Community</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Roblox Group</a></li>
+                        <li><a href="#">Game Guides</a></li>
+                        <li><a href="https://www.roblox.com/share?code=f06dccf92b17964ca0b320d644f68a20&type=ExperienceDetails&stamp=1754895125356">Venue Maps</a></li>
+                        <li><a href="merch.html">Merchandise</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul class="footer-links">
+                        <li><i class="fab fa-discord"></i> discord.gg/U3KKJnVv</li>
+                        <li><i class="fab fa-roblox"></i> Roblox Group: Moshcorblox</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2025 Moshcorblox Community. All rights reserved. | Designed for Indonesian Hardcore Gamers</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.querySelector(".menu-toggle");
+        const menuClose = document.querySelector(".mobile-menu-close");
+        const navLinks = document.querySelector(".nav-links");
+        const menuIcon = document.querySelector(".menu-toggle i");
+
+        menuToggle.addEventListener("click", () => {
+            navLinks.classList.add("active");
+            menuClose.style.display = "block";
+            menuToggle.classList.add("active");
+            document.body.style.overflow = "hidden";
+        });
+
+        menuClose.addEventListener("click", () => {
+            navLinks.classList.remove("active");
+            menuClose.style.display = "none";
+            menuToggle.classList.remove("active");
+            document.body.style.overflow = "";
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll(".nav-links a").forEach((link) => {
+            link.addEventListener("click", () => {
+                navLinks.classList.remove("active");
+                document.body.style.overflow = "";
+            });
+        });
+
+        // Header scroll effect
+        let lastScrollTop = 0;
+        window.addEventListener("scroll", () => {
+            const header = document.querySelector("header");
+            const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+            if (window.innerWidth <= 767) {
+                // Auto-hide header on scroll for mobile
+                if (currentScroll > lastScrollTop && currentScroll > 100) {
+                    // Scroll down
+                    header.style.transform = "translateY(-100%)";
+                } else {
+                    // Scroll up
+                    header.style.transform = "translateY(0)";
+                }
+            } else {
+                // Desktop scroll effect
+                if (currentScroll > 100) {
+                    header.style.backgroundColor = "rgba(0, 0, 0, 0.98)";
+                    header.style.boxShadow = "0 5px 20px rgba(0,0,0,0.5)";
+                } else {
+                    header.style.backgroundColor = "rgba(0, 0, 0, 0.95)";
+                    header.style.boxShadow = "none";
+                }
+            }
+
+            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+        });
+    </script>
+</body>
+</html>
