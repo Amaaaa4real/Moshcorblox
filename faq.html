@@ -22,6 +22,7 @@
         --metal-font: "Metal Mania", "Creepster", "Nosifer", cursive;
         --main-font: "Roboto", sans-serif;
         --header-font: "Montserrat", sans-serif;
+        --accent-glow: 0 0 10px rgba(255, 255, 255, 0.3);
       }
 
       * {
@@ -117,6 +118,7 @@
         transform: translateY(-3px);
         border-color: var(--secondary);
         color: var(--secondary);
+        box-shadow: var(--accent-glow);
       }
 
       .btn-secondary {
@@ -167,6 +169,7 @@
         top: 0;
         z-index: 1000;
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        transition: background 0.3s ease, box-shadow 0.3s ease;
       }
 
       nav {
@@ -212,6 +215,7 @@
         position: relative;
         color: var(--secondary);
         font-family: var(--header-font);
+        display: inline-block;
       }
 
       .nav-links a:after {
@@ -238,6 +242,7 @@
         cursor: pointer;
         font-size: 1.5rem;
         color: var(--primary);
+        z-index: 1001;
       }
 
       /* HERO SECTION */
@@ -249,6 +254,7 @@
         overflow: hidden;
         background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), 
           url('assets/MOSHCORBLOX project/image-11.png') center/cover no-repeat;
+        background-attachment: fixed;
       }
 
       .hero-content {
@@ -284,6 +290,63 @@
         background: var(--darker);
       }
 
+      .faq-search {
+        max-width: 600px;
+        margin: 0 auto 40px;
+        position: relative;
+      }
+
+      .faq-search input {
+        width: 100%;
+        padding: 15px 20px;
+        background: rgba(20, 20, 20, 0.7);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: var(--primary);
+        font-family: var(--main-font);
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+      }
+
+      .faq-search input:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: var(--accent-glow);
+      }
+
+      .faq-search i {
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--secondary);
+        pointer-events: none;
+      }
+
+      .faq-categories {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin-bottom: 40px;
+      }
+
+      .faq-category-btn {
+        padding: 10px 20px;
+        background: rgba(20, 20, 20, 0.7);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: var(--secondary);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-family: var(--header-font);
+        font-weight: 500;
+      }
+
+      .faq-category-btn.active, .faq-category-btn:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--primary);
+        border-color: var(--primary);
+      }
+
       .faq-container {
         max-width: 800px;
         margin: 0 auto;
@@ -295,6 +358,14 @@
         margin-bottom: 20px;
         border-radius: 0;
         overflow: hidden;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.5s ease, transform 0.5s ease, border-color 0.3s ease;
+      }
+
+      .faq-item.visible {
+        opacity: 1;
+        transform: translateY(0);
       }
 
       .faq-question {
@@ -308,6 +379,11 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        transition: background 0.3s ease;
+      }
+
+      .faq-question:hover {
+        background: rgba(255, 255, 255, 0.05);
       }
 
       .faq-question:after {
@@ -325,13 +401,30 @@
         padding: 0 20px;
         max-height: 0;
         overflow: hidden;
-        transition: max-height 0.3s ease, padding 0.3s ease;
+        transition: max-height 0.5s ease, padding 0.3s ease;
         color: var(--secondary);
+        background: rgba(0, 0, 0, 0.2);
       }
 
       .faq-answer.open {
-        padding: 0 20px 20px 20px;
+        padding: 20px;
         max-height: 1000px;
+      }
+
+      .faq-answer ol, .faq-answer ul {
+        margin-left: 20px;
+        margin-bottom: 15px;
+      }
+
+      .faq-answer li {
+        margin-bottom: 8px;
+      }
+
+      .no-results {
+        text-align: center;
+        padding: 40px;
+        color: var(--secondary);
+        display: none;
       }
 
       /* CONTACT SECTION */
@@ -351,6 +444,12 @@
         background: rgba(20, 20, 20, 0.7);
         padding: 30px;
         border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .contact-info:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
       }
 
       .contact-info h3 {
@@ -373,43 +472,7 @@
         margin-right: 10px;
         color: var(--secondary);
         margin-top: 5px;
-      }
-
-      .contact-form {
-        background: rgba(20, 20, 20, 0.7);
-        padding: 30px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-      }
-
-      .contact-form h3 {
-        color: var(--primary);
-        margin-bottom: 20px;
-        font-size: 1.5rem;
-      }
-
-      .form-group {
-        margin-bottom: 20px;
-      }
-
-      .form-group label {
-        display: block;
-        margin-bottom: 8px;
-        color: var(--secondary);
-      }
-
-      .form-group input,
-      .form-group textarea {
-        width: 100%;
-        padding: 12px;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        color: var(--primary);
-        font-family: var(--main-font);
-      }
-
-      .form-group textarea {
-        min-height: 150px;
-        resize: vertical;
+        width: 20px;
       }
 
       /* FOOTER */
@@ -431,6 +494,7 @@
         margin-bottom: 20px;
         font-size: 1.3rem;
         font-family: var(--metal-font);
+        text-align: left;
       }
 
       .footer-links {
@@ -489,6 +553,52 @@
         }
       }
 
+      /* Back to Top Button */
+      .back-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        background: var(--gray);
+        color: var(--primary);
+        border: 1px solid var(--primary);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 999;
+      }
+
+      .back-to-top.visible {
+        opacity: 1;
+        visibility: visible;
+        animation: pulse 2s infinite;
+      }
+
+      .back-to-top:hover {
+        background: var(--primary);
+        color: var(--dark);
+        transform: translateY(-5px);
+      }
+
+      @keyframes pulse {
+        0% {
+          box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+        }
+        70% {
+          box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+        }
+      }
+
       /* RESPONSIVE DESIGN */
       @media (max-width: 768px) {
         .menu-toggle {
@@ -523,13 +633,49 @@
         }
 
         #hero {
-          height: 50vh;
+          height: 60vh;
+          background-attachment: scroll;
+        }
+
+        .contact-container {
+          grid-template-columns: 1fr;
+        }
+
+        .faq-categories {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .faq-category-btn {
+          width: 100%;
+          text-align: center;
+        }
+        
+        .footer-column h3 {
+          text-align: center;
         }
       }
 
       @media (max-width: 576px) {
         section {
           padding: 60px 0;
+        }
+
+        .faq-question {
+          padding: 15px;
+          font-size: 1.1rem;
+        }
+
+        .faq-answer.open {
+          padding: 15px;
+        }
+
+        .back-to-top {
+          bottom: 20px;
+          right: 20px;
+          width: 40px;
+          height: 40px;
+          font-size: 1rem;
         }
       }
     </style>
@@ -556,7 +702,7 @@
             <li><a href="index.html#about">About</a></li>
             <li><a href="index.html#events">More</a></li>
             <li><a href="index.html#community">Community</a></li>
-            <li><a href="https://discord.gg/nrtZNCCx9b" class="btn">Join Now</a></li>
+            <li><a href="#" id="discordLinkNav" class="btn">Join Now</a></li>
           </ul>
         </nav>
       </div>
@@ -583,9 +729,24 @@
           <p>Semua yang perlu Anda ketahui tentang MOSHCORBLOX</p>
         </div>
 
+        <!-- Search Box -->
+        <div class="faq-search">
+          <input type="text" id="faq-search-input" placeholder="Cari pertanyaan atau kata kunci...">
+          <i class="fas fa-search"></i>
+        </div>
+
+        <!-- Categories -->
+        <div class="faq-categories">
+          <button class="faq-category-btn active" data-category="all">Semua</button>
+          <button class="faq-category-btn" data-category="membership">Keanggotaan</button>
+          <button class="faq-category-btn" data-category="events">Event</button>
+          <button class="faq-category-btn" data-category="technical">Teknis</button>
+          <button class="faq-category-btn" data-category="merchandise">Merchandise</button>
+        </div>
+
         <div class="faq-container">
           <!-- FAQ Item 1 -->
-          <div class="faq-item">
+          <div class="faq-item" data-category="membership">
             <div class="faq-question">
               Bagaimana cara bergabung dengan komunitas MOSHCORBLOX?
             </div>
@@ -600,7 +761,7 @@
           </div>
 
           <!-- FAQ Item 2 -->
-          <div class="faq-item">
+          <div class="faq-item" data-category="membership">
             <div class="faq-question">
               Apakah ada persyaratan khusus untuk bergabung?
             </div>
@@ -616,7 +777,7 @@
           </div>
 
           <!-- FAQ Item 3 -->
-          <div class="faq-item">
+          <div class="faq-item" data-category="events">
             <div class="faq-question">
               Bagaimana cara mengikuti event konser virtual?
             </div>
@@ -631,7 +792,7 @@
           </div>
 
           <!-- FAQ Item 4 -->
-          <div class="faq-item">
+          <div class="faq-item" data-category="events">
             <div class="faq-question">
               Apakah event di MOSHCORBLOX berbayar?
             </div>
@@ -641,7 +802,7 @@
           </div>
 
           <!-- FAQ Item 5 -->
-          <div class="faq-item">
+          <div class="faq-item" data-category="membership">
             <div class="faq-question">
               Bagaimana cara menjadi bagian dari tim MOSHCORBLOX?
             </div>
@@ -656,8 +817,24 @@
             </div>
           </div>
 
+          <!-- FAQ Item 6 -->
+          <div class="faq-item" data-category="technical">
+            <div class="faq-question">
+              Apa spesifikasi komputer yang dibutuhkan untuk mengikuti event?
+            </div>
+            <div class="faq-answer">
+              <p>Roblox dapat berjalan di berbagai perangkat, tetapi untuk pengalaman terbaik dalam event kami:</p>
+              <ul>
+                <li>Prosesor: Dual-core 2.0 GHz atau lebih tinggi</li>
+                <li>RAM: Minimal 4GB (8GB direkomendasikan)</li>
+                <li>Kartu Grafis: DirectX 9 compatible dengan 1GB VRAM</li>
+                <li>Koneksi Internet: Minimal 10Mbps untuk pengalaman smooth</li>
+              </ul>
+            </div>
+          </div>
+
           <!-- FAQ Item 7 -->
-          <div class="faq-item">
+          <div class="faq-item" data-category="merchandise">
             <div class="faq-question">
               Bagaimana cara membeli merchandise resmi MOSHCORBLOX?
             </div>
@@ -671,10 +848,54 @@
               <p>Info lebih lanjut dapat diperoleh di channel #announcement di Discord kami.</p>
             </div>
           </div>
+
+          <!-- FAQ Item 8 -->
+          <div class="faq-item" data-category="technical">
+            <div class="faq-question">
+              Saya mengalami masalah teknis saat event, apa yang harus dilakukan?
+            </div>
+            <div class="faq-answer">
+              <p>Jika Anda mengalami masalah teknis selama event:</p>
+              <ol>
+                <li>Pastikan koneksi internet Anda stabil</li>
+                <li>Restart game Roblox dan coba bergabung kembali</li>
+                <li>Periksa pengaturan grafis Roblox - turunkan kualitas jika perlu</li>
+                <li>Jika masalah berlanjut, laporkan ke tim teknis di channel #help-desk di Discord</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <div class="no-results" id="no-results">
+          <i class="fas fa-search fa-3x" style="margin-bottom: 20px;"></i>
+          <h3>Tidak ada hasil ditemukan</h3>
+          <p>Coba gunakan kata kunci yang berbeda atau lihat kategori lainnya</p>
         </div>
       </div>
     </section>
 
+    <!-- Contact Section -->
+    <section id="contact">
+      <div class="container">
+        <div class="section-title">
+          <h2>Masih Punya Pertanyaan?</h2>
+          <p>Hubungi kami langsung melalui platform kami</p>
+        </div>
+
+        <div class="contact-container">
+          <div class="contact-info">
+            <h3>Informasi Kontak</h3>
+            <ul class="contact-details">
+              <li><i class="fab fa-discord"></i> Discord: <a href="#" id="contactDiscord">Moshcorblox Server</a></li>
+              <li><i class="fab fa-roblox"></i> Roblox Group: <a href="#" id="contactRoblox">Moshcorblox Community</a></li>
+              <li><i class="fab fa-instagram"></i> Instagram: <a href="#" id="contactInstagram">@moshcorblox</a></li>
+              <li><i class="fab fa-tiktok"></i> TikTok: <a href="#" id="contactTiktok">@moshcorblox</a></li>
+              <li><i class="fas fa-store"></i> Merchandise: <a href="https://shopee.co.id/connection584" id="contactMerch">Shopee Connection584</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- Footer -->
     <footer>
@@ -684,9 +905,9 @@
             <h3>Moshcorblox</h3>
             <p>Komunitas Hardcore Roblox Indonesia pertama dan terbesar. Tempat di mana musik keras bertemu game virtual.</p>
             <div class="footer-social-links">
-              <a href="https://discord.gg/nrtZNCCx9b"><i class="fab fa-discord"></i></a>
-              <a href="https://www.instagram.com/moshcorblox?igsh=MTd2Y3NmZW9tZ2Q5YQ=="><i class="fab fa-instagram"></i></a>
-              <a href="https://www.tiktok.com/@moshcorblox?_t=ZS-8ymWvVOdVj7&_r=1"><i class="fab fa-tiktok"></i></a>
+              <a href="#" id="discordLinkFooter"><i class="fab fa-discord"></i></a>
+              <a href="#" id="instagramLinkFooter"><i class="fab fa-instagram"></i></a>
+              <a href="#" id="tiktokLinkFooter"><i class="fab fa-tiktok"></i></a>
             </div>
           </div>
 
@@ -704,10 +925,10 @@
           <div class="footer-column">
             <h3>Resources</h3>
             <ul class="footer-links">
-              <li><a href="#">Roblox Group</a></li>
+              <li><a href="#" id="robloxGroupLinkFooter">Roblox Group</a></li>
               <li><a href="#">Game Guides</a></li>
-              <li><a href="https://www.roblox.com/share?code=f06dccf92b17964ca0b320d644f68a20&type=ExperienceDetails&stamp=1754895125356">Venue Maps</a></li>
-              <li><a href="#">Merchandise</a></li>
+              <li><a href="#" id="robloxMapLinkFooter">Venue Maps</a></li>
+              <li><a href="merch.html">Merchandise</a></li>
               <li><a href="faq.html">FAQ</a></li>
             </ul>
           </div>
@@ -726,49 +947,148 @@
       </div>
     </footer>
 
+    <!-- Back to Top Button -->
+    <div class="back-to-top">
+      <i class="fas fa-arrow-up"></i>
+    </div>
+
     <!-- Scripts -->
     <script>
+      // Konfigurasi link (sama seperti di founder.html)
+      const CONFIG = {
+        DISCORD_URL: "https://discord.gg/nrtZNCCx9b",
+        INSTAGRAM_URL: "https://www.instagram.com/moshcorblox?igsh=MTd2Y3NmZW9tZ2Q5YQ==",
+        TIKTOK_URL: "https://www.tiktok.com/@moshcorblox?_t=ZS-8ymWvVOdVj7&_r=1",
+        ROBLOX_GROUP: "#",
+        ROBLOX_MAP: "https://www.roblox.com/share?code=f06dccf92b17964ca0b320d644f68a20&type=ExperienceDetails&stamp=1754895125356",
+        MERCH_URL: "https://shopee.co.id/connection584"
+      };
+
+      // Fungsi untuk mengupdate semua link
+      function updateAllLinks() {
+        try {
+          console.log("🚀 Updating all links in faq.html...");
+
+          // Mapping semua link dengan ID yang unik
+          const linkMappings = {
+            // Navigation
+            discordLinkNav: CONFIG.DISCORD_URL,
+
+            // Contact Section
+            contactDiscord: CONFIG.DISCORD_URL,
+            contactRoblox: CONFIG.ROBLOX_GROUP,
+            contactInstagram: CONFIG.INSTAGRAM_URL,
+            contactTiktok: CONFIG.TIKTOK_URL,
+            contactMerch: CONFIG.MERCH_URL,
+
+            // Footer
+            discordLinkFooter: CONFIG.DISCORD_URL,
+            instagramLinkFooter: CONFIG.INSTAGRAM_URL,
+            tiktokLinkFooter: CONFIG.TIKTOK_URL,
+            robloxGroupLinkFooter: CONFIG.ROBLOX_GROUP,
+            robloxMapLinkFooter: CONFIG.ROBLOX_MAP,
+          };
+
+          // Update semua link
+          for (const [id, url] of Object.entries(linkMappings)) {
+            const element = document.getElementById(id);
+            if (element) {
+              element.href = url;
+              // Tambahkan target="_blank" untuk membuka di tab baru
+              element.setAttribute("target", "_blank");
+              element.setAttribute("rel", "noopener noreferrer");
+              console.log(`✅ Updated ${id}: ${url}`);
+            } else {
+              console.warn(`⚠️ Element with ID ${id} not found`);
+            }
+          }
+
+          console.log("🎉 All links updated successfully!");
+        } catch (error) {
+          console.error("❌ Error updating links:", error);
+        }
+      }
+
       // Mobile Menu Toggle
       const menuToggle = document.querySelector(".menu-toggle");
       const navLinks = document.querySelector(".nav-links");
 
-      menuToggle.addEventListener("click", () => {
-        navLinks.classList.toggle("active");
-      });
+      if (menuToggle && navLinks) {
+        menuToggle.addEventListener("click", () => {
+          navLinks.classList.toggle("active");
+          menuToggle.classList.toggle('active');
+        });
+      }
 
       // Close menu when clicking a link
       document.querySelectorAll(".nav-links a").forEach((link) => {
         link.addEventListener("click", () => {
           navLinks.classList.remove("active");
+          menuToggle.classList.remove('active');
         });
       });
 
-      // Smooth scrolling for anchor links
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          e.preventDefault();
-
-          const target = document.querySelector(this.getAttribute("href"));
-          if (target) {
-            window.scrollTo({
-              top: target.offsetTop - 80,
-              behavior: "smooth",
-            });
-          }
+      // PERBAIKAN: Smooth scrolling yang diperbaiki
+      function initSmoothScrolling() {
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            // Pastikan ini adalah link internal (dimulai dengan #)
+            const href = this.getAttribute("href");
+            if (href.startsWith("#") && href !== "#") {
+              e.preventDefault();
+              
+              const targetId = href;
+              const target = document.querySelector(targetId);
+              
+              if (target) {
+                window.scrollTo({
+                  top: target.offsetTop - 80,
+                  behavior: "smooth",
+                });
+                
+                // Update URL dengan hash
+                history.pushState(null, null, targetId);
+              }
+            }
+          });
         });
-      });
+      }
 
       // Header scroll effect
       window.addEventListener("scroll", () => {
         const header = document.querySelector("header");
-        if (window.scrollY > 100) {
-          header.style.backgroundColor = "rgba(0, 0, 0, 0.98)";
-          header.style.boxShadow = "0 5px 20px rgba(0,0,0,0.5)";
-        } else {
-          header.style.backgroundColor = "rgba(0, 0, 0, 0.95)";
-          header.style.boxShadow = "none";
+        const backToTop = document.querySelector(".back-to-top");
+        
+        if (header) {
+          if (window.scrollY > 100) {
+            header.style.backgroundColor = "rgba(0, 0, 0, 0.98)";
+            header.style.boxShadow = "0 5px 20px rgba(0,0,0,0.5)";
+          } else {
+            header.style.backgroundColor = "rgba(0, 0, 0, 0.95)";
+            header.style.boxShadow = "none";
+          }
+        }
+
+        // Back to top button visibility
+        if (backToTop) {
+          if (window.scrollY > 500) {
+            backToTop.classList.add("visible");
+          } else {
+            backToTop.classList.remove("visible");
+          }
         }
       });
+
+      // Back to top functionality
+      const backToTopBtn = document.querySelector(".back-to-top");
+      if (backToTopBtn) {
+        backToTopBtn.addEventListener("click", () => {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+          });
+        });
+      }
 
       // FAQ Accordion
       const faqQuestions = document.querySelectorAll('.faq-question');
@@ -795,18 +1115,91 @@
         });
       });
 
-      // Contact Form Submission
-      const contactForm = document.getElementById('contactForm');
-      if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-          e.preventDefault();
+      // FAQ Search Functionality
+      const faqSearch = document.getElementById('faq-search-input');
+      const faqItems = document.querySelectorAll('.faq-item');
+      const noResults = document.getElementById('no-results');
+
+      if (faqSearch && faqItems && noResults) {
+        faqSearch.addEventListener('input', () => {
+          const searchTerm = faqSearch.value.toLowerCase();
+          let resultsFound = false;
           
-          // In a real application, you would send the form data to a server
-          // For this example, we'll just show an alert
-          alert('Terima kasih! Pesan Anda telah terkirim. Kami akan menghubungi Anda secepatnya.');
-          contactForm.reset();
+          faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question').textContent.toLowerCase();
+            const answer = item.querySelector('.faq-answer').textContent.toLowerCase();
+            
+            if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+              item.style.display = 'block';
+              resultsFound = true;
+            } else {
+              item.style.display = 'none';
+            }
+          });
+          
+          noResults.style.display = resultsFound ? 'none' : 'block';
         });
       }
+
+      // FAQ Category Filter
+      const categoryButtons = document.querySelectorAll('.faq-category-btn');
+      
+      if (categoryButtons && faqItems && noResults) {
+        categoryButtons.forEach(button => {
+          button.addEventListener('click', () => {
+            const category = button.getAttribute('data-category');
+            
+            // Update active button
+            categoryButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            
+            // Filter items
+            let resultsFound = false;
+            
+            faqItems.forEach(item => {
+              const itemCategory = item.getAttribute('data-category');
+              
+              if (category === 'all' || category === itemCategory) {
+                item.style.display = 'block';
+                resultsFound = true;
+              } else {
+                item.style.display = 'none';
+              }
+            });
+            
+            noResults.style.display = resultsFound ? 'none' : 'block';
+          });
+        });
+      }
+
+      // Scroll animation for FAQ items
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px"
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      }, observerOptions);
+
+      // Observe all FAQ items
+      document.querySelectorAll(".faq-item").forEach(item => {
+        observer.observe(item);
+      });
+
+      // Update semua link saat DOM siap
+      document.addEventListener("DOMContentLoaded", function() {
+        console.log("📄 DOM Content Loaded in faq.html");
+        updateAllLinks();
+        initSmoothScrolling(); // Inisialisasi smooth scrolling yang diperbaiki
+      });
+
+      // Backup trigger
+      setTimeout(updateAllLinks, 1000);
     </script>
 </body>
 </html>

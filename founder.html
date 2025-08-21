@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Founder & Developer - MOSHCORBLOX</title>
@@ -22,6 +22,7 @@
         --metal-font: "Metal Mania", "Creepster", "Nosifer", cursive;
         --main-font: "Roboto", sans-serif;
         --header-font: "Montserrat", sans-serif;
+        --accent-glow: 0 0 10px rgba(255, 255, 255, 0.7);
       }
 
       * {
@@ -167,6 +168,7 @@
         top: 0;
         z-index: 1000;
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        transition: background 0.3s ease, box-shadow 0.3s ease;
       }
 
       nav {
@@ -248,6 +250,7 @@
         position: relative;
         overflow: hidden;
         background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url("assets/MOSHCORBLOX project/image-2.png") center/cover no-repeat;
+        background-attachment: fixed;
       }
 
       .hero-content {
@@ -297,12 +300,20 @@
         border-radius: 0;
         overflow: hidden;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
         border: 1px solid rgba(255, 255, 255, 0.1);
         position: relative;
         flex: 0 1 calc(33.333% - 30px); /* Default untuk 3 card per baris */
         max-width: 400px; /* Lebar maksimum card */
         min-width: 300px; /* Lebar minimum card */
+        opacity: 0;
+        transform: translateY(50px);
+        transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease;
+      }
+
+      .founder-card.visible {
+        opacity: 1;
+        transform: translateY(0);
       }
 
       /* Aturan khusus untuk 1 atau 2 card */
@@ -319,8 +330,8 @@
       }
 
       .founder-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 30px rgba(255, 255, 255, 0.05);
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 15px 30px rgba(255, 255, 255, 0.1), var(--accent-glow);
         border-color: var(--primary);
       }
 
@@ -334,13 +345,13 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-        transition: transform 0.5s ease;
-        filter: grayscale(100%);
+        transition: transform 0.5s ease, filter 0.5s ease;
+        filter: grayscale(100%) contrast(120%);
       }
 
       .founder-card:hover .founder-image img {
         transform: scale(1.1);
-        filter: grayscale(50%);
+        filter: grayscale(30%) contrast(120%);
       }
 
       .founder-content {
@@ -387,6 +398,68 @@
         background: var(--primary);
         color: var(--dark);
         transform: translateY(-3px);
+        box-shadow: var(--accent-glow);
+      }
+
+      /* Modal Styles */
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        z-index: 2000;
+        overflow-y: auto;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .modal.active {
+        display: flex;
+        opacity: 1;
+      }
+
+      .modal-content {
+        background: var(--darker);
+        margin: auto;
+        padding: 30px;
+        border: 1px solid var(--primary);
+        width: 90%;
+        max-width: 600px;
+        position: relative;
+        transform: scale(0.9);
+        transition: transform 0.3s ease;
+        box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+      }
+
+      .modal.active .modal-content {
+        transform: scale(1);
+      }
+
+      .close-modal {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: 1.5rem;
+        color: var(--primary);
+        background: none;
+        border: none;
+        cursor: pointer;
+        transition: color 0.3s ease;
+      }
+
+      .close-modal:hover {
+        color: var(--secondary);
+      }
+
+      .modal-image {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        margin-bottom: 20px;
+        filter: grayscale(50%) contrast(120%);
       }
 
       /* TIMELINE SECTION */
@@ -415,6 +488,14 @@
       .timeline-item {
         position: relative;
         margin-bottom: 50px;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+
+      .timeline-item.visible {
+        opacity: 1;
+        transform: translateY(0);
       }
 
       .timeline-item:nth-child(even) .timeline-content {
@@ -430,6 +511,12 @@
         background: rgba(20, 20, 20, 0.7);
         padding: 20px;
         border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .timeline-content:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
       }
 
       .timeline-content h3 {
@@ -554,6 +641,39 @@
         animation: float 4s ease-in-out infinite;
       }
 
+      /* Back to Top Button */
+      .back-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        background: var(--gray);
+        color: var(--primary);
+        border: 1px solid var(--primary);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 999;
+      }
+
+      .back-to-top.visible {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .back-to-top:hover {
+        background: var(--primary);
+        color: var(--dark);
+        transform: translateY(-5px);
+      }
+
       /* RESPONSIVE DESIGN */
       @media (max-width: 992px) {
         .timeline-container::before {
@@ -625,6 +745,10 @@
           flex: 0 1 100%;
           max-width: 500px;
         }
+
+        .modal-content {
+          padding: 20px;
+        }
       }
 
       @media (max-width: 576px) {
@@ -634,6 +758,7 @@
 
         #hero {
           height: 60vh;
+          background-attachment: scroll;
         }
 
         .timeline-container::before {
@@ -649,10 +774,18 @@
         .timeline-item::after {
           left: 0;
         }
+
+        .back-to-top {
+          bottom: 20px;
+          right: 20px;
+          width: 40px;
+          height: 40px;
+          font-size: 1rem;
+        }
       }
     </style>
-  </head>
-  <body>
+</head>
+<body>
     <!-- Header & Navigation -->
     <header>
       <div class="container">
@@ -674,13 +807,14 @@
             <li><a href="index.html#about">About</a></li>
             <li><a href="index.html#events">More</a></li>
             <li><a href="index.html#community">Community</a></li>
-            <li><a href="https://discord.gg/nrtZNCCx9b" class="btn">Join Now</a></li>
+            <!-- Perubahan: Menambahkan ID pada link Discord -->
+            <li><a href="#" id="discordLinkNav" class="btn">Join Now</a></li>
           </ul>
         </nav>
       </div>
     </header>
 
-    <!-- Hero Section -->
+   <!-- Hero Section -->
     <section id="hero">
       <div class="container">
         <div class="hero-content">
@@ -703,7 +837,7 @@
 
         <div class="founder-grid">
           <!-- Founder 1 -->
-          <div class="founder-card">
+          <div class="founder-card" data-modal="modal-founder1">
             <div class="founder-image">
               <img src="assets/MOSHCORBLOX project/iconUser.png" alt="Founder 1" />
             </div>
@@ -720,7 +854,7 @@
           </div>
 
           <!-- Founder 2 -->
-          <div class="founder-card">
+          <div class="founder-card" data-modal="modal-founder2">
             <div class="founder-image">
               <img src="assets/MOSHCORBLOX project/iconUser.png" alt="Founder 2" />
             </div>
@@ -749,7 +883,7 @@
 
         <div class="founder-grid">
           <!-- Developer 1 -->
-          <div class="founder-card">
+          <div class="founder-card" data-modal="modal-dev1">
             <div class="founder-image">
               <img src="assets/MOSHCORBLOX project/iconUser.png" alt="Developer 1" />
             </div>
@@ -765,7 +899,7 @@
           </div>
 
           <!-- Developer 2 -->
-          <div class="founder-card">
+          <div class="founder-card" data-modal="modal-dev2">
             <div class="founder-image">
               <img src="assets/MOSHCORBLOX project/iconUser.png" alt="Developer 2" />
             </div>
@@ -781,7 +915,7 @@
           </div>
 
           <!-- Developer 3 -->
-          <div class="founder-card">
+          <div class="founder-card" data-modal="modal-dev3">
             <div class="founder-image">
               <img src="assets/MOSHCORBLOX project/iconUser.png" alt="Developer 3" />
             </div>
@@ -800,7 +934,7 @@
     </section>
 
     <!-- Social Media Handler Section -->
-    <section id="developers">
+    <section id="social-media">
       <div class="container">
         <div class="section-title">
           <h2>Social Media Handler</h2>
@@ -809,7 +943,7 @@
 
         <div class="founder-grid single-card">
           <!-- Handler 1 -->
-          <div class="founder-card">
+          <div class="founder-card" data-modal="modal-sm1">
             <div class="founder-image">
               <img src="assets/MOSHCORBLOX project/iconUser.png" alt="Developer 1" />
             </div>
@@ -827,7 +961,7 @@
     </section>
 
     <!-- Admin & Head Admin -->
-    <section id="developers">
+    <section id="admin">
       <div class="container">
         <div class="section-title">
           <h2>Admin & Head Admin</h2>
@@ -836,7 +970,7 @@
 
         <div class="founder-grid double-card">
           <!-- Head Admin -->
-          <div class="founder-card">
+          <div class="founder-card" data-modal="modal-admin1">
             <div class="founder-image">
               <img src="assets/MOSHCORBLOX project/iconUser.png" alt="Developer 1" />
             </div>
@@ -851,7 +985,7 @@
             </div>
           </div>
           <!-- Admin 1-->
-          <div class="founder-card">
+          <div class="founder-card" data-modal="modal-admin2">
             <div class="founder-image">
               <img src="assets/MOSHCORBLOX project/iconUser.png" alt="Developer 1" />
             </div>
@@ -866,7 +1000,7 @@
             </div>
           </div>
           <!-- Admin 2-->
-          <div class="founder-card">
+          <div class="founder-card" data-modal="modal-admin3">
             <div class="founder-image">
               <img src="assets/MOSHCORBLOX project/iconUser.png" alt="Developer 1" />
             </div>
@@ -881,7 +1015,7 @@
             </div>
           </div>
           <!-- Admin 3-->
-          <div class="founder-card">
+          <div class="founder-card" data-modal="modal-admin4">
             <div class="founder-image">
               <img src="assets/MOSHCORBLOX project/iconUser.png" alt="Developer 1" />
             </div>
@@ -899,7 +1033,7 @@
     </section>
 
     <!-- Clipper -->
-    <section id="developers">
+    <section id="clippers">
       <div class="container">
         <div class="section-title">
           <h2>Clippers</h2>
@@ -908,7 +1042,7 @@
 
         <div class="founder-grid">
           <!-- Clipper 1 -->
-          <div class="founder-card">
+          <div class="founder-card" data-modal="modal-clipper1">
             <div class="founder-image">
               <img src="assets/MOSHCORBLOX project/iconUser.png" alt="Developer 1" />
             </div>
@@ -923,7 +1057,7 @@
             </div>
           </div>
           <!-- Clipper 2 -->
-          <div class="founder-card">
+          <div class="founder-card" data-modal="modal-clipper2">
             <div class="founder-image">
               <img src="assets/MOSHCORBLOX project/iconUser.png" alt="Developer 1" />
             </div>
@@ -938,7 +1072,7 @@
             </div>
           </div>
           <!-- Clipper 3 -->
-          <div class="founder-card">
+          <div class="founder-card" data-modal="modal-clipper3">
             <div class="founder-image">
               <img src="assets/MOSHCORBLOX project/iconUser.png" alt="Developer 1" />
             </div>
@@ -956,7 +1090,7 @@
     </section>
 
     <!-- Poster Designer -->
-    <section id="developers">
+    <section id="designers">
       <div class="container">
         <div class="section-title">
           <h2>Poster Designer</h2>
@@ -965,7 +1099,7 @@
 
         <div class="founder-grid single-card">
           <!-- designer -->
-          <div class="founder-card">
+          <div class="founder-card" data-modal="modal-designer1">
             <div class="founder-image">
               <img src="assets/MOSHCORBLOX project/iconUser.png" alt="Developer 1" />
             </div>
@@ -983,7 +1117,7 @@
     </section>
 
     <!-- Website Programmer -->
-    <section id="developers">
+    <section id="web-developers">
       <div class="container">
         <div class="section-title">
           <h2>Website Programmer</h2>
@@ -992,7 +1126,7 @@
 
         <div class="founder-grid single-card">
           <!-- Web Programmer -->
-          <div class="founder-card">
+          <div class="founder-card" data-modal="modal-web1">
             <div class="founder-image">
               <img src="assets/MOSHCORBLOX project/iconUser.png" alt="Developer 1" />
             </div>
@@ -1009,39 +1143,55 @@
         </div>
     </section>
 
-   <!-- Footer -->
+    <!-- Modal Templates -->
+    <div class="modal" id="modal-founder1">
+      <div class="modal-content">
+        <button class="close-modal">&times;</button>
+        <img src="assets/MOSHCORBLOX project/iconUser.png" alt="Meiza a.k.a Rexx" class="modal-image">
+        <h3>Meiza a.k.a Rexx</h3>
+        <span class="founder-role">Founder</span>
+        <p>Founder dari Moshcorblox dengan visi untuk menciptakan komunitas hardcore Roblox terbesar di Indonesia. Memiliki passion dalam musik hardcore dan pengalaman gaming yang luas.</p>
+        <div class="social-links">
+          <!-- Social links here -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
     <footer>
       <div class="container">
         <div class="footer-content">
           <div class="footer-column">
             <h3>Moshcorblox</h3>
             <p>Komunitas Hardcore Roblox Indonesia pertama dan terbesar. Tempat di mana musik keras bertemu game virtual.</p>
-            <div class="social-links">
-              <a href="https://discord.gg/nrtZNCCx9b"><i class="fab fa-discord"></i></a>
-              <a href="https://www.instagram.com/moshcorblox?igsh=MTd2Y3NmZW9tZ2Q5YQ=="><i class="fab fa-instagram"></i></a>
-              <a href="https://www.tiktok.com/@moshcorblox?_t=ZS-8ymWvVOdVj7&_r=1"><i class="fab fa-tiktok"></i></a>
+            <div class="footer-social-links">
+              <!-- Perubahan: Menambahkan ID pada link sosial media -->
+              <a href="#" id="discordLinkFooter"><i class="fab fa-discord"></i></a>
+              <a href="#" id="instagramLinkFooter"><i class="fab fa-instagram"></i></a>
+              <a href="#" id="tiktokLinkFooter"><i class="fab fa-tiktok"></i></a>
             </div>
           </div>
 
           <div class="footer-column">
             <h3>Links</h3>
             <ul class="footer-links">
-              <li><a href="#hero">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#carousel">Preview</a></li>
-              <li><a href="#events">More</a></li>
-              <li><a href="#community">Community</a></li>
+              <li><a href="index.html#hero">Home</a></li>
+              <li><a href="index.html#about">About</a></li>
+              <li><a href="index.html#carousel">Preview</a></li>
+              <li><a href="index.html#events">More</a></li>
+              <li><a href="index.html#community">Community</a></li>
             </ul>
           </div>
 
           <div class="footer-column">
             <h3>Resources</h3>
             <ul class="footer-links">
-              <li><a href="#">Roblox Group</a></li>
+              <!-- Perubahan: Menambahkan ID pada link resources -->
+              <li><a href="#" id="robloxGroupLinkFooter">Roblox Group</a></li>
               <li><a href="#">Game Guides</a></li>
-              <li><a href="https://www.roblox.com/share?code=f06dccf92b17964ca0b320d644f68a20&type=ExperienceDetails&stamp=1754895125356">Venue Maps</a></li>
-              <li><a href="https://shopee.co.id/connection584">Merchandise</a></li>
-              <li><a href="#">FAQ</a></li>
+              <li><a href="#" id="robloxMapLinkFooter">Venue Maps</a></li>
+              <li><a href="merch.html">Merchandise</a></li>
+              <li><a href="faq.html">FAQ</a></li>
             </ul>
           </div>
 
@@ -1059,49 +1209,201 @@
       </div>
     </footer>
 
+    <!-- Back to Top Button -->
+    <div class="back-to-top">
+      <i class="fas fa-arrow-up"></i>
+    </div>
+
     <!-- Scripts -->
-    <script>
-      // Mobile Menu Toggle
-      const menuToggle = document.querySelector(".menu-toggle");
-      const navLinks = document.querySelector(".nav-links");
+  <script>
+  // Konfigurasi link (diambil dari index.html)
+  const CONFIG = {
+    DISCORD_URL: "https://discord.gg/nrtZNCCx9b",
+    INSTAGRAM_URL: "https://www.instagram.com/moshcorblox?igsh=MTd2Y3NmZW9tZ2Q5YQ==",
+    TIKTOK_URL: "https://www.tiktok.com/@moshcorblox?_t=ZS-8ymWvVOdVj7&_r=1",
+    ROBLOX_GROUP: "https://www.roblox.com/share/g/985994497",
+    ROBLOX_MAP: "https://www.roblox.com/share?code=f06dccf92b17964ca0b320d644f68a20&type=ExperienceDetails&stamp=1754895125356"
+  };
 
-      menuToggle.addEventListener("click", () => {
-        navLinks.classList.toggle("active");
-      });
+  // Fungsi untuk mengupdate semua link
+  function updateAllLinks() {
+    try {
+      console.log("🚀 Updating all links in founder.html...");
 
-      // Close menu when clicking a link
-      document.querySelectorAll(".nav-links a").forEach((link) => {
-        link.addEventListener("click", () => {
-          navLinks.classList.remove("active");
-        });
-      });
+      // Mapping semua link dengan ID yang unik
+      const linkMappings = {
+        // Navigation
+        discordLinkNav: CONFIG.DISCORD_URL,
 
-      // Smooth scrolling for anchor links
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
+        // Footer
+        discordLinkFooter: CONFIG.DISCORD_URL,
+        instagramLinkFooter: CONFIG.INSTAGRAM_URL,
+        tiktokLinkFooter: CONFIG.TIKTOK_URL,
+        robloxGroupLinkFooter: CONFIG.ROBLOX_GROUP,
+        robloxMapLinkFooter: CONFIG.ROBLOX_MAP,
+      };
+
+      // Update semua link
+      for (const [id, url] of Object.entries(linkMappings)) {
+        const element = document.getElementById(id);
+        if (element) {
+          element.href = url;
+          // Tambahkan target="_blank" untuk membuka di tab baru
+          element.setAttribute("target", "_blank");
+          console.log(`✅ Updated ${id}: ${url}`);
+        } else {
+          console.warn(`⚠️ Element with ID ${id} not found`);
+        }
+      }
+
+      console.log("🎉 All links updated successfully!");
+    } catch (error) {
+      console.error("❌ Error updating links:", error);
+    }
+  }
+
+  // Mobile Menu Toggle
+  const menuToggle = document.querySelector(".menu-toggle");
+  const navLinks = document.querySelector(".nav-links");
+
+  if (menuToggle && navLinks) {
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+  }
+
+  // PERBAIKAN: Fungsi smooth scrolling yang diperbaiki
+  function initSmoothScrolling() {
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener("click", function (e) {
+        // Pastikan ini adalah link internal (dimulai dengan #)
+        if (this.getAttribute("href").startsWith("#")) {
           e.preventDefault();
-
-          const target = document.querySelector(this.getAttribute("href"));
+          
+          const targetId = this.getAttribute("href");
+          const target = document.querySelector(targetId);
+          
           if (target) {
             window.scrollTo({
               top: target.offsetTop - 80,
               behavior: "smooth",
             });
           }
-        });
-      });
-
-      // Header scroll effect
-      window.addEventListener("scroll", () => {
-        const header = document.querySelector("header");
-        if (window.scrollY > 100) {
-          header.style.backgroundColor = "rgba(0, 0, 0, 0.98)";
-          header.style.boxShadow = "0 5px 20px rgba(0,0,0,0.5)";
-        } else {
-          header.style.backgroundColor = "rgba(0, 0, 0, 0.95)";
-          header.style.boxShadow = "none";
         }
       });
-    </script>
-  </body>
+    });
+  }
+
+  // Header scroll effect
+  window.addEventListener("scroll", () => {
+    const header = document.querySelector("header");
+    const backToTop = document.querySelector(".back-to-top");
+    
+    if (header) {
+      if (window.scrollY > 100) {
+        header.style.backgroundColor = "rgba(0, 0, 0, 0.98)";
+        header.style.boxShadow = "0 5px 20px rgba(0,0,0,0.5)";
+      } else {
+        header.style.backgroundColor = "rgba(0, 0, 0, 0.95)";
+        header.style.boxShadow = "none";
+      }
+    }
+
+    // Back to top button visibility
+    if (backToTop) {
+      if (window.scrollY > 500) {
+        backToTop.classList.add("visible");
+      } else {
+        backToTop.classList.remove("visible");
+      }
+    }
+  });
+
+  // Back to top functionality
+  const backToTopBtn = document.querySelector(".back-to-top");
+  if (backToTopBtn) {
+    backToTopBtn.addEventListener("click", () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    });
+  }
+
+  // Scroll animation for founder cards and timeline items
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: "0px 0px -50px 0px"
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+      }
+    });
+  }, observerOptions);
+
+  // Observe all founder cards and timeline items
+  document.querySelectorAll(".founder-card, .timeline-item").forEach(item => {
+    observer.observe(item);
+  });
+
+  // Modal functionality
+  const modals = document.querySelectorAll(".modal");
+  const founderCards = document.querySelectorAll(".founder-card");
+
+  founderCards.forEach(card => {
+    card.addEventListener("click", () => {
+      const modalId = card.getAttribute("data-modal");
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+    });
+  });
+
+  // Close modals
+  document.querySelectorAll(".close-modal").forEach(button => {
+    button.addEventListener("click", () => {
+      const modal = button.closest(".modal");
+      modal.classList.remove("active");
+      document.body.style.overflow = "auto";
+    });
+  });
+
+  // Close modal when clicking outside
+  modals.forEach(modal => {
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        modal.classList.remove("active");
+        document.body.style.overflow = "auto";
+      }
+    });
+  });
+
+  // Close modal with Escape key
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      modals.forEach(modal => {
+        if (modal.classList.contains("active")) {
+          modal.classList.remove("active");
+          document.body.style.overflow = "auto";
+        }
+      });
+    }
+  });
+
+  // Update semua link saat DOM siap
+  document.addEventListener("DOMContentLoaded", function() {
+    console.log("📄 DOM Content Loaded in founder.html");
+    updateAllLinks();
+    initSmoothScrolling(); // Inisialisasi smooth scrolling
+  });
+
+  // Backup trigger
+  setTimeout(updateAllLinks, 1000);
+</script>
+</body>
 </html>

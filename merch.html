@@ -213,6 +213,7 @@
         position: relative;
         color: var(--secondary);
         font-family: var(--header-font);
+        transition: color 0.3s ease;
       }
 
       .nav-links a:after {
@@ -377,6 +378,7 @@
 
       .merch-card:hover .merch-image img {
         transform: scale(1.05);
+        filter: brightness(1.1);
       }
 
       .merch-content {
@@ -583,11 +585,12 @@
         <nav>
           <div class="logo">
             <a href="index.html">
-            <img
-              src="assets/MOSHCORBLOX project/MOSHCORBLOX LOGO.png"
-              alt="Moshcorblox Banner"
-              onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 300 80\'><rect width=\'300\' height=\'80\' fill=\'black\'/><text x=\'150\' y=\'40\' text-anchor=\'middle\' dominant-baseline=\'middle\' fill=\'white\' font-size=\'24\' font-family=\'serif\'>MOSHCORBLOX</text></svg>'"/>
-              </a>
+              <img
+                src="assets/MOSHCORBLOX project/MOSHCORBLOX LOGO.png"
+                alt="Moshcorblox Banner"
+                onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/ssvg\' viewBox=\'0 0 300 80\'><rect width=\'300\' height=\'80\' fill=\'black\'/><text x=\'150\' y=\'40\' text-anchor=\'middle\' dominant-baseline=\'middle\' fill=\'white\' font-size=\'24\' font-family=\'serif\'>MOSHCORBLOX</text></svg>'"
+              />
+            </a>
           </div>
           <div class="menu-toggle">
             <i class="fas fa-bars"></i>
@@ -598,7 +601,7 @@
             <li><a href="index.html#about">About</a></li>
             <li><a href="index.html#events">More</a></li>
             <li><a href="index.html#community">Community</a></li>
-            <li><a href="https://discord.gg/nrtZNCCx9b" class="btn">Join Now</a></li>
+            <li><a href="#" id="discordLinkNav" class="btn">Join Now</a></li>
           </ul>
         </nav>
       </div>
@@ -667,7 +670,7 @@
                 </ul>
               </div>
               <div class="merch-cta">
-                <a href="https://www.roblox.com/share/g/33965088" class="btn">Kunjungi Toko</a>
+                <a href="#" id="robloxMerchLink" class="btn">Kunjungi Toko</a>
               </div>
             </div>
           </div>
@@ -688,7 +691,7 @@
                 </ul>
               </div>
               <div class="merch-cta">
-                <a href="https://shopee.co.id/connection584?event=1" class="btn">Lihat Koleksi</a>
+                <a href="#" id="shopeeMerchLink" class="btn">Lihat Koleksi</a>
               </div>
             </div>
           </div>
@@ -704,9 +707,9 @@
             <h3>Moshcorblox</h3>
             <p>Komunitas Hardcore Roblox Indonesia pertama dan terbesar. Tempat di mana musik keras bertemu game virtual.</p>
             <div class="social-links">
-              <a href="https://discord.gg/nrtZNCCx9b"><i class="fab fa-discord"></i></a>
-              <a href="https://www.instagram.com/moshcorblox?igsh=MTd2Y3NmZW9tZ2Q5YQ=="><i class="fab fa-instagram"></i></a>
-              <a href="https://www.tiktok.com/@moshcorblox?_t=ZS-8ymWvVOdVj7&_r=1"><i class="fab fa-tiktok"></i></a>
+              <a href="#" id="discordLinkFooter"><i class="fab fa-discord"></i></a>
+              <a href="#" id="instagramLinkFooter"><i class="fab fa-instagram"></i></a>
+              <a href="#" id="tiktokLinkFooter"><i class="fab fa-tiktok"></i></a>
             </div>
           </div>
 
@@ -724,10 +727,10 @@
           <div class="footer-column">
             <h3>Resources</h3>
             <ul class="footer-links">
-              <li><a href="#">Roblox Group</a></li>
+              <li><a href="#" id="robloxGroupLinkFooter">Roblox Group</a></li>
               <li><a href="#">Game Guides</a></li>
-              <li><a href="https://www.roblox.com/share?code=f06dccf92b17964ca0b320d644f68a20&type=ExperienceDetails&stamp=1754895125356">Venue Maps</a></li>
-              <li><a href="https://shopee.co.id/connection584">Merchandise</a></li>
+              <li><a href="#" id="robloxMapLinkFooter">Venue Maps</a></li>
+              <li><a href="merch.html">Merchandise</a></li>
               <li><a href="faq.html">FAQ</a></li>
             </ul>
           </div>
@@ -748,55 +751,148 @@
 
     <!-- Scripts -->
     <script>
-      // Mobile Menu Toggle
-      const menuToggle = document.querySelector(".menu-toggle");
-      const navLinks = document.querySelector(".nav-links");
+      // Konfigurasi link
+      const CONFIG = {
+        DISCORD_URL: "https://discord.gg/nrtZNCCx9b",
+        INSTAGRAM_URL: "https://www.instagram.com/moshcorblox?igsh=MTd2Y3NmZW9tZ2Q5YQ==",
+        TIKTOK_URL: "https://www.tiktok.com/@moshcorblox?_t=ZS-8ymWvVOdVj7&_r=1",
+        ROBLOX_GROUP: "https://www.roblox.com/share/g/985994497",
+        ROBLOX_MAP: "https://www.roblox.com/share?code=f06dccf92b17964ca0b320d644f68a20&type=ExperienceDetails&stamp=1754895125356",
+        ROBLOX_MERCH: "https://www.roblox.com/share/g/33965088",
+        MERCH_URL: "https://shopee.co.id/connection584",
+      };
 
-      menuToggle.addEventListener("click", () => {
-        navLinks.classList.toggle("active");
-      });
+      // Fungsi untuk mengupdate semua link
+      function updateAllLinks() {
+        try {
+          console.log("🚀 Updating all links...");
+          
+          // Mapping semua link dengan ID yang unik
+          const linkMappings = {
+            // Navigation
+            discordLinkNav: CONFIG.DISCORD_URL,
+            
+            // Content
+            robloxMerchLink: CONFIG.ROBLOX_MERCH,
+            shopeeMerchLink: CONFIG.MERCH_URL,
+            
+            // Footer
+            discordLinkFooter: CONFIG.DISCORD_URL,
+            instagramLinkFooter: CONFIG.INSTAGRAM_URL,
+            tiktokLinkFooter: CONFIG.TIKTOK_URL,
+            robloxGroupLinkFooter: CONFIG.ROBLOX_GROUP,
+            robloxMapLinkFooter: CONFIG.ROBLOX_MAP,
+          };
 
-      // Close menu when clicking a link
-      document.querySelectorAll(".nav-links a").forEach((link) => {
-        link.addEventListener("click", () => {
-          navLinks.classList.remove("active");
-        });
-      });
-
-      // Merch Carousel
-      const merchCarousel = document.querySelector(".merch-carousel");
-      const merchSlides = document.querySelectorAll(".merch-slide");
-      const merchPrevBtn = document.querySelector(".merch-prev");
-      const merchNextBtn = document.querySelector(".merch-next");
-      const merchIndicators = document.querySelectorAll(".merch-indicator");
-
-      let currentSlide = 0;
-      const totalSlides = merchSlides.length;
-
-      function goToSlide(index) {
-        if (index < 0) index = totalSlides - 1;
-        if (index >= totalSlides) index = 0;
-
-        merchCarousel.style.transform = `translateX(-${index * 100}%)`;
-
-        // Update active indicator
-        merchIndicators.forEach((indicator) => indicator.classList.remove("active"));
-        merchIndicators[index].classList.add("active");
-
-        currentSlide = index;
+          // Update semua link
+          for (const [id, url] of Object.entries(linkMappings)) {
+            const element = document.getElementById(id);
+            if (element) {
+              element.href = url;
+              console.log(`✅ Updated ${id}: ${url}`);
+            } else {
+              console.warn(`⚠️ Element with ID ${id} not found`);
+            }
+          }
+          
+          console.log("🎉 All links updated successfully!");
+        } catch (error) {
+          console.error("❌ Error updating links:", error);
+        }
       }
 
-      // Initialize indicators
-      merchIndicators.forEach((indicator, index) => {
-        indicator.addEventListener("click", () => goToSlide(index));
+      // Fungsi untuk inisialisasi mobile menu
+      function initMobileMenu() {
+        const menuToggle = document.querySelector(".menu-toggle");
+        const navLinks = document.querySelector(".nav-links");
+
+        menuToggle.addEventListener("click", () => {
+          navLinks.classList.toggle("active");
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll(".nav-links a").forEach((link) => {
+          link.addEventListener("click", () => {
+            navLinks.classList.remove("active");
+          });
+        });
+      }
+
+      // Fungsi untuk inisialisasi carousel
+      function initMerchCarousel() {
+        const merchCarousel = document.querySelector(".merch-carousel");
+        const merchSlides = document.querySelectorAll(".merch-slide");
+        const merchPrevBtn = document.querySelector(".merch-prev");
+        const merchNextBtn = document.querySelector(".merch-next");
+        const merchIndicators = document.querySelectorAll(".merch-indicator");
+
+        let currentSlide = 0;
+        const totalSlides = merchSlides.length;
+        let autoSlideInterval;
+
+        function goToSlide(index) {
+          if (index < 0) index = totalSlides - 1;
+          if (index >= totalSlides) index = 0;
+
+          merchCarousel.style.transform = `translateX(-${index * 100}%)`;
+
+          // Update active indicator
+          merchIndicators.forEach((indicator) => indicator.classList.remove("active"));
+          merchIndicators[index].classList.add("active");
+
+          currentSlide = index;
+        }
+
+        // Initialize indicators
+        merchIndicators.forEach((indicator, index) => {
+          indicator.addEventListener("click", () => {
+            clearInterval(autoSlideInterval);
+            goToSlide(index);
+            startAutoSlide();
+          });
+        });
+
+        // Navigation buttons
+        merchPrevBtn.addEventListener("click", () => {
+          clearInterval(autoSlideInterval);
+          goToSlide(currentSlide - 1);
+          startAutoSlide();
+        });
+
+        merchNextBtn.addEventListener("click", () => {
+          clearInterval(autoSlideInterval);
+          goToSlide(currentSlide + 1);
+          startAutoSlide();
+        });
+
+        // Auto slide function
+        function startAutoSlide() {
+          autoSlideInterval = setInterval(() => goToSlide(currentSlide + 1), 5000);
+        }
+
+        // Start auto slide
+        startAutoSlide();
+
+        // Pause auto slide on hover
+        merchCarousel.addEventListener('mouseenter', () => {
+          clearInterval(autoSlideInterval);
+        });
+
+        merchCarousel.addEventListener('mouseleave', () => {
+          startAutoSlide();
+        });
+      }
+
+      // Jalankan saat DOM siap
+      document.addEventListener("DOMContentLoaded", function() {
+        console.log("📄 DOM Content Loaded");
+        updateAllLinks();
+        initMobileMenu();
+        initMerchCarousel();
       });
 
-      // Navigation buttons
-      merchPrevBtn.addEventListener("click", () => goToSlide(currentSlide - 1));
-      merchNextBtn.addEventListener("click", () => goToSlide(currentSlide + 1));
-
-      // Auto slide
-      setInterval(() => goToSlide(currentSlide + 1), 5000);
+      // Backup trigger
+      setTimeout(updateAllLinks, 1000);
     </script>
   </body>
 </html>

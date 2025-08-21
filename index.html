@@ -1,3 +1,5 @@
+<!-- gambar hero di fixed in -->
+
 <!DOCTYPE html>
 <html lang="id">
   <head>
@@ -1092,7 +1094,7 @@
             <li><a href="#about">About</a></li>
             <li><a href="#events">More</a></li>
             <li><a href="#community">Community</a></li>
-            <li><a href="https://discord.gg/nrtZNCCx9b" class="btn">Join Now</a></li>
+            <li><a href="#" id="discordLinkNav" class="btn">Join Now</a></li>
           </ul>
         </nav>
       </div>
@@ -1175,7 +1177,7 @@
             <p>Konsepnya simpel: band pilih lagunya (atau dibantu admin), terus kita putar audio rekamannya pas event jalan. Jadi meskipun virtual, feel-nya tetep kayak lagi nonton gigs beneran.</p>
             <p>Tujuan kita? Biar semua orang, termasuk yang nggak bisa datang ke gigs di dunia nyata, tetep bisa ngerasain vibes-nya. Sekalian jadi ajang buat ngenalin band lokal dan karya keren dari member sendiri.</p>
             <div style="margin-top: 30px">
-              <a href="https://discord.gg/nrtZNCCx9b" class="btn">Discord Kami</a>
+              <a href="#" id="discordLinkAbout" class="btn">Discord Kami</a>
             </div>
           </div>
         </div>
@@ -1211,11 +1213,7 @@
                 <div class="event-content">
                   <span class="event-date">SEGARA DAFTAR</span>
                   <h3>Registrasi Event</h3>
-                  <a
-                    href="https://docs.google.com/forms/d/e/1FAIpQLSfC4HZKH8S8B68pjTp1zLiqLrFrpUhH-uKt2eyDI9cu28yYJA/viewform?pli=1&fbclid=PAQ0xDSwMGeNZleHRuA2FlbQIxMAABp1nOjjKwTQPExXYcuocnGrVKfwIV3gcqFRj0iN0k6DozLXVc06skTOTf5I-N_aem_8TXuyvQyTXB7BtupIG3wBg"
-                    class="btn"
-                    >Daftar Sekarang</a
-                  >
+                  <a href="#" id="registrationLink" class="btn">Daftar Sekarang</a>
                 </div>
               </div>
 
@@ -1239,7 +1237,7 @@
                 <div class="event-content">
                   <span class="event-date">UPDATE TERBARU</span>
                   <h3>Venue Maps</h3>
-                  <a href="https://www.roblox.com/share?code=f06dccf92b17964ca0b320d644f68a20&type=ExperienceDetails&stamp=1754895125356" class="btn">Lihat Map</a>
+                  <a href="#" id="mapLink" class="btn">Lihat Map</a>
                 </div>
               </div>
 
@@ -1327,8 +1325,8 @@
           <h3>Siap Bergabung?</h3>
           <p>Jadilah bagian dari komunitas hardcore Roblox terbesar di Indonesia. Dapatkan akses ke event eksklusif, venue khusus, dan teman-teman sejati penggemar musik keras!</p>
           <div style="margin-top: 30px">
-            <a href="https://discord.gg/nrtZNCCx9b" class="btn">Join Discord</a>
-            <a href="https://www.roblox.com/share/g/985994497" class="btn btn-secondary">Roblox Group</a>
+            <a href="#" id="discordLinkCommunity" class="btn">Join Discord</a>
+            <a href="#" id="robloxGroupLink" class="btn btn-secondary">Roblox Group</a>
           </div>
         </div>
       </div>
@@ -1342,9 +1340,9 @@
             <h3>Moshcorblox</h3>
             <p>Komunitas Hardcore Roblox Indonesia pertama dan terbesar. Tempat di mana musik keras bertemu game virtual.</p>
             <div class="social-links">
-              <a href="https://discord.gg/nrtZNCCx9b"><i class="fab fa-discord"></i></a>
-              <a href="https://www.instagram.com/moshcorblox?igsh=MTd2Y3NmZW9tZ2Q5YQ=="><i class="fab fa-instagram"></i></a>
-              <a href="https://www.tiktok.com/@moshcorblox?_t=ZS-8ymWvVOdVj7&_r=1"><i class="fab fa-tiktok"></i></a>
+              <a href="#" id="discordLinkFooter"><i class="fab fa-discord"></i></a>
+              <a href="#" id="instagramLinkFooter"><i class="fab fa-instagram"></i></a>
+              <a href="#" id="tiktokLinkFooter"><i class="fab fa-tiktok"></i></a>
             </div>
           </div>
 
@@ -1361,9 +1359,9 @@
           <div class="footer-column">
             <h3>Resources</h3>
             <ul class="footer-links">
-              <li><a href="#">Roblox Group</a></li>
+              <li><a href="#" id="robloxGroupLinkFooter">Roblox Group</a></li>
               <li><a href="#">Game Guides</a></li>
-              <li><a href="https://www.roblox.com/share?code=f06dccf92b17964ca0b320d644f68a20&type=ExperienceDetails&stamp=1754895125356">Venue Maps</a></li>
+              <li><a href="#" id="robloxMapLinkFooter">Venue Maps</a></li>
               <li><a href="merch.html">Merchandise</a></li>
               <li><a href="faq.html">FAQ</a></li>
             </ul>
@@ -1385,6 +1383,258 @@
 
     <!-- Scripts -->
     <script>
+      // Konfigurasi link
+      const CONFIG = {
+        DISCORD_URL: "https://discord.gg/nrtZNCCx9b",
+        INSTAGRAM_URL: "https://www.instagram.com/moshcorblox?igsh=MTd2Y3NmZW9tZ2Q5YQ==",
+        TIKTOK_URL: "https://www.tiktok.com/@moshcorblox?_t=ZS-8ymWvVOdVj7&_r=1",
+        ROBLOX_GROUP: "https://www.roblox.com/share/g/985994497",
+        ROBLOX_MAP: "https://www.roblox.com/share?code=f06dccf92b17964ca0b320d644f68a20&type=ExperienceDetails&stamp=1754895125356",
+        REGISTRATION_FORM:
+          "https://docs.google.com/forms/d/e/1FAIpQLSfC4HZKH8S8B68pjTp1zLiqLrFrpUhH-uKt2eyDI9cu28yYJA/viewform?pli=1&fbclid=PAQ0xDSwMGeNZleHRuA2FlbQIxMAABp1nOjjKwTQPExXYcuocnGrVKfwIV3gcqFRj0iN0k6DozLXVc06skTOTf5I-N_aem_8TXuyvQyTXB7BtupIG3wBg",
+      };
+
+      // Fungsi untuk mengupdate semua link
+      function updateAllLinks() {
+        try {
+          console.log("🚀 Updating all links...");
+
+          // Mapping semua link dengan ID yang unik
+          const linkMappings = {
+            // Navigation
+            discordLinkNav: CONFIG.DISCORD_URL,
+
+            // About section
+            discordLinkAbout: CONFIG.DISCORD_URL,
+
+            // Community section
+            discordLinkCommunity: CONFIG.DISCORD_URL,
+            robloxGroupLink: CONFIG.ROBLOX_GROUP,
+
+            // Events cards
+            registrationLink: CONFIG.REGISTRATION_FORM,
+            mapLink: CONFIG.ROBLOX_MAP,
+
+            // Footer
+            discordLinkFooter: CONFIG.DISCORD_URL,
+            instagramLinkFooter: CONFIG.INSTAGRAM_URL,
+            tiktokLinkFooter: CONFIG.TIKTOK_URL,
+            robloxGroupLinkFooter: CONFIG.ROBLOX_GROUP,
+            robloxMapLinkFooter: CONFIG.ROBLOX_MAP,
+          };
+
+          // Update semua link
+          for (const [id, url] of Object.entries(linkMappings)) {
+            const element = document.getElementById(id);
+            if (element) {
+              element.href = url;
+              console.log(`✅ Updated ${id}: ${url}`);
+            } else {
+              console.warn(`⚠️ Element with ID ${id} not found`);
+            }
+          }
+
+          console.log("🎉 All links updated successfully!");
+        } catch (error) {
+          console.error("❌ Error updating links:", error);
+        }
+      }
+
+      // Jalankan saat DOM siap
+      document.addEventListener("DOMContentLoaded", function () {
+        console.log("📄 DOM Content Loaded");
+        updateAllLinks();
+
+        // Inisialisasi komponen lainnya
+        initCarousel();
+        initMobileMenu();
+        initEventsNavigation();
+        initSmoothScrolling();
+        initHeaderScrollEffect();
+      });
+
+      // Backup trigger
+      setTimeout(updateAllLinks, 1000);
+
+      // Fungsi untuk inisialisasi carousel
+      function initCarousel() {
+        const items = document.querySelectorAll(".carousel-item");
+        const indicatorsContainer = document.querySelector(".carousel-indicators");
+        let currentIndex = 0;
+
+        // Buat indicators
+        items.forEach((item, index) => {
+          const indicator = document.createElement("div");
+          indicator.classList.add("carousel-indicator");
+          if (index === 0) indicator.classList.add("active");
+
+          indicator.addEventListener("click", () => {
+            showSlide(index);
+          });
+
+          indicatorsContainer.appendChild(indicator);
+        });
+
+        const indicators = document.querySelectorAll(".carousel-indicator");
+
+        // Fungsi untuk menampilkan slide tertentu
+        function showSlide(index) {
+          // Sembunyikan semua slide
+          items.forEach((item) => {
+            item.classList.remove("active");
+            const video = item.querySelector("video");
+            if (video) {
+              video.pause();
+              video.currentTime = 0;
+            }
+          });
+
+          // Update indicators
+          indicators.forEach((indicator) => indicator.classList.remove("active"));
+
+          // Tampilkan slide yang dipilih
+          items[index].classList.add("active");
+          indicators[index].classList.add("active");
+
+          // Putar video jika ada
+          const activeVideo = items[index].querySelector("video");
+          if (activeVideo) {
+            activeVideo.play().catch((e) => console.log("Autoplay prevented:", e));
+          }
+
+          currentIndex = index;
+        }
+
+        // Navigasi controls
+        document.querySelector(".carousel-prev").addEventListener("click", () => {
+          let newIndex = currentIndex - 1;
+          if (newIndex < 0) newIndex = items.length - 1;
+          showSlide(newIndex);
+        });
+
+        document.querySelector(".carousel-next").addEventListener("click", () => {
+          let newIndex = currentIndex + 1;
+          if (newIndex >= items.length) newIndex = 0;
+          showSlide(newIndex);
+        });
+
+        // Inisialisasi carousel
+        showSlide(0);
+      }
+
+      // Fungsi untuk inisialisasi mobile menu
+      function initMobileMenu() {
+        const menuToggle = document.querySelector(".menu-toggle");
+        const menuClose = document.querySelector(".mobile-menu-close");
+        const navLinks = document.querySelector(".nav-links");
+        const menuIcon = document.querySelector(".menu-toggle i");
+
+        menuToggle.addEventListener("click", () => {
+          navLinks.classList.add("active");
+          menuClose.style.display = "block";
+          menuToggle.classList.add("active");
+          document.body.style.overflow = "hidden";
+        });
+
+        menuClose.addEventListener("click", () => {
+          navLinks.classList.remove("active");
+          menuClose.style.display = "none";
+          menuToggle.classList.remove("active");
+          document.body.style.overflow = "";
+        });
+
+        // Tutup menu ketika mengklik link
+        document.querySelectorAll(".nav-links a").forEach((link) => {
+          link.addEventListener("click", () => {
+            navLinks.classList.remove("active");
+            document.body.style.overflow = "";
+          });
+        });
+      }
+
+      // Fungsi untuk inisialisasi navigasi events
+      function initEventsNavigation() {
+        const eventsScroller = document.querySelector(".events-scroller");
+        const prevBtn = document.querySelector(".events-nav-btn.prev");
+        const nextBtn = document.querySelector(".events-nav-btn.next");
+
+        if (prevBtn && nextBtn) {
+          prevBtn.addEventListener("click", () => {
+            eventsScroller.scrollBy({ left: -300, behavior: "smooth" });
+          });
+
+          nextBtn.addEventListener("click", () => {
+            eventsScroller.scrollBy({ left: 300, behavior: "smooth" });
+          });
+        }
+
+        // Touch events untuk events scroller di mobile
+        if (window.matchMedia("(max-width: 767px)").matches) {
+          let startX = 0;
+          let scrollLeft = 0;
+
+          eventsScroller.addEventListener("touchstart", (e) => {
+            startX = e.touches[0].pageX;
+            scrollLeft = eventsScroller.scrollLeft;
+          });
+
+          eventsScroller.addEventListener("touchmove", (e) => {
+            e.preventDefault();
+            const x = e.touches[0].pageX;
+            const walk = (x - startX) * 2; // Scroll multiplier
+            eventsScroller.scrollLeft = scrollLeft - walk;
+          });
+        }
+      }
+
+      // Fungsi untuk smooth scrolling
+      function initSmoothScrolling() {
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            const target = document.querySelector(this.getAttribute("href"));
+            if (target) {
+              window.scrollTo({
+                top: target.offsetTop - 80,
+                behavior: "smooth",
+              });
+            }
+          });
+        });
+      }
+
+      // Fungsi untuk efek scroll header
+      function initHeaderScrollEffect() {
+        let lastScrollTop = 0;
+        window.addEventListener("scroll", () => {
+          const header = document.querySelector("header");
+          const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+          if (window.innerWidth <= 767) {
+            // Auto-hide header on scroll for mobile
+            if (currentScroll > lastScrollTop && currentScroll > 100) {
+              // Scroll down
+              header.style.transform = "translateY(-100%)";
+            } else {
+              // Scroll up
+              header.style.transform = "translateY(0)";
+            }
+          } else {
+            // Desktop scroll effect
+            if (currentScroll > 100) {
+              header.style.backgroundColor = "rgba(0, 0, 0, 0.98)";
+              header.style.boxShadow = "0 5px 20px rgba(0,0,0,0.5)";
+            } else {
+              header.style.backgroundColor = "rgba(0, 0, 0, 0.95)";
+              header.style.boxShadow = "none";
+            }
+          }
+
+          lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+        });
+      }
+
       // Font loading check and fallback
       function checkFontLoaded() {
         const testElement = document.createElement("span");
@@ -1404,179 +1654,6 @@
         }
       }
 
-      // Carousel functionality
-      document.addEventListener("DOMContentLoaded", function () {
-        const items = document.querySelectorAll(".carousel-item");
-        const indicatorsContainer = document.querySelector(".carousel-indicators");
-        let currentIndex = 0;
-
-        // Create indicators
-        items.forEach((item, index) => {
-          const indicator = document.createElement("div");
-          indicator.classList.add("carousel-indicator");
-          if (index === 0) indicator.classList.add("active");
-
-          indicator.addEventListener("click", () => {
-            showSlide(index);
-          });
-
-          indicatorsContainer.appendChild(indicator);
-        });
-
-        const indicators = document.querySelectorAll(".carousel-indicator");
-
-        // Function to show specific slide
-        function showSlide(index) {
-          // Hide all slides
-          items.forEach((item) => {
-            item.classList.remove("active");
-            const video = item.querySelector("video");
-            if (video) {
-              video.pause();
-              video.currentTime = 0;
-            }
-          });
-
-          // Update indicators
-          indicators.forEach((indicator) => indicator.classList.remove("active"));
-
-          // Show selected slide
-          items[index].classList.add("active");
-          indicators[index].classList.add("active");
-
-          // Play video if exists
-          const activeVideo = items[index].querySelector("video");
-          if (activeVideo) {
-            activeVideo.play().catch((e) => console.log("Autoplay prevented:", e));
-          }
-
-          currentIndex = index;
-        }
-
-        // Navigation controls
-        document.querySelector(".carousel-prev").addEventListener("click", () => {
-          let newIndex = currentIndex - 1;
-          if (newIndex < 0) newIndex = items.length - 1;
-          showSlide(newIndex);
-        });
-
-        document.querySelector(".carousel-next").addEventListener("click", () => {
-          let newIndex = currentIndex + 1;
-          if (newIndex >= items.length) newIndex = 0;
-          showSlide(newIndex);
-        });
-
-        // Initialize the carousel
-        showSlide(0);
-      });
-
-      // Mobile Menu Toggle (Perbaikan)
-      const menuToggle = document.querySelector(".menu-toggle");
-      const menuClose = document.querySelector(".mobile-menu-close");
-      const navLinks = document.querySelector(".nav-links");
-      const menuIcon = document.querySelector(".menu-toggle i");
-
-      menuToggle.addEventListener("click", () => {
-        navLinks.classList.add("active");
-        menuClose.style.display = "block";
-        menuToggle.classList.add("active");
-        document.body.style.overflow = "hidden";
-      });
-
-      menuClose.addEventListener("click", () => {
-        navLinks.classList.remove("active");
-        menuClose.style.display = "none";
-        menuToggle.classList.remove("active");
-        document.body.style.overflow = "";
-      });
-
-      // Fungsi navigasi card events
-      const eventsScroller = document.querySelector(".events-scroller");
-      const prevBtn = document.querySelector(".events-nav-btn.prev");
-      const nextBtn = document.querySelector(".events-nav-btn.next");
-
-      if (prevBtn && nextBtn) {
-        prevBtn.addEventListener("click", () => {
-          eventsScroller.scrollBy({ left: -300, behavior: "smooth" });
-        });
-
-        nextBtn.addEventListener("click", () => {
-          eventsScroller.scrollBy({ left: 300, behavior: "smooth" });
-        });
-      }
-
-      // Close menu when clicking a link
-      document.querySelectorAll(".nav-links a").forEach((link) => {
-        link.addEventListener("click", () => {
-          navLinks.classList.remove("active");
-          document.body.style.overflow = "";
-        });
-      });
-
-      // Smooth scrolling for anchor links
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          e.preventDefault();
-
-          const target = document.querySelector(this.getAttribute("href"));
-          if (target) {
-            window.scrollTo({
-              top: target.offsetTop - 80,
-              behavior: "smooth",
-            });
-          }
-        });
-      });
-
-      // Header scroll effect
-      let lastScrollTop = 0;
-      window.addEventListener("scroll", () => {
-        const header = document.querySelector("header");
-        const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-
-        if (window.innerWidth <= 767) {
-          // Auto-hide header on scroll for mobile
-          if (currentScroll > lastScrollTop && currentScroll > 100) {
-            // Scroll down
-            header.style.transform = "translateY(-100%)";
-          } else {
-            // Scroll up
-            header.style.transform = "translateY(0)";
-          }
-        } else {
-          // Desktop scroll effect
-          if (currentScroll > 100) {
-            header.style.backgroundColor = "rgba(0, 0, 0, 0.98)";
-            header.style.boxShadow = "0 5px 20px rgba(0,0,0,0.5)";
-          } else {
-            header.style.backgroundColor = "rgba(0, 0, 0, 0.95)";
-            header.style.boxShadow = "none";
-          }
-        }
-
-        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-      });
-
-      // Touch events for events scroller on mobile
-      if (window.matchMedia("(max-width: 767px)").matches) {
-        const eventsScroller = document.querySelector(".events-scroller");
-        let startX = 0;
-        let scrollLeft = 0;
-
-        eventsScroller.addEventListener("touchstart", (e) => {
-          startX = e.touches[0].pageX;
-          scrollLeft = eventsScroller.scrollLeft;
-        });
-
-        eventsScroller.addEventListener("touchmove", (e) => {
-          e.preventDefault();
-          const x = e.touches[0].pageX;
-          const walk = (x - startX) * 2; // Scroll multiplier
-          eventsScroller.scrollLeft = scrollLeft - walk;
-        });
-      }
-
-      // Check font loading when page loads
       window.addEventListener("load", checkFontLoaded);
     </script>
   </body>
