@@ -251,7 +251,7 @@
         position: relative;
         overflow: hidden;
         /* Mengubah deklarasi background agar bisa menggunakan background-attachment: fixed */
-        background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url("assets/MOSHCORBLOX project/image-14.png");
+        background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url("https://placehold.co/1200x800/222222/FFFFFF/png?text=MOSHCORBLOX");
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
@@ -320,7 +320,7 @@
         transition: opacity 0.5s ease;
       }
 
-      .carousel-item active {
+      .carousel-item.active {
         opacity: 1;
         z-index: 1;
       }
@@ -1233,7 +1233,7 @@
               <!-- Card 2 - Merch -->
               <div class="event-card">
                 <div class="event-image">
-                  <img src="assets/MOSHCORBLOX project/merchRoblox-1.png" alt="Merchandise" />
+                  <img src="assets/MOSHCORBLOX project/merchRoblox-2.png" alt="Merchandise" />
                 </div>
                 <div class="event-content">
                   <span class="event-date">TERBATAS</span>
@@ -1293,7 +1293,7 @@
               <!-- Card 7 - Tutorial -->
               <div class="event-card">
                 <div class="event-image">
-                  <img src="assets/MOSHCORBLOX project/image-17.png" alt="Tutorial" />
+                  <img src="assets/MOSHCORBLOX project/image-3.png" alt="Tutorial" />
                 </div>
                 <div class="event-content">
                   <span class="event-date">PANDUAN</span>
@@ -1474,6 +1474,7 @@
         const items = document.querySelectorAll(".carousel-item");
         const indicatorsContainer = document.querySelector(".carousel-indicators");
         let currentIndex = 0;
+        let carouselInterval;
 
         // Buat indicators
         items.forEach((item, index) => {
@@ -1516,6 +1517,14 @@
           }
 
           currentIndex = index;
+          
+          // Reset interval
+          clearInterval(carouselInterval);
+          carouselInterval = setInterval(() => {
+            let newIndex = currentIndex + 1;
+            if (newIndex >= items.length) newIndex = 0;
+            showSlide(newIndex);
+          }, 5000);
         }
 
         // Navigasi controls
