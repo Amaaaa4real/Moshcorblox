@@ -1,5 +1,3 @@
-<!-- gambar hero di fixed in -->
-
 <!DOCTYPE html>
 <html lang="id">
   <head>
@@ -207,6 +205,7 @@
 
       .nav-links li {
         margin-left: 30px;
+        position: relative;
       }
 
       .nav-links a {
@@ -244,14 +243,19 @@
         z-index: 1001;
       }
 
-      /* HERO SECTION */
+      /* HERO SECTION - PERUBAHAN UTAMA DI SINI */
       #hero {
         height: 100vh;
         display: flex;
         align-items: center;
         position: relative;
         overflow: hidden;
-        background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url("assets/MOSHCORBLOX project/image-14.png") center/cover no-repeat;
+        /* Mengubah deklarasi background agar bisa menggunakan background-attachment: fixed */
+        background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url("assets/MOSHCORBLOX project/image-14.png");
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed; /* Ini yang membuat gambar tetap saat di-scroll */
       }
 
       .hero-content {
@@ -316,7 +320,7 @@
         transition: opacity 0.5s ease;
       }
 
-      .carousel-item.active {
+      .carousel-item active {
         opacity: 1;
         z-index: 1;
       }
@@ -369,6 +373,7 @@
         display: flex;
         gap: 10px;
         z-index: 10;
+        pointer-events: none;
       }
 
       .carousel-indicator {
@@ -378,6 +383,7 @@
         background: rgba(255, 255, 255, 0.5);
         cursor: pointer;
         transition: all 0.3s ease;
+        pointer-events: auto;
       }
 
       .carousel-indicator.active {
@@ -400,6 +406,7 @@
 
       .about-text {
         padding-right: 20px;
+        position: relative;
       }
 
       .about-image {
@@ -583,6 +590,7 @@
         text-transform: uppercase;
         color: var(--secondary);
         font-family: var(--header-font);
+        position: relative;
       }
 
       .join-box {
@@ -797,6 +805,11 @@
           width: 40px;
           height: 40px;
           font-size: 1.2rem;
+        }
+
+        /* Nonaktifkan background-attachment: fixed di perangkat mobile */
+        #hero {
+          background-attachment: scroll;
         }
       }
 

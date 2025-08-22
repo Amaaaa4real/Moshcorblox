@@ -600,14 +600,14 @@
                 <div class="menu-toggle">
                     <i class="fas fa-bars"></i>
                 </div>
-                <!-- PERUBAHAN: Hapus mobile-menu-close -->
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="index.html#carousel">Preview</a></li>
                     <li><a href="index.html#about">About</a></li>
                     <li><a href="index.html#events" class="active">More</a></li>
                     <li><a href="index.html#community">Community</a></li>
-                    <li><a href="https://discord.gg/nrtZNCCx9b" class="btn">Join Now</a></li>
+                    <!-- Tambahkan ID untuk link Discord di navbar -->
+                    <li><a href="#" id="discordLinkNav" class="btn">Join Now</a></li>
                 </ul>
             </nav>
         </div>
@@ -778,65 +778,146 @@
 
     <!-- Scripts -->
     <script>
-        // Mobile Menu Toggle (versi baru tanpa close button)
-        const menuToggle = document.querySelector(".menu-toggle");
-        const navLinks = document.querySelector(".nav-links");
-        const menuIcon = menuToggle.querySelector("i");
+        // Konfigurasi link (sama seperti di index.html)
+        const CONFIG = {
+            DISCORD_URL: "https://discord.gg/nrtZNCCx9b",
+            INSTAGRAM_URL: "https://www.instagram.com/moshcorblox?igsh=MTd2Y3NmZW9tZ2Q5YQ==",
+            TIKTOK_URL: "https://www.tiktok.com/@moshcorblox?_t=ZS-8ymWvVOdVj7&_r=1",
+            ROBLOX_GROUP: "https://www.roblox.com/share/g/985994497",
+            ROBLOX_MAP: "https://www.roblox.com/share?code=f06dccf92b17964ca0b320d644f68a20&type=ExperienceDetails&stamp=1754895125356",
+            REGISTRATION_FORM: "https://docs.google.com/forms/d/e/1FAIpQLSfC4HZKH8S8B68pjTp1zLiqLrFrpUhH-uKt2eyDI9cu28yYJA/viewform?pli=1&fbclid=PAQ0xDSwMGeNZleHRuA2FlbQIxMAABp1nOjjKwTQPExXYcuocnGrVKfwIV3gcqFRj0iN0k6DozLXVc06skTOTf5I-N_aem_8TXuyvQyTXB7BtupIG3wBg",
+        };
 
-        menuToggle.addEventListener("click", function() {
-            // Toggle menu aktif
-            navLinks.classList.toggle("active");
-            
-            // Toggle ikon hamburger/tutup
-            if (navLinks.classList.contains("active")) {
-                menuIcon.classList.remove("fa-bars");
-                menuIcon.classList.add("fa-times");
-                document.body.style.overflow = "hidden";
-            } else {
-                menuIcon.classList.remove("fa-times");
-                menuIcon.classList.add("fa-bars");
-                document.body.style.overflow = "";
+        // Fungsi untuk mengupdate semua link
+        function updateAllLinks() {
+            try {
+                console.log("🚀 Updating all links in event.html...");
+
+                // Mapping semua link dengan ID yang unik
+                const linkMappings = {
+                    // Navigation
+                    discordLinkNav: CONFIG.DISCORD_URL,
+
+                    // Footer
+                    discordLinkFooter: CONFIG.DISCORD_URL,
+                    instagramLinkFooter: CONFIG.INSTAGRAM_URL,
+                    tiktokLinkFooter: CONFIG.TIKTOK_URL,
+                    robloxGroupLinkFooter: CONFIG.ROBLOX_GROUP,
+                    robloxMapLinkFooter: CONFIG.ROBLOX_MAP,
+                };
+
+                // Update semua link
+                for (const [id, url] of Object.entries(linkMappings)) {
+                    const element = document.getElementById(id);
+                    if (element) {
+                        element.href = url;
+                        console.log(`✅ Updated ${id}: ${url}`);
+                    } else {
+                        console.warn(`⚠️ Element with ID ${id} not found`);
+                    }
+                }
+
+                console.log("🎉 All links in event.html updated successfully!");
+            } catch (error) {
+                console.error("❌ Error updating links in event.html:", error);
             }
-        });
+        }
 
-        // Close menu when clicking a link
-        document.querySelectorAll(".nav-links a").forEach((link) => {
-            link.addEventListener("click", () => {
-                navLinks.classList.remove("active");
-                menuIcon.classList.remove("fa-times");
-                menuIcon.classList.add("fa-bars");
-                document.body.style.overflow = "";
+        // Mobile Menu Toggle (versi baru tanpa close button)
+        function initMobileMenu() {
+            const menuToggle = document.querySelector(".menu-toggle");
+            const navLinks = document.querySelector(".nav-links");
+            const menuIcon = menuToggle.querySelector("i");
+
+            menuToggle.addEventListener("click", function() {
+                // Toggle menu aktif
+                navLinks.classList.toggle("active");
+                
+                // Toggle ikon hamburger/tutup
+                if (navLinks.classList.contains("active")) {
+                    menuIcon.classList.remove("fa-bars");
+                    menuIcon.classList.add("fa-times");
+                    document.body.style.overflow = "hidden";
+                } else {
+                    menuIcon.classList.remove("fa-times");
+                    menuIcon.classList.add("fa-bars");
+                    document.body.style.overflow = "";
+                }
             });
-        });
+
+            // Close menu when clicking a link
+            document.querySelectorAll(".nav-links a").forEach((link) => {
+                link.addEventListener("click", () => {
+                    navLinks.classList.remove("active");
+                    menuIcon.classList.remove("fa-times");
+                    menuIcon.classList.add("fa-bars");
+                    document.body.style.overflow = "";
+                });
+            });
+        }
 
         // Header scroll effect
-        let lastScrollTop = 0;
-        window.addEventListener("scroll", () => {
-            const header = document.querySelector("header");
-            const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+        function initHeaderScrollEffect() {
+            let lastScrollTop = 0;
+            window.addEventListener("scroll", () => {
+                const header = document.querySelector("header");
+                const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
 
-            if (window.innerWidth <= 767) {
-                // Auto-hide header on scroll for mobile
-                if (currentScroll > lastScrollTop && currentScroll > 100) {
-                    // Scroll down
-                    header.style.transform = "translateY(-100%)";
+                if (window.innerWidth <= 767) {
+                    // Auto-hide header on scroll for mobile
+                    if (currentScroll > lastScrollTop && currentScroll > 100) {
+                        // Scroll down
+                        header.style.transform = "translateY(-100%)";
+                    } else {
+                        // Scroll up
+                        header.style.transform = "translateY(0)";
+                    }
                 } else {
-                    // Scroll up
-                    header.style.transform = "translateY(0)";
+                    // Desktop scroll effect
+                    if (currentScroll > 100) {
+                        header.style.backgroundColor = "rgba(0, 0, 0, 0.98)";
+                        header.style.boxShadow = "0 5px 20px rgba(0,0,0,0.5)";
+                    } else {
+                        header.style.backgroundColor = "rgba(0, 0, 0, 0.95)";
+                        header.style.boxShadow = "none";
+                    }
                 }
-            } else {
-                // Desktop scroll effect
-                if (currentScroll > 100) {
-                    header.style.backgroundColor = "rgba(0, 0, 0, 0.98)";
-                    header.style.boxShadow = "0 5px 20px rgba(0,0,0,0.5)";
-                } else {
-                    header.style.backgroundColor = "rgba(0, 0, 0, 0.95)";
-                    header.style.boxShadow = "none";
-                }
-            }
 
-            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+                lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+            });
+        }
+
+        // Smooth scrolling untuk anchor links
+        function initSmoothScrolling() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Jalankan saat DOM siap
+        document.addEventListener("DOMContentLoaded", function () {
+            console.log("📄 DOM Content Loaded for event.html");
+            updateAllLinks();
+            initMobileMenu();
+            initHeaderScrollEffect();
+            initSmoothScrolling();
         });
+
+        // Backup trigger
+        setTimeout(updateAllLinks, 1000);
     </script>
 </body>
 </html>
