@@ -1,5 +1,3 @@
-<!-- ganti link script -->
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -320,6 +318,9 @@
         .event-overlay-content {
             max-width: 500px;
             margin: 0 auto;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
         .event-overlay h3 {
@@ -365,7 +366,29 @@
         }
 
         .event-lineup {
-            margin-top: 30px;
+            margin-top: 15px;
+            flex: 1;
+            overflow-y: auto;
+            padding-right: 5px;
+        }
+
+        /* Style untuk scrollbar di event lineup */
+        .event-lineup::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        .event-lineup::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        .event-lineup::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 10px;
+        }
+
+        .event-lineup::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary);
         }
 
         .lineup-title {
@@ -383,6 +406,7 @@
             grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
             gap: 15px;
             margin-top: 20px;
+            margin-bottom: 20px;
         }
 
         .band-item {
@@ -402,6 +426,7 @@
             font-family: var(--header-font);
             font-weight: 600;
             color: var(--primary);
+            font-size: 0.9rem;
         }
 
         .cta-button {
@@ -573,6 +598,10 @@
             .band-list {
                 grid-template-columns: repeat(2, 1fr);
             }
+            
+            .event-lineup {
+                max-height: 180px;
+            }
         }
 
         /* FALLBACK FONTS */
@@ -667,6 +696,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <a href="#" class="cta-button">View Details</a>
                         </div>
                     </div>
                 </div>
@@ -713,13 +743,102 @@
                                     </div>
                                 </div>
                             </div>
+                            <a href="#" class="cta-button">View Details</a>
                         </div>
                     </div>
                 </div>
-                 
+
+                <!-- Event 3 -->
+                 <div class="event-card" style="background-image: url('assets/events/event-3.jpg');">
+                    <div class="event-badge">Comming Soon</div>
+                    <div class="event-overlay">
+                        <div class="event-overlay-content">
+                            <h3>MAEEEN!</h3>
+                            <div class="event-date">
+                                <i class="far fa-calendar"></i>
+                                <span>26,27,28 Agustus 2025</span>
+                                <span class="event-time">20:00 WIB</span>
+                            </div>
+                            <div class="event-venue">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Venue: Moshkopi1990</span>
+                            </div>
+                            
+                            <div class="event-lineup">
+                                <div class="lineup-title">LINEUP D-1</div>
+                                <div class="band-list">
+                                    <div class="band-item">
+                                        <div class="band-name">CRUSHING GRIEF</div>
+                                    </div>
+                                    <div class="band-item">
+                                        <div class="band-name">FEEL KOPLO</div>
+                                    </div>
+                                    <div class="band-item">
+                                        <div class="band-name">GIRL AND HER BAD MOOD</div>
+                                    </div>
+                                    <div class="band-item">
+                                        <div class="band-name">JIRAPAH</div>
+                                    </div>
+                                    <div class="band-item">
+                                        <div class="band-name">MAISONC</div>
+                                    </div>
+                                    <div class="band-item">
+                                        <div class="band-name">MURPHY RADIO</div>
+                                    </div>
+                                    <div class="band-item">
+                                        <div class="band-name">SATU PER EMPAT</div>
+                                    </div>
+                                </div>
+                                <div class="lineup-title">LINEUP D-2</div>
+                                <div class="band-list">
+                                    <div class="band-item">
+                                        <div class="band-name">DRIZZLY</div>
+                                    </div>
+                                    <div class="band-item">
+                                        <div class="band-name">KAPSUL</div>
+                                    </div>
+                                    <div class="band-item">
+                                        <div class="band-name">LOVE AS PUNISMENT</div>
+                                    </div>
+                                    <div class="band-item">
+                                        <div class="band-name">NAMOY BUDAYA</div>
+                                    </div>
+                                    <div class="band-item">
+                                        <div class="band-name">SADCHURRO</div>
+                                    </div>
+                                    <div class="band-item">
+                                        <div class="band-name">SKANDAL</div>
+                                    </div>
+                                    <div class="band-item">
+                                        <div class="band-name">THE BUNBURY</div>
+                                    </div>
+                                </div>
+                                <div class="lineup-title">LINEUP D-3</div>
+                                <div class="band-list">
+                                    <div class="band-item">
+                                        <div class="band-name">BEIJING CONNECTION</div>
+                                    </div>
+                                    <div class="band-item">
+                                        <div class="band-name">CONTRECOUP</div>
+                                    </div>
+                                    <div class="band-item">
+                                        <div class="band-name">MINISTRY OF</div>
+                                    </div>
+                                    <div class="band-item">
+                                        <div class="band-name">SUN LOTUS</div>
+                                    </div>
+                                    <div class="band-item">
+                                        <div class="band-name">THE DARE</div>
+                                    </div>
+                                    <div class="band-item">
+                                        <div class="band-name">THE SKIT</div>
+                                    </div>
+                                    <div class="band-item">
+                                        <div class="band-name">TOXICDEV! FEATURING MA-YA</div>
                                     </div>
                                 </div>
                             </div>
+                            <a href="#" class="cta-button">View Details</a>
                         </div>
                     </div>
                 </div>
